@@ -1,46 +1,53 @@
 .page {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 40px 24px 80px;
+  padding: 24px 24px 80px;
 }
 
-.site-header {
-  margin-bottom: 28px;
+.site-header-bar {
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--c1);
 }
 
-.site-header h1 {
+.site-header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 14px 24px;
+}
+
+.site-header-inner h1 {
   font-family: "Poppins", sans-serif;
-  font-weight: 700;
-  font-size: 2.1rem;
-  color: var(--c6);
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: var(--c9);
   margin: 0;
 }
 
 .tagline {
-  margin: 4px 0 0;
+  margin: 2px 0 0;
   color: var(--c7);
-  font-size: 0.95rem;
+  font-size: 0.75rem;
 }
 
 .controls {
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  margin-bottom: 28px;
+  gap: 12px;
+  margin-bottom: 24px;
 }
 
 .search-input {
   width: 100%;
-  max-width: 420px;
-  padding: 10px 14px;
-  font-size: 0.9rem;
+  max-width: 380px;
+  padding: 7px 12px;
+  font-size: 0.8rem;
   border-radius: var(--radius-md);
 }
 
 .category-bar {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 6px;
 }
 
 .chip {
@@ -49,9 +56,9 @@
   align-items: center;
   gap: 6px;
   border-radius: var(--radius-pill);
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   font-weight: 600;
-  padding: 6px 14px;
+  padding: 5px 12px;
   cursor: pointer;
   border: 1px solid var(--c2);
   background: var(--bg-surface);
@@ -71,8 +78,8 @@
 
 .category-badge {
   background: var(--c1);
-  color: var(--c6);
-  font-size: 0.7rem;
+  color: var(--c8);
+  font-size: 0.65rem;
   padding: 3px 10px;
   cursor: default;
   white-space: nowrap;
@@ -121,14 +128,14 @@
 .tool-name {
   font-family: "Poppins", sans-serif;
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 0.95rem;
   margin: 0;
   color: var(--c9);
 }
 
 .tool-description {
   margin: 0;
-  font-size: 0.88rem;
+  font-size: 0.8rem;
   color: var(--c7);
   line-height: 1.45;
 }
@@ -145,11 +152,11 @@
 }
 
 .code-block-label {
-  font-size: 0.65rem;
+  font-size: 0.62rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--c5);
+  color: var(--c7);
   margin-bottom: 4px;
 }
 
@@ -166,7 +173,7 @@
   overflow-x: auto;
   white-space: pre;
   font-family: "SFMono-Regular", ui-monospace, Menlo, Consolas, "Liberation Mono", monospace;
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   color: var(--c9);
   scrollbar-width: thin;
 }
@@ -202,8 +209,8 @@
   background: var(--bg-page);
   border-color: var(--c2);
   color: var(--c7);
-  font-size: 0.7rem;
-  padding: 4px 10px;
+  font-size: 0.66rem;
+  padding: 3px 9px;
 }
 
 .tag-chip:hover {

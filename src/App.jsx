@@ -35,12 +35,15 @@ export default function App() {
   }, [search, category, activeTag]);
 
   return (
-    <div className="page">
-      <header className="site-header">
-        <h1>toolkit</h1>
-        <p className="tagline">commands and tools I actually use</p>
+    <div>
+      <header className="site-header-bar">
+        <div className="site-header-inner">
+          <h1>toolkit</h1>
+          <p className="tagline">commands and tools I actually use</p>
+        </div>
       </header>
 
+      <div className="page">
       <div className="controls">
         <input
           type="search"
@@ -118,6 +121,7 @@ export default function App() {
           ))}
         </div>
       )}
+      </div>
     </div>
   );
 }
