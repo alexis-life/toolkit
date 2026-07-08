@@ -23,6 +23,15 @@ export default function App() {
     return ["all", ...Array.from(set).sort()];
   }, []);
 
+  const categoryCounts = useMemo(() => {
+    const counts = { all: TOOLS.length };
+    for (const t of TOOLS) {
+      if (!t.category) continue;
+      counts[t.category] = (counts[t.category] || 0) + 1;
+    }
+    return counts;
+  }, []);
+
   const filtered = useMemo(() => {
     const q = search.trim().toLowerCase();
     return TOOLS.filter((t) => {
@@ -36,51 +45,56 @@ export default function App() {
 
   return (
     <div>
-      <header className="site-header-bar">
-        <div className="site-header-inner">
-          <h1>toolkit</h1>
-          <p className="tagline">commands and tools I actually use</p>
+      <header className="topbar">
+        <div className="topbar-titles">
+          <h1 className="title-lg">Toolbox</h1>
+          <p className="text-meta">commands and tools I actually use</p>
+        </div>
+        <div className="topbar-nav">
+          <div className="topbar-nav-inner">
+            <nav className="nav-tabs" role="tablist" aria-label="Filter by category">
+              {categories.map((c) => (
+                <button
+                  key={c}
+                  type="button"
+                  role="tab"
+                  aria-selected={category === c}
+                  className={`nav-tab ${category === c ? "is-active" : ""}`}
+                  onClick={() => setCategory(c)}
+                >
+                  {c === "all" ? "Overview" : c}{" "}
+                  <span className="nav-tab-count">{categoryCounts[c] ?? 0}</span>
+                </button>
+              ))}
+            </nav>
+            <input
+              type="search"
+              className="topbar-search"
+              placeholder="Search titles…"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              aria-label="Search toolkit"
+            />
+          </div>
         </div>
       </header>
 
       <div className="page">
-      <div className="controls">
-        <input
-          type="search"
-          className="search-input"
-          placeholder="Search tools, commands, descriptions…"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          aria-label="Search toolkit"
-        />
-        <div className="category-bar" role="tablist" aria-label="Filter by category">
-          {categories.map((c) => (
+      {activeTag && (
+        <div className="active-tag-row">
+          <span className="chip tag-pill">
+            #{activeTag}
             <button
-              key={c}
               type="button"
-              className={`chip category-chip ${category === c ? "chip-active" : ""}`}
-              onClick={() => setCategory(c)}
+              className="tag-pill-dismiss"
+              onClick={() => setActiveTag(null)}
+              aria-label={`Remove tag filter ${activeTag}`}
             >
-              {c === "all" ? "All" : c}
+              ×
             </button>
-          ))}
+          </span>
         </div>
-        {activeTag && (
-          <div className="active-tag-row">
-            <span className="chip tag-pill">
-              #{activeTag}
-              <button
-                type="button"
-                className="tag-pill-dismiss"
-                onClick={() => setActiveTag(null)}
-                aria-label={`Remove tag filter ${activeTag}`}
-              >
-                ×
-              </button>
-            </span>
-          </div>
-        )}
-      </div>
+      )}
 
       {TOOLS.length === 0 ? (
         <div className="empty-state">

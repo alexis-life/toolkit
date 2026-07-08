@@ -1,53 +1,7 @@
 .page {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 24px 24px 80px;
-}
-
-.site-header-bar {
-  background: var(--bg-surface);
-  border-bottom: 1px solid var(--c1);
-}
-
-.site-header-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 14px 24px;
-}
-
-.site-header-inner h1 {
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  font-size: 1.25rem;
-  color: var(--c9);
-  margin: 0;
-}
-
-.tagline {
-  margin: 2px 0 0;
-  color: var(--c7);
-  font-size: 0.75rem;
-}
-
-.controls {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-bottom: 24px;
-}
-
-.search-input {
-  width: 100%;
-  max-width: 380px;
-  padding: 7px 12px;
-  font-size: 0.8rem;
-  border-radius: var(--radius-md);
-}
-
-.category-bar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
+  padding: 32px var(--content-pad) 48px;
 }
 
 .chip {
@@ -66,16 +20,6 @@
   transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
 }
 
-.category-chip:hover {
-  background: var(--bg-hover);
-}
-
-.chip-active {
-  background: var(--c6);
-  border-color: var(--c6);
-  color: #fff;
-}
-
 .category-badge {
   background: var(--c1);
   color: var(--c8);
@@ -87,6 +31,7 @@
 
 .active-tag-row {
   display: flex;
+  margin-bottom: 16px;
 }
 
 .tag-pill {
