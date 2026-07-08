@@ -4,41 +4,9 @@
   padding: 32px var(--content-pad) 48px;
 }
 
-.chip {
-  font-family: "Poppins", sans-serif;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  border-radius: var(--radius-pill);
-  font-size: 0.72rem;
-  font-weight: 600;
-  padding: 5px 12px;
-  cursor: pointer;
-  border: 1px solid var(--c2);
-  background: var(--bg-surface);
-  color: var(--c7);
-  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
-}
-
-.category-badge {
-  background: var(--c1);
-  color: var(--c8);
-  font-size: 0.65rem;
-  padding: 3px 10px;
-  cursor: default;
-  white-space: nowrap;
-}
-
 .active-tag-row {
   display: flex;
   margin-bottom: 16px;
-}
-
-.tag-pill {
-  background: var(--c1);
-  color: var(--c6);
-  border-color: var(--c1);
-  cursor: default;
 }
 
 .tag-pill-dismiss {
@@ -70,21 +38,7 @@
   gap: 10px;
 }
 
-.tool-name {
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  font-size: 0.95rem;
-  margin: 0;
-  color: var(--c9);
-}
-
-.tool-description {
-  margin: 0;
-  font-size: 0.8rem;
-  color: var(--c7);
-  line-height: 1.45;
-}
-
+/* ── Command block (component-specific: not part of theme.css) ── */
 .code-block {
   background: var(--bg-hover);
   border: 1px solid var(--c1);
@@ -151,9 +105,6 @@
 }
 
 .tag-chip {
-  background: var(--bg-page);
-  border-color: var(--c2);
-  color: var(--c7);
   font-size: 0.66rem;
   padding: 3px 9px;
 }
@@ -162,13 +113,6 @@
   background: var(--c1);
   color: var(--c6);
   border-color: var(--c1);
-}
-
-.empty-state {
-  text-align: center;
-  padding: 60px 20px;
-  color: var(--c7);
-  font-size: 0.95rem;
 }
 
 @media (max-width: 480px) {

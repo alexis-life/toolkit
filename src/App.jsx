@@ -45,31 +45,31 @@ export default function App() {
 
   return (
     <div>
-      <header className="topbar">
-        <div className="topbar-titles">
-          <h1 className="title-lg">Toolbox</h1>
+      <header className="ax-header">
+        <div className="ax-header-titles">
+          <h1 className="ax-title">Toolbox</h1>
           <p className="text-meta">commands and tools I actually use</p>
         </div>
-        <div className="topbar-nav">
-          <div className="topbar-nav-inner">
-            <nav className="nav-tabs" role="tablist" aria-label="Filter by category">
+        <div className="ax-tabs-row">
+          <div className="ax-tabs-inner">
+            <nav className="ax-tabs" role="tablist" aria-label="Filter by category">
               {categories.map((c) => (
                 <button
                   key={c}
                   type="button"
                   role="tab"
                   aria-selected={category === c}
-                  className={`nav-tab ${category === c ? "is-active" : ""}`}
+                  className={`ax-tab ${category === c ? "ax-tab--active" : ""}`}
                   onClick={() => setCategory(c)}
                 >
-                  {c === "all" ? "Overview" : c}{" "}
-                  <span className="nav-tab-count">{categoryCounts[c] ?? 0}</span>
+                  {c === "all" ? "Overview" : c} {categoryCounts[c] ?? 0}
                 </button>
               ))}
             </nav>
             <input
               type="search"
-              className="topbar-search"
+              className="ax-input"
+              style={{ marginLeft: "auto", minWidth: "180px" }}
               placeholder="Search titles…"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
@@ -80,61 +80,63 @@ export default function App() {
       </header>
 
       <div className="page">
-      {activeTag && (
-        <div className="active-tag-row">
-          <span className="chip tag-pill">
-            #{activeTag}
-            <button
-              type="button"
-              className="tag-pill-dismiss"
-              onClick={() => setActiveTag(null)}
-              aria-label={`Remove tag filter ${activeTag}`}
-            >
-              ×
-            </button>
-          </span>
-        </div>
-      )}
+        {activeTag && (
+          <div className="active-tag-row">
+            <span className="ax-chip">
+              #{activeTag}
+              <button
+                type="button"
+                className="tag-pill-dismiss"
+                onClick={() => setActiveTag(null)}
+                aria-label={`Remove tag filter ${activeTag}`}
+              >
+                ×
+              </button>
+            </span>
+          </div>
+        )}
 
-      {TOOLS.length === 0 ? (
-        <div className="empty-state">
-          <p>No tools yet — add rows to Toolkit.md in your vault and let vault-sync do the rest.</p>
-        </div>
-      ) : filtered.length === 0 ? (
-        <div className="empty-state">
-          <p>No matches. Try a different search, category, or tag.</p>
-        </div>
-      ) : (
-        <div className="card-grid">
-          {filtered.map((t, i) => (
-            <article className="card tool-card" key={`${t.tool}-${i}`}>
-              <div className="tool-card-head">
-                <h2 className="tool-name">{t.tool}</h2>
-                {t.category && <span className="chip badge-primary category-badge">{t.category}</span>}
-              </div>
-              {t.description && <p className="tool-description">{t.description}</p>}
-
-              <CodeBlock code={t.command} />
-              {t.example && <CodeBlock code={t.example} label="example" small />}
-
-              {t.tagList.length > 0 && (
-                <div className="tag-row">
-                  {t.tagList.map((tag) => (
-                    <button
-                      key={tag}
-                      type="button"
-                      className="chip tag-chip"
-                      onClick={() => setActiveTag(tag)}
-                    >
-                      #{tag}
-                    </button>
-                  ))}
+        {TOOLS.length === 0 ? (
+          <div className="ax-card">
+            <div className="ax-empty">
+              No tools yet — add rows to Toolkit.md in your vault and let vault-sync do the rest.
+            </div>
+          </div>
+        ) : filtered.length === 0 ? (
+          <div className="ax-card">
+            <div className="ax-empty">No matches. Try a different search, category, or tag.</div>
+          </div>
+        ) : (
+          <div className="card-grid">
+            {filtered.map((t, i) => (
+              <article className="ax-card tool-card" key={`${t.tool}-${i}`}>
+                <div className="tool-card-head">
+                  <h3>{t.tool}</h3>
+                  {t.category && <span className="ax-badge">{t.category}</span>}
                 </div>
-              )}
-            </article>
-          ))}
-        </div>
-      )}
+                {t.description && <p className="ax-meta">{t.description}</p>}
+
+                <CodeBlock code={t.command} />
+                {t.example && <CodeBlock code={t.example} label="example" small />}
+
+                {t.tagList.length > 0 && (
+                  <div className="tag-row">
+                    {t.tagList.map((tag) => (
+                      <button
+                        key={tag}
+                        type="button"
+                        className="ax-chip tag-chip"
+                        onClick={() => setActiveTag(tag)}
+                      >
+                        #{tag}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </article>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
