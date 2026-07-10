@@ -6,7 +6,7 @@ Static Vite + React site. No backend, no database, no auth — just a card list 
 
 ## How the data pipeline works
 
-Tools live as a markdown table in my Obsidian vault at `~/vault/Toolkit.md`, with columns:
+Tools live as a markdown table in my Obsidian vault at `~/vault/atlas/toolkit/toolkit.md`, with columns:
 
 ```
 tool | category | command | description | example | tags
@@ -16,7 +16,7 @@ The shared `vault-sync` script (in the sibling `vault-sync/` repo) has a `toolki
 
 `vault-sync` has no array column type, so `tags` always arrives as a comma-separated string (e.g. `"nmap,scanning,recon"`) or `null`. The frontend (`src/App.jsx`) splits it into an array — don't try to write JSON arrays into the vault table.
 
-**To add a tool:** add a row to the table in `Toolkit.md` in Obsidian, then run the vault-sync `toolkit` job. It will overwrite `src/data/toolkit.json`. Commit and push the resulting diff.
+**To add a tool:** add a row to the table in `atlas/toolkit/toolkit.md` in Obsidian, then run the vault-sync `toolkit` job. It will overwrite `src/data/toolkit.json`. Commit and push the resulting diff.
 
 ## How deploy works
 
