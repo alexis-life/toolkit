@@ -367,5 +367,278 @@
         }
       ]
     }
+  ],
+  "overview": [
+    {
+      "icon": "🔒",
+      "title": "Introduction to SOC 2",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "SOC 2 — System and Organization Controls 2.",
+            "A voluntary compliance standard developed by the American Institute of Certified Public Accountants (AICPA).",
+            "Focuses on service providers (or any business handling customer data in the cloud) — ensuring that data is protected through independently audited controls."
+          ]
+        }
+      ]
+    },
+    {
+      "icon": "🧭",
+      "title": "Key Differences from Other Compliance Frameworks",
+      "blocks": [
+        {
+          "type": "heading",
+          "text": "SOC 1 vs SOC 2"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**SOC 1** — Focuses on financial reporting controls, for orgs that impact clients' audits (e.g. payroll processors).",
+            "**SOC 2** — Broader; targets non-financial data security for tech and service firms."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "ISO 27001 vs SOC 2"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**ISO 27001** — An international standard for information security management systems; more focused on ongoing implementation than a point-in-time attestation.",
+            "**SOC 2** — U.S.-centric, audit-focused, flexible in scope.",
+            "ISO 27001: an accredited body certifies that you have a structured system of policies, processes, and governance in place to manage risk on an ongoing basis.",
+            "SOC 2: an outside CPA firm tests your security controls (access management, monitoring, data handling) and issues a report saying \"yes, these are working as designed.\"",
+            "ISO 27001 requires implementing a formal risk management process (an ISMS) and is recognized globally as a best-practice framework.",
+            "SOC 2 is an attestation report evaluating how a company's controls align with the AICPA's Trust Services Criteria — especially common in the U.S. for SaaS and cloud providers."
+          ]
+        },
+        {
+          "type": "callout",
+          "text": "Practical framing for a client: ISO 27001 is the global seal for your whole information security management program — it shows you manage risk systematically and internationally. SOC 2 is a U.S.-centric audit that tells your customers you have the controls in place to protect their data according to industry trust standards. Many organizations pursue both — ISO for global recognition, SOC 2 for customer-facing assurance."
+        },
+        {
+          "type": "heading",
+          "text": "GDPR/CCPA vs SOC 2"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**GDPR/CCPA** — privacy laws with penalties for non-compliance.",
+            "**SOC 2** — voluntary, but helps demonstrate the controls that support GDPR/CCPA-style data protection requirements."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "SOC 2 is fundamentally about proving \"trust\" through independent audits — which is exactly why it's become close to table-stakes for B2B tech companies trying to differentiate in a competitive market."
+        }
+      ]
+    },
+    {
+      "icon": "🛡️",
+      "title": "Trust Services Criteria (TSC) — 5 Core Principles",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "**Security** — Protects systems and data from unauthorized access, use, disclosure, modification, or destruction. Common controls: logical access controls (MFA, network security, firewalls, intrusion detection, vulnerability management).",
+            "**Availability** — Ensures systems are operational and accessible as committed, minimizing downtime for users. Common controls: data backups, disaster recovery plans, uptime monitoring (e.g. 99.9% SLA guarantees).",
+            "**Processing Integrity** — Verifies that system processing is accurate, complete, and timely, without errors or manipulation. Common controls: input/output validation, error handling, automated testing.",
+            "**Confidentiality** — Safeguards sensitive information from unauthorized access throughout its lifecycle. Common controls: data classification policies, encryption in transit/at rest, secure sharing protocols.",
+            "**Privacy** — Governs the proper collection, use, retention, disclosure, and disposal of personal information (PII), in line with privacy notices and principles. Common controls: consent management, data minimization, compliance with laws like GDPR."
+          ]
+        },
+        {
+          "type": "callout",
+          "text": "Security is mandatory for every SOC 2 report — the other four are optional and selected based on your business model (e.g. if you handle a lot of sensitive customer data, add Confidentiality)."
+        },
+        {
+          "type": "paragraph",
+          "text": "See the Controls tab for the full CC1–CC9 criteria, plus the four optional categories, in detail."
+        }
+      ]
+    },
+    {
+      "icon": "💡",
+      "title": "Why Pursue SOC 2?",
+      "blocks": [
+        {
+          "type": "heading",
+          "text": "Benefits for Your Company"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Building trust and credibility** — a SOC 2 report acts as third-party validation, reducing customer due diligence and accelerating sales cycles.",
+            "**Risk reduction** — the controls SOC 2 requires directly mitigate the kinds of breaches that cost businesses an average of $4.45 million globally in 2025.",
+            "**Competitive advantage** — many enterprises require SOC 2 from vendors; compliance opens doors to larger contracts and partnerships."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Impact on Stakeholders"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Customers** — assured of secure data handling, especially for cloud services.",
+            "**Partners/investors** — demonstrates operational maturity, which helps in funding rounds or M&A diligence.",
+            "**Regulators** — helps align with laws like CCPA, reducing exposure to fines."
+          ]
+        }
+      ]
+    },
+    {
+      "icon": "📋",
+      "title": "Assessing SOC 2 Readiness",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Quick self-score: if you're answering \"no\" to more than half of these, focus on the basics before scoping an audit."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Criterion",
+            "Key question"
+          ],
+          "rows": [
+            [
+              "Security",
+              "Do you have MFA, encryption, and regular vulnerability scans?"
+            ],
+            [
+              "Availability",
+              "Are SLAs defined with backup/recovery plans?"
+            ],
+            [
+              "Processing Integrity",
+              "Are transactions validated for accuracy?"
+            ],
+            [
+              "Confidentiality",
+              "Is sensitive data classified and access-controlled?"
+            ],
+            [
+              "Privacy",
+              "Do you have PII-handling processes and data retention policies?"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Identifying Gaps"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Review policies, tech stack, and actual employee practices — not just what's written down.",
+            "AICPA's Trust Services Criteria document (downloadable from aicpa.org) is the canonical resource for scoping this yourself."
+          ]
+        }
+      ]
+    },
+    {
+      "icon": "🗺️",
+      "title": "SOC 2 Roadmap",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Achieving SOC 2 typically takes 3–12 months, depending on where you're starting from."
+        },
+        {
+          "type": "heading",
+          "text": "Step-by-Step Process"
+        },
+        {
+          "type": "ordered-list",
+          "items": [
+            "**Scoping** — define system boundaries and select which TSC categories apply (1–2 weeks).",
+            "**Gap analysis** — assess current controls against the criteria (about 1 month).",
+            "**Remediation** — implement fixes for identified gaps (2–6 months).",
+            "**Readiness assessment** — a mock audit / internal review of controls after remediation.",
+            "**Actual audit / report issuance** — the CPA firm's fieldwork, then you receive and can share the report."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Timeline Expectations"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Startups: roughly 6–9 months for a Type 2 report.",
+            "Mature orgs with existing controls: 3–6 months — but factor in the required observation period for Type 2 (often ~12 months of evidence)."
+          ]
+        }
+      ]
+    },
+    {
+      "icon": "🔍",
+      "title": "Audit Process",
+      "blocks": [
+        {
+          "type": "heading",
+          "text": "SOC 2 Type 1 vs Type 2"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Type 1** — a snapshot of control design at a single point in time. Quicker but less comprehensive (2–3 months total).",
+            "**Type 2** — evaluates control effectiveness over an observation window (e.g. 6–12 months). The gold standard for customers."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Working with Auditors"
+        },
+        {
+          "type": "paragraph",
+          "text": "Select a firm via the AICPA directory, and prepare by organizing evidence ahead of time. Fieldwork typically involves interviews and control testing — expect 4–8 weeks."
+        },
+        {
+          "type": "heading",
+          "text": "Common Audit Findings and Remediation"
+        },
+        {
+          "type": "paragraph",
+          "text": "The most common findings are inadequate logging and unpatched systems. Most are fixable with quick remediation and a retest before the report is finalized."
+        }
+      ]
+    },
+    {
+      "icon": "♻️",
+      "title": "Maintaining and Renewing SOC 2",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Compliance is ongoing, not a one-time event."
+        },
+        {
+          "type": "heading",
+          "text": "Ongoing Monitoring"
+        },
+        {
+          "type": "paragraph",
+          "text": "Quarterly internal audits, plus continuous control testing via automation where possible."
+        },
+        {
+          "type": "heading",
+          "text": "Annual Recertification"
+        },
+        {
+          "type": "paragraph",
+          "text": "Reports need to be updated yearly; bridge letters can cover gaps between formal audits."
+        },
+        {
+          "type": "heading",
+          "text": "Scaling Compliance"
+        },
+        {
+          "type": "paragraph",
+          "text": "As you grow, expand scope (e.g. add Privacy when you launch a feature that touches more PII), and integrate control checks into DevOps for automated evidence collection."
+        }
+      ]
+    }
   ]
 }
