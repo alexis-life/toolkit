@@ -1,3 +1,4 @@
+import { Fragment, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import TopNav from "../components/TopNav.jsx";
 import { getFramework } from "../data/frameworks/index.js";
@@ -5,6 +6,25 @@ import { getFramework } from "../data/frameworks/index.js";
 export default function FrameworkPage() {
   const { slug } = useParams();
   const framework = getFramework(slug);
+  const content = framework?.content;
+  const [activeId, setActiveId] = useState(null);
+
+  useEffect(() => {
+    if (!content) return undefined;
+    const sections = document.querySelectorAll(".framework-category");
+    if (sections.length === 0) return undefined;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) setActiveId(entry.target.id);
+        }
+      },
+      { rootMargin: "-15% 0px -75% 0px" }
+    );
+    sections.forEach((s) => observer.observe(s));
+    return () => observer.disconnect();
+  }, [content]);
 
   if (!framework) {
     return (
@@ -28,8 +48,6 @@ export default function FrameworkPage() {
       </div>
     );
   }
-
-  const { content } = framework;
 
   return (
     <div>
@@ -56,20 +74,19 @@ export default function FrameworkPage() {
             {content.description && <p className="ax-meta framework-description">{content.description}</p>}
 
             <div className="framework-layout">
-              <nav className="framework-jump-nav" aria-label="Jump to category">
+              <nav className="framework-jump-card" aria-label="Jump to category">
                 {content.categories.map((cat, i) => (
-                  <a
-                    key={cat.id}
-                    href={`#${cat.id}`}
-                    className={
-                      cat.group === "additional" &&
-                      content.categories[i - 1]?.group !== "additional"
-                        ? "framework-jump-link framework-jump-link--group-start"
-                        : "framework-jump-link"
-                    }
-                  >
-                    {cat.id}
-                  </a>
+                  <Fragment key={cat.id}>
+                    {cat.group === "additional" && content.categories[i - 1]?.group !== "additional" && (
+                      <div className="framework-jump-group-label label-micro">Optional</div>
+                    )}
+                    <a
+                      href={`#${cat.id}`}
+                      className={`nav-item ${activeId === cat.id ? "active" : ""}`}
+                    >
+                      {cat.id}
+                    </a>
+                  </Fragment>
                 ))}
               </nav>
 

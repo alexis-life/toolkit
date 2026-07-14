@@ -23,40 +23,34 @@
   margin-bottom: 24px;
 }
 
-/* ── Layout: sticky jump nav + category content ── */
+/* ── Layout: sticky jump nav (theme's sidebar nav-item pattern,
+   wrapped in a card) + category content ── */
 .framework-layout {
   display: grid;
-  grid-template-columns: 140px 1fr;
-  gap: 32px;
+  grid-template-columns: 168px 1fr;
+  gap: 24px;
   align-items: start;
 }
 
-.framework-jump-nav {
+.framework-jump-card {
   position: sticky;
   top: 20px;
+  background: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 8px 0;
   display: flex;
   flex-direction: column;
-  gap: 2px;
 }
 
-.framework-jump-link {
-  font-size: 0.72rem;
-  font-weight: 700;
-  color: var(--c7);
+.framework-jump-card .nav-item {
   text-decoration: none;
-  padding: 5px 10px;
-  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 0.78rem;
 }
 
-.framework-jump-link:hover {
-  color: var(--c6);
-  background: var(--bg-hover);
-}
-
-.framework-jump-link--group-start {
-  margin-top: 10px;
-  padding-top: 15px;
-  border-top: 1px solid var(--c1);
+.framework-jump-group-label {
+  padding: 14px 20px 4px;
 }
 
 .framework-group-heading {
@@ -156,16 +150,27 @@
     gap: 16px;
   }
 
-  .framework-jump-nav {
+  .framework-jump-card {
     position: static;
     flex-direction: row;
     flex-wrap: wrap;
+    padding: 10px;
     gap: 4px;
   }
 
-  .framework-jump-link--group-start {
-    margin-top: 0;
-    padding-top: 5px;
-    border-top: none;
+  .framework-jump-card .nav-item {
+    height: auto;
+    padding: 6px 12px;
+    border-radius: var(--radius-pill);
+  }
+
+  .framework-jump-card .nav-item.active {
+    border-left: none;
+    padding-left: 12px;
+  }
+
+  .framework-jump-group-label {
+    width: 100%;
+    padding: 4px 10px 0;
   }
 }
