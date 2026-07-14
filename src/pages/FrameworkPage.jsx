@@ -77,6 +77,9 @@ export default function FrameworkPage() {
               <nav className="framework-jump-card" aria-label="Jump to category">
                 {content.categories.map((cat, i) => (
                   <Fragment key={cat.id}>
+                    {cat.group === "core" && i === 0 && (
+                      <div className="framework-jump-group-label label-micro">Required</div>
+                    )}
                     {cat.group === "additional" && content.categories[i - 1]?.group !== "additional" && (
                       <div className="framework-jump-group-label label-micro">Optional</div>
                     )}
