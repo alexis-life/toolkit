@@ -55,29 +55,57 @@ export default function FrameworkPage() {
           <>
             {content.description && <p className="ax-meta framework-description">{content.description}</p>}
 
-            {content.categories.map((cat) => (
-              <section key={cat.id} className="framework-category">
-                <h2 className="framework-category-title">
-                  {cat.id} — {cat.title}
-                </h2>
-                {cat.summary && <p className="ax-meta framework-category-summary">{cat.summary}</p>}
+            <div className="framework-layout">
+              <nav className="framework-jump-nav" aria-label="Jump to category">
+                {content.categories.map((cat, i) => (
+                  <a
+                    key={cat.id}
+                    href={`#${cat.id}`}
+                    className={
+                      cat.group === "additional" &&
+                      content.categories[i - 1]?.group !== "additional"
+                        ? "framework-jump-link framework-jump-link--group-start"
+                        : "framework-jump-link"
+                    }
+                  >
+                    {cat.id}
+                  </a>
+                ))}
+              </nav>
 
-                <div className="framework-control-list">
-                  {cat.controls.map((ctrl) => (
-                    <div key={ctrl.id} className="framework-control ax-card">
-                      <div className="framework-control-criteria">
-                        <span className="framework-control-id">{ctrl.id}</span>
-                        <p>{ctrl.criteria}</p>
+              <div className="framework-categories">
+                {content.categories.map((cat, i) => (
+                  <div key={cat.id}>
+                    {cat.group === "additional" && content.categories[i - 1]?.group !== "additional" && (
+                      <h2 className="framework-group-heading">Additional Trust Services Categories</h2>
+                    )}
+                    <section id={cat.id} className="framework-category">
+                      <h2 className="framework-category-title">
+                        {cat.id} — {cat.title}
+                      </h2>
+                      {cat.summary && <p className="ax-meta framework-category-summary">{cat.summary}</p>}
+
+                      <div className="framework-control-list">
+                        {cat.controls.map((ctrl) => (
+                          <div key={ctrl.id} id={ctrl.id} className="framework-control ax-card">
+                            <div className="framework-control-criteria">
+                              <a href={`#${ctrl.id}`} className="framework-control-id">
+                                {ctrl.id}
+                              </a>
+                              <p>{ctrl.criteria}</p>
+                            </div>
+                            <div className="framework-control-notes">
+                              <span className="framework-control-label">What it means / how to comply</span>
+                              <p>{ctrl.notes}</p>
+                            </div>
+                          </div>
+                        ))}
                       </div>
-                      <div className="framework-control-notes">
-                        <span className="framework-control-label">What it means / how to comply</span>
-                        <p>{ctrl.notes}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </section>
-            ))}
+                    </section>
+                  </div>
+                ))}
+              </div>
+            </div>
 
             {content.source && (
               <p className="framework-source-note">
