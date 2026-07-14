@@ -2,6 +2,13 @@ import { Link } from "react-router-dom";
 import TopNav from "../components/TopNav.jsx";
 import { FRAMEWORKS } from "../data/frameworks/index.js";
 
+// Live frameworks first (so what's actually usable is up top), each group
+// keeping its declared order — sorted here rather than by hand-ordering the
+// FRAMEWORKS array, so this doesn't go stale the next time one ships.
+const SORTED_FRAMEWORKS = [...FRAMEWORKS].sort(
+  (a, b) => Boolean(b.content) - Boolean(a.content)
+);
+
 export default function FrameworksIndex() {
   return (
     <div>
@@ -17,7 +24,7 @@ export default function FrameworksIndex() {
 
       <div className="page">
         <div className="card-grid">
-          {FRAMEWORKS.map((f) => (
+          {SORTED_FRAMEWORKS.map((f) => (
             <Link key={f.slug} to={`/frameworks/${f.slug}`} className="ax-card framework-card">
               <div className="framework-card-head">
                 <h3>{f.name}</h3>
