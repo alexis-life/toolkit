@@ -1,5 +1,6 @@
 import soc2 from "./soc2.json";
 import hipaa from "./hipaa.json";
+import iso27001 from "./iso-27001.json";
 
 export const FRAMEWORKS = [
   {
@@ -12,7 +13,7 @@ export const FRAMEWORKS = [
     slug: "iso-27001",
     name: "ISO 27001",
     blurb: "Annex A controls, 2022 revision.",
-    content: null,
+    content: iso27001,
   },
   {
     slug: "nist-csf",
