@@ -6,6 +6,24 @@
 <meta name="robots" content="noindex">
 <title>404 · alexischao.com</title>
 <!--
+  toolkit-specific: this site is a client-routed SPA (/frameworks/...),
+  so a real GH Pages 404 (path not matching a built file) usually just
+  means "refresh on a route the router handles fine" — bounce it back
+  to index.html with the path encoded, per the standard spa-github-pages
+  trick, before falling through to the static 404 content below.
+-->
+<script>
+  (function () {
+    var l = window.location;
+    l.replace(
+      l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') + '/?/' +
+      l.pathname.slice(1).replace(/&/g, '~and~') +
+      (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+      l.hash
+    );
+  })();
+</script>
+<!--
   ============================================================
   alexischao.com — shared 404 page
 

@@ -1,0 +1,240 @@
+{
+  "framework": "SOC 2",
+  "section": "Common Criteria",
+  "slug": "soc2",
+  "description": "Trust Services Criteria, Security category. Applies to every SOC 2 report regardless of scope — Availability, Confidentiality, Processing Integrity, and Privacy are additional, optional categories layered on top of this.",
+  "source": {
+    "label": "AICPA Trust Services Criteria",
+    "url": "https://www.aicpa-cima.com/resources/download/2017-trust-services-criteria-with-revised-points-of-focus-2022"
+  },
+  "categories": [
+    {
+      "id": "CC1",
+      "title": "Control Environment",
+      "summary": "Sets the tone at the top: does the org actually value integrity, ethics, and accountability, or just say it does on paper.",
+      "controls": [
+        {
+          "id": "CC1.1",
+          "criteria": "Commitment to integrity and ethical values (code of conduct, standards of conduct communicated to employees/contractors).",
+          "notes": "Have a written code of conduct that's actually distributed and acknowledged, not just filed away. Auditors want signed acknowledgments, not the policy PDF alone."
+        },
+        {
+          "id": "CC1.2",
+          "criteria": "Board (or equivalent oversight body) is independent from management and oversees the design/operation of internal controls.",
+          "notes": "Org chart showing security/compliance reporting lines with real independence from the teams they oversee."
+        },
+        {
+          "id": "CC1.3",
+          "criteria": "Management establishes structures, reporting lines, and appropriate authorities/responsibilities.",
+          "notes": "Documented org chart and job descriptions tied to security responsibilities."
+        },
+        {
+          "id": "CC1.4",
+          "criteria": "Commitment to attracting, developing, and retaining competent individuals.",
+          "notes": "Background-check and onboarding process, role-specific training records."
+        },
+        {
+          "id": "CC1.5",
+          "criteria": "Holds individuals accountable for their internal control responsibilities (including enforcement/discipline).",
+          "notes": "Documented disciplinary process for policy violations, tied to performance management."
+        }
+      ]
+    },
+    {
+      "id": "CC2",
+      "title": "Communication and Information",
+      "summary": "Are policies communicated, and does information flow well enough internally and externally to support the control environment.",
+      "controls": [
+        {
+          "id": "CC2.1",
+          "criteria": "Obtains/generates and uses relevant, quality information to support internal control.",
+          "notes": "Reliable systems/reporting for security-relevant data (asset inventory, access logs, etc.)."
+        },
+        {
+          "id": "CC2.2",
+          "criteria": "Internally communicates information, including objectives and responsibilities for internal control.",
+          "notes": "A living security policy set and a comms cadence — security awareness training counts."
+        },
+        {
+          "id": "CC2.3",
+          "criteria": "Communicates with external parties (customers, vendors, regulators) about matters affecting internal control.",
+          "notes": "Trust center, security page, or documented process for responding to customer security questionnaires."
+        }
+      ]
+    },
+    {
+      "id": "CC3",
+      "title": "Risk Assessment",
+      "summary": "Does the org actually identify and analyze risk, including risk from change (new vendors, new systems, growth, fraud).",
+      "controls": [
+        {
+          "id": "CC3.1",
+          "criteria": "Specifies objectives clearly enough to enable risk identification.",
+          "notes": "Documented business/security objectives that risks can be measured against."
+        },
+        {
+          "id": "CC3.2",
+          "criteria": "Identifies risks to objectives and analyzes them as a basis for how to manage them.",
+          "notes": "Annual risk assessment with defined methodology (likelihood x impact), risk register, treatment plan."
+        },
+        {
+          "id": "CC3.3",
+          "criteria": "Considers potential for fraud in assessing risk.",
+          "notes": "Explicit fraud risk consideration in the risk assessment, not just external threat modeling."
+        },
+        {
+          "id": "CC3.4",
+          "criteria": "Identifies and assesses changes that could significantly impact the system of controls.",
+          "notes": "Change-triggered reassessment process — new product, acquisition, major vendor swap."
+        }
+      ]
+    },
+    {
+      "id": "CC4",
+      "title": "Monitoring Activities",
+      "summary": "Does the org check that its own controls are actually working, on an ongoing basis, and fix what's found.",
+      "controls": [
+        {
+          "id": "CC4.1",
+          "criteria": "Selects, develops, and performs ongoing/separate evaluations of whether controls are present and functioning.",
+          "notes": "Internal control testing/self-audits between external audits."
+        },
+        {
+          "id": "CC4.2",
+          "criteria": "Evaluates and communicates control deficiencies timely to those responsible for corrective action.",
+          "notes": "Defined deficiency-tracking process (ticket/register) with owners and due dates, not a lost Slack message."
+        }
+      ]
+    },
+    {
+      "id": "CC5",
+      "title": "Control Activities",
+      "summary": "Are the actual controls, technologies, and policies in place designed to reduce risk to an acceptable level.",
+      "controls": [
+        {
+          "id": "CC5.1",
+          "criteria": "Selects and develops control activities that mitigate risk to acceptable levels.",
+          "notes": "Every risk from the CC3 risk register should trace to a specific control."
+        },
+        {
+          "id": "CC5.2",
+          "criteria": "Selects and develops general controls over technology.",
+          "notes": "Technology-level controls: access management systems, logging infrastructure, etc."
+        },
+        {
+          "id": "CC5.3",
+          "criteria": "Deploys control activities through policies that establish expectations and procedures that put policies into action.",
+          "notes": "Every policy should have a corresponding real-world procedure and evidence trail."
+        }
+      ]
+    },
+    {
+      "id": "CC6",
+      "title": "Logical and Physical Access Controls",
+      "summary": "The big one — most of your actual security controls live here: encryption, access provisioning/deprovisioning, physical security, authentication.",
+      "controls": [
+        {
+          "id": "CC6.1",
+          "criteria": "Implements logical access security software, infrastructure, and architectures over protected information assets.",
+          "notes": "MFA everywhere, encryption at rest and in transit."
+        },
+        {
+          "id": "CC6.2",
+          "criteria": "Registers and authorizes new internal/external users prior to granting access; removes access when no longer needed.",
+          "notes": "Documented access-request/approval/termination workflow with evidence (tickets, HRIS-triggered deprovisioning)."
+        },
+        {
+          "id": "CC6.3",
+          "criteria": "Role-based access, least privilege, segregation of duties.",
+          "notes": "Quarterly access reviews with documented sign-off."
+        },
+        {
+          "id": "CC6.4",
+          "criteria": "Restricts physical access to facilities and protected information assets.",
+          "notes": "Badge logs or equivalent for physical spaces."
+        },
+        {
+          "id": "CC6.5",
+          "criteria": "Discontinues logical/physical protections over disposed assets.",
+          "notes": "Documented asset decommissioning/wipe process."
+        },
+        {
+          "id": "CC6.6",
+          "criteria": "Protects against threats from outside system boundaries (firewalls, IDS/IPS, etc.).",
+          "notes": "Perimeter security controls with logging."
+        },
+        {
+          "id": "CC6.7",
+          "criteria": "Restricts movement of data to authorized users and processes.",
+          "notes": "Data loss prevention / egress controls."
+        },
+        {
+          "id": "CC6.8",
+          "criteria": "Prevents/detects unauthorized/malicious software.",
+          "notes": "Endpoint protection with logging."
+        }
+      ]
+    },
+    {
+      "id": "CC7",
+      "title": "System Operations",
+      "summary": "Detecting, responding to, and recovering from security events.",
+      "controls": [
+        {
+          "id": "CC7.1",
+          "criteria": "Detects and monitors for new vulnerabilities and configuration changes.",
+          "notes": "Vulnerability scanning on a defined cadence with tracked remediation SLAs."
+        },
+        {
+          "id": "CC7.2",
+          "criteria": "Monitors system components for anomalies indicative of security events.",
+          "notes": "SIEM/log monitoring with alerting."
+        },
+        {
+          "id": "CC7.3",
+          "criteria": "Evaluates security incidents to determine if they need a response.",
+          "notes": "Documented triage criteria/severity levels."
+        },
+        {
+          "id": "CC7.4",
+          "criteria": "Responds to identified security incidents (containment, mitigation, communication).",
+          "notes": "Written incident response plan, tabletop-tested — auditors want evidence of the test, not just the plan."
+        },
+        {
+          "id": "CC7.5",
+          "criteria": "Recovers from identified security incidents (root cause, remediation, restoration).",
+          "notes": "Post-incident/lessons-learned process."
+        }
+      ]
+    },
+    {
+      "id": "CC8",
+      "title": "Change Management",
+      "summary": "Do changes to infrastructure, data, and software go through a controlled process.",
+      "controls": [
+        {
+          "id": "CC8.1",
+          "criteria": "Authorizes, designs, develops/acquires, configures, documents, tests, approves, and implements changes to infrastructure, data, software, and procedures.",
+          "notes": "Change management policy with required approvals, mandatory testing before production deploy, dev/test/prod segregation, rollback procedures. CI/CD pipeline logs and PR approval history are usually your evidence."
+        }
+      ]
+    },
+    {
+      "id": "CC9",
+      "title": "Risk Mitigation",
+      "summary": "Business continuity and vendor/third-party risk management.",
+      "controls": [
+        {
+          "id": "CC9.1",
+          "criteria": "Identifies, selects, and develops risk mitigation activities for business disruptions.",
+          "notes": "Business continuity/disaster recovery plan with defined RTO/RPO, evidence of annual DR test."
+        },
+        {
+          "id": "CC9.2",
+          "criteria": "Assesses and manages risk associated with vendors and business partners.",
+          "notes": "Tiered vendor risk management program; signed vendor security questionnaires/SOC 2 reports on file for critical vendors."
+        }
+      ]
+    }
+  ]
+}

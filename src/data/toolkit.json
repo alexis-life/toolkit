@@ -3,64 +3,64 @@
     "tool": "nmap",
     "category": "recon/scanning",
     "command": "nmap -sS -T4 -p- 10.0.0.0/24",
-    "description": "Full TCP SYN scan across all 65535 ports on a subnet. Good first pass for host/port discovery.",
+    "description": "full tcp syn scan across all 65535 ports on a subnet. good first pass for host/port discovery.",
     "example": "nmap -sS -T4 -p- 10.0.0.0/24 -oN full-scan.txt",
-    "tags": "nmap,scanning,recon,tcp"
+    "tags": "nmap, scanning, recon, tcp"
   },
   {
     "tool": "nmap",
     "category": "recon/scanning",
     "command": "nmap -sV -sC -p 22,80,443 target.com",
-    "description": "Service/version detection plus default NSE scripts on common ports. Good for quick triage.",
+    "description": "service/version detection plus default nse scripts on common ports. good for quick triage.",
     "example": "nmap -sV -sC -p 22,80,443 target.com -oA triage",
-    "tags": "nmap,scanning,recon,service-detection"
+    "tags": "nmap, scanning, recon, service-detection"
   },
   {
     "tool": "nmap",
     "category": "recon/scanning",
     "command": "nmap -sU --top-ports 20 target.com",
-    "description": "Scan the top 20 most common UDP ports. UDP scans are slow, so start narrow.",
+    "description": "scan the top 20 most common udp ports. udp scans are slow, so start narrow.",
     "example": null,
-    "tags": "nmap,udp,scanning"
+    "tags": "nmap, udp, scanning"
   },
   {
-    "tool": "Wireshark",
+    "tool": "wireshark",
     "category": "traffic analysis",
     "command": "tcp.port == 443 && tls.handshake.type == 1",
-    "description": "Display filter for TLS Client Hello packets on port 443, useful for spotting SNI/domain fronting.",
+    "description": "display filter for tls client hello packets on port 443, useful for spotting sni/domain fronting.",
     "example": "ip.addr == 192.168.1.10 && tcp.port == 443 && tls.handshake.type == 1",
-    "tags": "wireshark,tls,filter"
+    "tags": "wireshark, tls, filter"
   },
   {
-    "tool": "Wireshark",
+    "tool": "wireshark",
     "category": "traffic analysis",
     "command": "http.request.method == \"POST\" && http contains \"password\"",
-    "description": "Display filter to catch plaintext credentials being POSTed over unencrypted HTTP.",
+    "description": "display filter to catch plaintext credentials being posted over unencrypted http.",
     "example": null,
-    "tags": "wireshark,http,credentials,filter"
+    "tags": "wireshark, http, credentials, filter"
   },
   {
     "tool": "tcpdump",
     "category": "traffic analysis",
     "command": "tcpdump -i eth0 -w capture.pcap port 53",
-    "description": "Capture DNS traffic on eth0 to a pcap file for later analysis in Wireshark.",
+    "description": "capture dns traffic on eth0 to a pcap file for later analysis in wireshark.",
     "example": "tcpdump -i eth0 -w dns-capture.pcap port 53 and host 8.8.8.8",
-    "tags": "tcpdump,dns,capture"
+    "tags": "tcpdump, dns, capture"
   },
   {
     "tool": "tcpdump",
     "category": "traffic analysis",
     "command": "tcpdump -i any -nn -A 'tcp port 80'",
-    "description": "Live ASCII view of unencrypted HTTP traffic on any interface, no DNS resolution.",
+    "description": "live ascii view of unencrypted http traffic on any interface, no dns resolution.",
     "example": null,
-    "tags": "tcpdump,http,live-capture"
+    "tags": "tcpdump, http, live-capture"
   },
   {
     "tool": "sha256sum",
     "category": "hashing/forensics",
     "command": "sha256sum evidence.img > evidence.sha256",
-    "description": "Generate a SHA-256 hash of a disk image to establish chain-of-custody integrity before analysis.",
+    "description": "generate a sha-256 hash of a disk image to establish chain-of-custody integrity before analysis.",
     "example": "sha256sum -c evidence.sha256",
-    "tags": "hashing,forensics,integrity,chain-of-custody"
+    "tags": "hashing, forensics, integrity, chain-of-custody"
   }
 ]
