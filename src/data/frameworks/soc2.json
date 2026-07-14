@@ -470,7 +470,7 @@
           "type": "list",
           "items": [
             "**Building trust and credibility** — a SOC 2 report acts as third-party validation, reducing customer due diligence and accelerating sales cycles.",
-            "**Risk reduction** — the controls SOC 2 requires directly mitigate the kinds of breaches that cost businesses an average of $4.45 million globally in 2025.",
+            "**Risk reduction** — the controls SOC 2 requires directly mitigate the kinds of breaches that cost businesses an average of [$4.44 million globally in 2025](https://www.ibm.com/reports/data-breach) (IBM's Cost of a Data Breach Report).",
             "**Competitive advantage** — many enterprises require SOC 2 from vendors; compliance opens doors to larger contracts and partnerships."
           ]
         },
@@ -533,7 +533,7 @@
           "type": "list",
           "items": [
             "Review policies, tech stack, and actual employee practices — not just what's written down.",
-            "AICPA's Trust Services Criteria document (downloadable from aicpa.org) is the canonical resource for scoping this yourself."
+            "[AICPA's Trust Services Criteria document](https://www.aicpa-cima.com/resources/download/2017-trust-services-criteria-with-revised-points-of-focus-2022) is the canonical resource for scoping this yourself."
           ]
         }
       ]
@@ -594,7 +594,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Select a firm via the AICPA directory, and prepare by organizing evidence ahead of time. Fieldwork typically involves interviews and control testing — expect 4–8 weeks."
+          "text": "Select an [AICPA-licensed CPA firm](https://www.aicpa-cima.com/search/SOC+2) to perform the audit, and prepare by organizing evidence ahead of time. Fieldwork typically involves interviews and control testing — expect 4–8 weeks."
         },
         {
           "type": "heading",

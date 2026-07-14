@@ -93,6 +93,19 @@
   margin-bottom: 10px;
 }
 
+.framework-overview a,
+.framework-source-note a {
+  color: var(--c6);
+  text-decoration: underline;
+  text-decoration-color: var(--c2);
+  text-underline-offset: 2px;
+}
+
+.framework-overview a:hover,
+.framework-source-note a:hover {
+  text-decoration-color: var(--c6);
+}
+
 .framework-overview-table-wrap table {
   font-size: 0.82rem;
 }
@@ -207,10 +220,6 @@
   font-size: 0.78rem;
   color: var(--c7);
   margin-top: 8px;
-}
-
-.framework-source-note a {
-  color: var(--c6);
 }
 
 @media (max-width: 720px) {
