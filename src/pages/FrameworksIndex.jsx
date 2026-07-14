@@ -2,12 +2,21 @@ import { Link } from "react-router-dom";
 import TopNav from "../components/TopNav.jsx";
 import { FRAMEWORKS } from "../data/frameworks/index.js";
 
-// Live frameworks first (so what's actually usable is up top), each group
-// keeping its declared order — sorted here rather than by hand-ordering the
-// FRAMEWORKS array, so this doesn't go stale the next time one ships.
-const SORTED_FRAMEWORKS = [...FRAMEWORKS].sort(
-  (a, b) => Boolean(b.content) - Boolean(a.content)
-);
+// SOC 2, ISO 27001, and HIPAA are the ones most commonly required in
+// practice, so they're pinned first in this exact order regardless of what
+// else ships later — a plain "live first" sort isn't enough, since a newly
+// shipped framework could otherwise land between them based on registry
+// order. Everything else: live before coming-soon, each group keeping its
+// declared order.
+const PRIORITY_SLUGS = ["soc2", "iso-27001", "hipaa"];
+
+function rank(f) {
+  const priorityIndex = PRIORITY_SLUGS.indexOf(f.slug);
+  if (priorityIndex !== -1) return priorityIndex;
+  return f.content ? PRIORITY_SLUGS.length : PRIORITY_SLUGS.length + 1;
+}
+
+const SORTED_FRAMEWORKS = [...FRAMEWORKS].sort((a, b) => rank(a) - rank(b));
 
 export default function FrameworksIndex() {
   return (
