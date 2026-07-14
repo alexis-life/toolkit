@@ -509,64 +509,117 @@
       "blocks": [
         {
           "type": "paragraph",
-          "text": "Quick self-score: if you're answering \"no\" to more than half of these, focus on the basics before scoping an audit."
+          "text": "Quick self-score across all five Trust Services Criteria — Security plus the four optional categories. If you're answering \"no\" to more than half the questions in any single category, focus there before scoping an audit."
         },
         {
           "type": "table",
           "headers": [
+            "TSC Category",
             "Control Area",
             "Key Question",
             "Typical Effort"
           ],
           "rows": [
             [
+              "Security",
               "MFA & access control",
               "Do you enforce MFA and least-privilege access?",
               "Low"
             ],
             [
+              "Security",
               "Encryption",
               "Is data encrypted at rest and in transit?",
               "Low"
             ],
             [
+              "Security",
               "Vulnerability management",
               "Do you run regular vulnerability scans and patch on a defined cadence?",
               "Medium"
             ],
             [
+              "Security",
               "Logging & monitoring",
               "Do you have centralized logging with alerting (SIEM or equivalent)?",
               "High"
             ],
             [
+              "Security",
+              "Vendor risk management",
+              "Do you review the security posture of critical vendors before onboarding them?",
+              "Medium"
+            ],
+            [
+              "Availability",
               "Backups & DR",
               "Are backups automated with defined retention, and has DR actually been tested?",
               "Medium"
             ],
             [
+              "Availability",
               "Uptime monitoring",
               "Do you track uptime against a defined SLA?",
               "Low"
             ],
             [
+              "Availability",
+              "Capacity planning",
+              "Do you monitor resource capacity and scale before hitting limits?",
+              "Medium"
+            ],
+            [
+              "Processing Integrity",
               "Input/output validation",
               "Are transactions validated for completeness and accuracy?",
               "Medium"
             ],
             [
+              "Processing Integrity",
+              "Error handling",
+              "Do you have automated error handling and a defined process for reviewing exceptions?",
+              "Medium"
+            ],
+            [
+              "Processing Integrity",
+              "Output reconciliation",
+              "Do you reconcile processed output against source data before delivery?",
+              "Medium"
+            ],
+            [
+              "Confidentiality",
               "Data classification",
               "Is sensitive data classified, with access controlled accordingly?",
               "High"
             ],
             [
+              "Confidentiality",
+              "Secure data disposal",
+              "Do you have a documented, enforced process for securely deleting/destroying confidential data?",
+              "Medium"
+            ],
+            [
+              "Confidentiality",
+              "Confidentiality agreements",
+              "Do employees/contractors sign NDAs or confidentiality agreements covering client data?",
+              "Low"
+            ],
+            [
+              "Privacy",
               "PII handling & retention",
               "Do you have documented PII processes and data retention/deletion policies?",
               "High"
             ],
             [
-              "Vendor risk management",
-              "Do you review the security posture of critical vendors before onboarding them?",
+              "Privacy",
+              "Consent management",
+              "Do you capture and track consent for how personal data is collected and used?",
+              "Medium"
+            ],
+            [
+              "Privacy",
+              "DSAR process",
+              "Do you have a defined process (and SLA) for handling data subject access/deletion requests?",
               "Medium"
             ]
           ]
