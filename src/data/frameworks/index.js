@@ -1,4 +1,5 @@
 import soc2 from "./soc2.json";
+import hipaa from "./hipaa.json";
 
 export const FRAMEWORKS = [
   {
@@ -29,7 +30,7 @@ export const FRAMEWORKS = [
     slug: "hipaa",
     name: "HIPAA",
     blurb: "Security Rule — Administrative, Physical, Technical safeguards.",
-    content: null,
+    content: hipaa,
   },
   {
     slug: "gdpr",

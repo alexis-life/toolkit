@@ -1,0 +1,454 @@
+{
+  "framework": "HIPAA",
+  "section": "Security Rule",
+  "slug": "hipaa",
+  "description": "The HIPAA Security Rule (45 CFR Parts 160 and 164, Subpart C) sets national standards for protecting electronic protected health information (ePHI). Unlike SOC 2, it's a federal legal requirement, not a voluntary attestation — it applies to covered entities and their business associates.",
+  "source": {
+    "label": "HHS.gov — Summary of the HIPAA Security Rule",
+    "url": "https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html"
+  },
+  "overview": [
+    {
+      "icon": "🏥",
+      "title": "Introduction to HIPAA",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "HIPAA — Health Insurance Portability and Accountability Act (1996), specifically its Security Rule (finalized 2003) and Privacy Rule.",
+            "A U.S. federal law, not a voluntary standard — non-compliance carries real legal penalties, enforced by HHS's Office for Civil Rights (OCR).",
+            "Applies to **covered entities** (health plans, healthcare clearinghouses, and healthcare providers who transmit health information electronically) and their **business associates** (any vendor that creates, receives, maintains, or transmits ePHI on a covered entity's behalf)."
+          ]
+        }
+      ]
+    },
+    {
+      "icon": "🧭",
+      "title": "Key Differences from Other Compliance Frameworks",
+      "blocks": [
+        {
+          "type": "heading",
+          "text": "HIPAA vs SOC 2"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**HIPAA** — legally mandatory once you touch protected health information (PHI); enforced by OCR with statutory penalties.",
+            "**SOC 2** — voluntary, industry-agnostic; a SOC 2 report doesn't satisfy HIPAA's legal requirements on its own."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "See the [SOC 2 vs HIPAA comparison](/frameworks/soc2) on the SOC 2 page for the reverse framing — many healthcare-adjacent SaaS companies pursue both, since HIPAA is the legal floor and SOC 2 is the customer-facing trust signal on top of it."
+        },
+        {
+          "type": "heading",
+          "text": "Required vs Addressable Specifications"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Required** — you must implement the specification exactly as written. No flexibility.",
+            "**Addressable** — you must assess whether the specification is reasonable and appropriate for your organization, and either implement it, implement an equivalent alternative, or document why it isn't applicable. \"Addressable\" does not mean \"optional\" — you still need a documented decision either way."
+          ]
+        },
+        {
+          "type": "callout",
+          "text": "This required/addressable split is unique to HIPAA among the frameworks here — SOC 2 and ISO 27001 don't have an equivalent \"document why you skipped it\" escape hatch built into the standard itself."
+        }
+      ]
+    },
+    {
+      "icon": "🛡️",
+      "title": "The Three Safeguards",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "**Administrative Safeguards** (§164.308) — the policies, processes, and workforce management that govern how ePHI is protected. The largest category by far: risk analysis, workforce security, access management, training, incident procedures, contingency planning, and business associate agreements.",
+            "**Physical Safeguards** (§164.310) — controlling physical access to the facilities and devices where ePHI lives: facility access controls, workstation use/security, and device/media disposal.",
+            "**Technical Safeguards** (§164.312) — the technology controls enforcing access and protecting data in the systems themselves: access control, audit logs, integrity controls, authentication, and transmission security."
+          ]
+        },
+        {
+          "type": "callout",
+          "text": "Unlike SOC 2's optional Trust Services Categories, all three HIPAA safeguard categories are mandatory — there's no equivalent to \"Security is required, the rest is optional.\" What varies is which specific implementation specifications are required vs. addressable within each."
+        },
+        {
+          "type": "paragraph",
+          "text": "See the [Controls tab](/frameworks/hipaa/controls) for the full breakdown of all 18 standards across the three safeguard categories."
+        }
+      ]
+    },
+    {
+      "icon": "💡",
+      "title": "Why Comply with HIPAA",
+      "blocks": [
+        {
+          "type": "heading",
+          "text": "It's Not Optional"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Legal requirement** — if you're a covered entity or business associate handling PHI, HIPAA compliance isn't a business choice.",
+            "**Real penalties** — OCR can levy civil penalties per violation (tiered by culpability), and criminal charges are possible for willful neglect or intentional misuse.",
+            "**Breach notification obligations** — a PHI breach triggers mandatory notification to affected individuals, HHS, and in some cases the media, under the HITECH Breach Notification Rule."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Business Reasons Beyond the Legal Floor"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Trust with healthcare customers** — covered entities won't sign a Business Associate Agreement (BAA) with a vendor that can't demonstrate a real HIPAA security program.",
+            "**Reduced breach risk** — healthcare data breaches are consistently among the most expensive per-record of any industry, per IBM's Cost of a Data Breach Report."
+          ]
+        }
+      ]
+    },
+    {
+      "icon": "📋",
+      "title": "Assessing HIPAA Readiness",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Quick self-score across all three safeguard categories. If you're answering \"no\" to more than half the questions in any category, prioritize that category first."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Safeguard",
+            "Control Area",
+            "Key Question",
+            "Typical Effort"
+          ],
+          "rows": [
+            [
+              "Administrative",
+              "Risk analysis",
+              "Have you conducted a formal, documented risk analysis covering all ePHI?",
+              "Medium"
+            ],
+            [
+              "Administrative",
+              "Assigned security official",
+              "Is there a named individual responsible for your security program?",
+              "Low"
+            ],
+            [
+              "Administrative",
+              "Workforce security & training",
+              "Do employees get role-based access and HIPAA-specific security training?",
+              "Medium"
+            ],
+            [
+              "Administrative",
+              "Access management",
+              "Is access to ePHI granted/revoked through a formal authorization process?",
+              "Medium"
+            ],
+            [
+              "Administrative",
+              "Incident response",
+              "Do you have a documented process for responding to and reporting security incidents?",
+              "Medium"
+            ],
+            [
+              "Administrative",
+              "Contingency planning",
+              "Do you have a tested data backup, disaster recovery, and emergency mode operation plan?",
+              "High"
+            ],
+            [
+              "Administrative",
+              "Business associate agreements",
+              "Do you have signed BAAs with every vendor that touches ePHI?",
+              "Medium"
+            ],
+            [
+              "Physical",
+              "Facility access controls",
+              "Is physical access to areas storing ePHI restricted and logged?",
+              "Medium"
+            ],
+            [
+              "Physical",
+              "Workstation security",
+              "Are workstations that access ePHI physically secured (e.g. screen locks, positioning)?",
+              "Low"
+            ],
+            [
+              "Physical",
+              "Device & media disposal",
+              "Do you have a documented process for wiping/destroying media before disposal or reuse?",
+              "Medium"
+            ],
+            [
+              "Technical",
+              "Access control",
+              "Does every user have a unique ID, with automatic logoff and encryption where appropriate?",
+              "Medium"
+            ],
+            [
+              "Technical",
+              "Audit controls",
+              "Do you log and review access to systems containing ePHI?",
+              "Medium"
+            ],
+            [
+              "Technical",
+              "Integrity controls",
+              "Do you have mechanisms to detect improper alteration or destruction of ePHI?",
+              "Medium"
+            ],
+            [
+              "Technical",
+              "Authentication",
+              "Do you verify the identity of anyone requesting access to ePHI?",
+              "Low"
+            ],
+            [
+              "Technical",
+              "Transmission security",
+              "Is ePHI encrypted in transit whenever it crosses a network?",
+              "Low"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Identifying Gaps"
+        },
+        {
+          "type": "list",
+          "items": [
+            "The risk analysis (Administrative Safeguard §164.308(a)(1)) is the foundational document — nearly everything else in a HIPAA program traces back to gaps it identifies.",
+            "[HHS's Security Rule Guidance](https://www.hhs.gov/hipaa/for-professionals/security/guidance/index.html) is the canonical resource for scoping this yourself."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "What Takes Longest"
+        },
+        {
+          "type": "callout",
+          "text": "The risk analysis and remediation cycle is usually the long pole — you can't meaningfully start Administrative Safeguard work until the risk analysis identifies what's actually missing, and fixing findings (especially contingency planning and business associate agreement cleanup across every vendor) tends to stretch out over months."
+        },
+        {
+          "type": "heading",
+          "text": "What to Implement First"
+        },
+        {
+          "type": "ordered-list",
+          "items": [
+            "**A formal risk analysis** — everything else depends on it, and OCR treats a missing or superficial risk analysis as one of the most common audit findings.",
+            "**Assign a named security official** — required, cheap, and unblocks accountability for everything after it.",
+            "**Unique user IDs and access logging** — usually a configuration change in systems you already run.",
+            "**Business Associate Agreements** — an inventory-and-paperwork exercise, but one that's easy to let slip and expensive to fix retroactively after a breach.",
+            "Once those are in place, move to the higher-effort items — contingency planning (backup/DR/emergency mode) and physical facility controls — since those need real testing, not just documentation."
+          ]
+        }
+      ]
+    },
+    {
+      "icon": "🗺️",
+      "title": "HIPAA Compliance Roadmap",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Unlike SOC 2, there's no fixed \"observation period\" — HIPAA compliance is a continuous program, not a point-in-time report. A first-time implementation typically takes 2–6 months to reach a reasonable baseline."
+        },
+        {
+          "type": "heading",
+          "text": "Step-by-Step Process"
+        },
+        {
+          "type": "ordered-list",
+          "items": [
+            "**Scope** — inventory every system, vendor, and workflow that touches ePHI.",
+            "**Risk analysis** — the formal, documented assessment required under §164.308(a)(1).",
+            "**Remediation** — implement fixes for identified gaps across all three safeguard categories.",
+            "**Policies & documentation** — write (or update) the policies §164.316 requires, and retain them for 6 years.",
+            "**Training rollout** — get the whole workforce through security awareness training, documented.",
+            "**Ongoing monitoring** — this isn't a one-time project; risk analysis and control review need to recur."
+          ]
+        }
+      ]
+    },
+    {
+      "icon": "🔍",
+      "title": "Audit & Enforcement Process",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "HIPAA doesn't have a voluntary third-party audit like SOC 2's CPA-issued report. Compliance is typically demonstrated internally (via your risk analysis and documentation) and tested externally only when OCR investigates — usually triggered by a breach report or a complaint."
+        },
+        {
+          "type": "heading",
+          "text": "How Enforcement Actually Happens"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Breach-triggered** — a reportable breach (500+ affected individuals) is publicly listed on HHS's \"Wall of Shame\" and often triggers an OCR investigation.",
+            "**Complaint-triggered** — patients or employees can file complaints directly with OCR.",
+            "**Periodic OCR audits** — HHS runs occasional audit programs of covered entities and business associates, though these are far less routine than SOC 2's annual audit cycle."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Common Findings"
+        },
+        {
+          "type": "paragraph",
+          "text": "OCR's enforcement history consistently points to the same handful of gaps: no (or an inadequate) risk analysis, missing encryption on portable devices, insufficient access controls, and missing or incomplete Business Associate Agreements."
+        }
+      ]
+    },
+    {
+      "icon": "♻️",
+      "title": "Maintaining HIPAA Compliance",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Compliance is ongoing — there's no annual report to renew like SOC 2, but the risk analysis and workforce training need to happen on a recurring basis regardless."
+        },
+        {
+          "type": "heading",
+          "text": "Ongoing Requirements"
+        },
+        {
+          "type": "paragraph",
+          "text": "Re-run the risk analysis whenever your systems, vendors, or workflows change materially, and at minimum annually. Refresh workforce training annually. Review and update policies as regulations or your environment change."
+        },
+        {
+          "type": "heading",
+          "text": "Scaling Compliance"
+        },
+        {
+          "type": "paragraph",
+          "text": "As you add new systems or vendors that touch ePHI, they need to be brought into scope for the risk analysis and get a signed BAA before they go live — not after."
+        }
+      ]
+    }
+  ],
+  "categories": [
+    {
+      "id": "AS",
+      "title": "Administrative Safeguards",
+      "group": "core",
+      "summary": "Policies, processes, and workforce management governing how ePHI is protected — the largest of the three safeguard categories (45 CFR §164.308).",
+      "controls": [
+        {
+          "id": "AS-1",
+          "criteria": "Security Management Process (§164.308(a)(1)) — Required: Risk Analysis, Risk Management, Sanction Policy, Information System Activity Review.",
+          "notes": "The foundational control everything else traces back to. A documented, org-wide risk analysis is non-negotiable — OCR flags a missing or superficial one in nearly every enforcement action."
+        },
+        {
+          "id": "AS-2",
+          "criteria": "Assigned Security Responsibility (§164.308(a)(2)) — Required: identify the security official responsible for developing and implementing security policies.",
+          "notes": "Name one person. It can be a part-time responsibility at a small org, but it needs to be someone specific, not \"the team.\""
+        },
+        {
+          "id": "AS-3",
+          "criteria": "Workforce Security (§164.308(a)(3)) — Addressable: Authorization/Supervision, Workforce Clearance Procedure, Termination Procedures.",
+          "notes": "Role-based access provisioning, background-check policy for roles touching ePHI, and a documented, prompt offboarding process tied to HR."
+        },
+        {
+          "id": "AS-4",
+          "criteria": "Information Access Management (§164.308(a)(4)) — Required (if applicable): Isolating Healthcare Clearinghouse Functions. Addressable: Access Authorization, Access Establishment and Modification.",
+          "notes": "A formal request/approval workflow for granting or changing access to ePHI, with an audit trail."
+        },
+        {
+          "id": "AS-5",
+          "criteria": "Security Awareness and Training (§164.308(a)(5)) — Addressable: Security Reminders, Protection from Malicious Software, Log-in Monitoring, Password Management.",
+          "notes": "Annual, documented training for the whole workforce — not just IT. Track completion."
+        },
+        {
+          "id": "AS-6",
+          "criteria": "Security Incident Procedures (§164.308(a)(6)) — Required: Response and Reporting.",
+          "notes": "A written incident response plan with defined reporting steps, tied into the HITECH breach notification timeline."
+        },
+        {
+          "id": "AS-7",
+          "criteria": "Contingency Plan (§164.308(a)(7)) — Required: Data Backup Plan, Disaster Recovery Plan, Emergency Mode Operation Plan. Addressable: Testing and Revision Procedures, Applications and Data Criticality Analysis.",
+          "notes": "Automated backups, a tested DR plan, and a plan for operating (even in a degraded state) during an emergency. \"Addressable\" testing still needs to actually happen and be documented."
+        },
+        {
+          "id": "AS-8",
+          "criteria": "Evaluation (§164.308(a)(8)) — Required: periodic technical and non-technical evaluation of security safeguards.",
+          "notes": "A recurring (at least annual) internal review of whether your controls still hold up — especially after any environment change."
+        },
+        {
+          "id": "AS-9",
+          "criteria": "Business Associate Contracts and Other Arrangements (§164.308(b)(1)) — Required: written contract or arrangement with satisfactory assurances.",
+          "notes": "A signed Business Associate Agreement (BAA) with every vendor that creates, receives, maintains, or transmits ePHI on your behalf — before they go live, not after."
+        }
+      ]
+    },
+    {
+      "id": "PS",
+      "title": "Physical Safeguards",
+      "group": "core",
+      "summary": "Controlling physical access to the facilities and devices where ePHI lives (45 CFR §164.310).",
+      "controls": [
+        {
+          "id": "PS-1",
+          "criteria": "Facility Access Controls (§164.310(a)(1)) — Addressable: Contingency Operations, Facility Security Plan, Access Control and Validation Procedures, Maintenance Records.",
+          "notes": "Badge access or equivalent for spaces housing ePHI systems, with a plan for facility access during emergencies."
+        },
+        {
+          "id": "PS-2",
+          "criteria": "Workstation Use (§164.310(b)) — Required: policies specifying the proper functions and manner of use for workstations that access ePHI.",
+          "notes": "A written acceptable-use policy — what workstations can be used for, and how, when they touch ePHI."
+        },
+        {
+          "id": "PS-3",
+          "criteria": "Workstation Security (§164.310(c)) — Required: physical safeguards for all workstations accessing ePHI, restricting access to authorized users.",
+          "notes": "Screen locks, physical positioning away from public view, and restricted physical access to the devices themselves."
+        },
+        {
+          "id": "PS-4",
+          "criteria": "Device and Media Controls (§164.310(d)(1)) — Required: Disposal, Media Re-use. Addressable: Accountability, Data Backup and Storage.",
+          "notes": "A documented process for wiping or destroying media before disposal or reuse, and tracking hardware that stores ePHI."
+        }
+      ]
+    },
+    {
+      "id": "TS",
+      "title": "Technical Safeguards",
+      "group": "core",
+      "summary": "The technology controls enforcing access and protecting ePHI within the systems themselves (45 CFR §164.312).",
+      "controls": [
+        {
+          "id": "TS-1",
+          "criteria": "Access Control (§164.312(a)(1)) — Required: Unique User Identification, Emergency Access Procedure. Addressable: Automatic Logoff, Encryption and Decryption.",
+          "notes": "Every user gets a unique login (no shared accounts), plus a documented way to get emergency access to ePHI if normal access breaks."
+        },
+        {
+          "id": "TS-2",
+          "criteria": "Audit Controls (§164.312(b)) — Required: hardware, software, and/or procedural mechanisms to record and examine activity in systems with ePHI.",
+          "notes": "Logging on every system that touches ePHI, with someone actually reviewing those logs, not just collecting them."
+        },
+        {
+          "id": "TS-3",
+          "criteria": "Integrity (§164.312(c)(1)) — Addressable: mechanisms to authenticate ePHI and confirm it hasn't been improperly altered or destroyed.",
+          "notes": "Checksums, versioning, or audit trails that let you detect unauthorized changes to patient data."
+        },
+        {
+          "id": "TS-4",
+          "criteria": "Person or Entity Authentication (§164.312(d)) — Required: verify that a person or entity seeking access to ePHI is who they claim to be.",
+          "notes": "MFA is the practical modern implementation of this requirement, even though the rule text predates it."
+        },
+        {
+          "id": "TS-5",
+          "criteria": "Transmission Security (§164.312(e)(1)) — Addressable: Integrity Controls, Encryption.",
+          "notes": "TLS (or equivalent) for any ePHI crossing a network — email, APIs, file transfers. \"Addressable\" here is close to \"required\" in practice; there's rarely a defensible reason not to encrypt ePHI in transit."
+        }
+      ]
+    }
+  ]
+}

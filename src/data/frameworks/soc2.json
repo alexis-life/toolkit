@@ -534,8 +534,50 @@
             ],
             [
               "Security",
+              "Onboarding & background checks",
+              "Do new hires go through background checks and security onboarding?",
+              "Low"
+            ],
+            [
+              "Security",
+              "Security awareness training",
+              "Do employees complete security awareness training at least annually?",
+              "Low"
+            ],
+            [
+              "Security",
+              "Change management",
+              "Do code/infra changes require review and approval before reaching production?",
+              "Low"
+            ],
+            [
+              "Security",
+              "Risk assessment & register",
+              "Do you run an annual risk assessment and maintain a risk register with owners?",
+              "Medium"
+            ],
+            [
+              "Security",
               "Vulnerability management",
               "Do you run regular vulnerability scans and patch on a defined cadence?",
+              "Medium"
+            ],
+            [
+              "Security",
+              "Internal control testing",
+              "Do you perform internal control testing/self-audits between external audits?",
+              "Medium"
+            ],
+            [
+              "Security",
+              "Asset decommissioning",
+              "Do you have a documented process for wiping/decommissioning retired assets?",
+              "Medium"
+            ],
+            [
+              "Security",
+              "Vendor risk management",
+              "Do you review the security posture of critical vendors before onboarding them?",
               "Medium"
             ],
             [
@@ -546,8 +588,8 @@
             ],
             [
               "Security",
-              "Vendor risk management",
-              "Do you review the security posture of critical vendors before onboarding them?",
+              "Incident response plan",
+              "Do you have a written, tabletop-tested incident response plan?",
               "Medium"
             ],
             [
@@ -567,6 +609,12 @@
               "Capacity planning",
               "Do you monitor resource capacity and scale before hitting limits?",
               "Medium"
+            ],
+            [
+              "Processing Integrity",
+              "Data specs & definitions",
+              "Do you have documented data definitions/specs for what your system processes?",
+              "Low"
             ],
             [
               "Processing Integrity",
@@ -599,12 +647,6 @@
               "Medium"
             ],
             [
-              "Confidentiality",
-              "Confidentiality agreements",
-              "Do employees/contractors sign NDAs or confidentiality agreements covering client data?",
-              "Low"
-            ],
-            [
               "Privacy",
               "PII handling & retention",
               "Do you have documented PII processes and data retention/deletion policies?",
@@ -620,6 +662,18 @@
               "Privacy",
               "DSAR process",
               "Do you have a defined process (and SLA) for handling data subject access/deletion requests?",
+              "Medium"
+            ],
+            [
+              "Privacy",
+              "Subprocessor disclosure",
+              "Do you maintain and disclose a list of subprocessors handling personal data?",
+              "Medium"
+            ],
+            [
+              "Privacy",
+              "Data quality & correction",
+              "Can data subjects correct inaccurate personal information you hold?",
               "Medium"
             ]
           ]
@@ -641,7 +695,11 @@
         },
         {
           "type": "callout",
-          "text": "The slowest items to stand up are usually the ones that need new tooling or cross-team buy-in, not just a written policy: centralized logging/SIEM, a real data classification program, and PII retention/deletion automation. Budget the most lead time for these three — they're consistently what pushes a timeline from 6 months to 9+."
+          "text": "The single longest component of the overall timeline is the **Type II observation period itself** — typically 3–12 months — because it's fixed calendar time you can't compress with more budget or headcount, unlike everything else in the process. Source: [Vanta's SOC 2 audit timeline guide](https://www.vanta.com/collection/soc-2/soc-2-audit-timeline)."
+        },
+        {
+          "type": "paragraph",
+          "text": "Within the remediation phase specifically (the part you *can* speed up), the slowest items tend to be the ones needing new tooling or cross-team buy-in rather than just a written policy: centralized logging/SIEM, a real data classification program, and PII retention/deletion automation."
         },
         {
           "type": "heading",
