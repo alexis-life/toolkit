@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import TopNav from "../components/TopNav.jsx";
 import FrameworkOverview from "../components/FrameworkOverview.jsx";
 import FrameworkControls from "../components/FrameworkControls.jsx";
@@ -7,10 +6,10 @@ import { getFramework } from "../data/frameworks/index.js";
 
 export default function FrameworkPage() {
   const { slug } = useParams();
+  const location = useLocation();
   const framework = getFramework(slug);
   const content = framework?.content;
   const hasOverview = Boolean(content?.overview?.length);
-  const [tab, setTab] = useState("overview");
 
   if (!framework) {
     return (
@@ -35,7 +34,8 @@ export default function FrameworkPage() {
     );
   }
 
-  const activeTab = hasOverview ? tab : "controls";
+  const isControlsUrl = location.pathname.endsWith("/controls");
+  const activeTab = hasOverview && !isControlsUrl ? "overview" : "controls";
 
   return (
     <div>
@@ -54,24 +54,22 @@ export default function FrameworkPage() {
           <div className="ax-tabs-row">
             <div className="ax-tabs-inner">
               <nav className="ax-tabs" role="tablist" aria-label="Framework section">
-                <button
-                  type="button"
+                <Link
+                  to={`/frameworks/${slug}`}
                   role="tab"
                   aria-selected={activeTab === "overview"}
                   className={`ax-tab ${activeTab === "overview" ? "ax-tab--active" : ""}`}
-                  onClick={() => setTab("overview")}
                 >
                   Overview
-                </button>
-                <button
-                  type="button"
+                </Link>
+                <Link
+                  to={`/frameworks/${slug}/controls`}
                   role="tab"
                   aria-selected={activeTab === "controls"}
                   className={`ax-tab ${activeTab === "controls" ? "ax-tab--active" : ""}`}
-                  onClick={() => setTab("controls")}
                 >
                   Controls
-                </button>
+                </Link>
               </nav>
             </div>
           </div>

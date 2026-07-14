@@ -1,4 +1,11 @@
 /* ── Frameworks section (component-specific: not part of theme.css) ── */
+
+/* FrameworkPage's tabs are react-router Links (real URLs per tab) rather
+   than buttons, so they need the anchor underline stripped explicitly. */
+.ax-tabs .ax-tab {
+  text-decoration: none;
+}
+
 .framework-card {
   text-decoration: none;
   color: inherit;

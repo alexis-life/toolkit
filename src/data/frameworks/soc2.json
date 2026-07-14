@@ -429,6 +429,21 @@
           ]
         },
         {
+          "type": "heading",
+          "text": "HIPAA vs SOC 2"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**HIPAA** — a U.S. federal law specifically governing protected health information (PHI). Mandatory (not optional) for healthcare orgs and their business associates.",
+            "**SOC 2** — a voluntary, industry-agnostic framework; not specific to healthcare, and not a substitute for HIPAA's legal requirements."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "SOC 2 can incorporate HIPAA-aligned controls (typically via the Confidentiality or Privacy TSC categories), but it doesn't replace a HIPAA risk assessment or Business Associate Agreement (BAA) obligations. Healthcare-adjacent SaaS companies commonly pursue both: HIPAA because it's legally required once they touch PHI, and SOC 2 because enterprise customers expect it as a baseline trust signal regardless of industry."
+        },
+        {
           "type": "paragraph",
           "text": "SOC 2 is fundamentally about proving \"trust\" through independent audits — which is exactly why it's become close to table-stakes for B2B tech companies trying to differentiate in a competitive market."
         }
@@ -454,7 +469,7 @@
         },
         {
           "type": "paragraph",
-          "text": "See the Controls tab for the full CC1–CC9 criteria, plus the four optional categories, in detail."
+          "text": "See the [Controls tab](/frameworks/soc2/controls) for the full CC1–CC9 criteria, plus the four optional categories, in detail."
         }
       ]
     },
