@@ -514,29 +514,60 @@
         {
           "type": "table",
           "headers": [
-            "Criterion",
-            "Key question"
+            "Control Area",
+            "Key Question",
+            "Typical Effort"
           ],
           "rows": [
             [
-              "Security",
-              "Do you have MFA, encryption, and regular vulnerability scans?"
+              "MFA & access control",
+              "Do you enforce MFA and least-privilege access?",
+              "Low"
             ],
             [
-              "Availability",
-              "Are SLAs defined with backup/recovery plans?"
+              "Encryption",
+              "Is data encrypted at rest and in transit?",
+              "Low"
             ],
             [
-              "Processing Integrity",
-              "Are transactions validated for accuracy?"
+              "Vulnerability management",
+              "Do you run regular vulnerability scans and patch on a defined cadence?",
+              "Medium"
             ],
             [
-              "Confidentiality",
-              "Is sensitive data classified and access-controlled?"
+              "Logging & monitoring",
+              "Do you have centralized logging with alerting (SIEM or equivalent)?",
+              "High"
             ],
             [
-              "Privacy",
-              "Do you have PII-handling processes and data retention policies?"
+              "Backups & DR",
+              "Are backups automated with defined retention, and has DR actually been tested?",
+              "Medium"
+            ],
+            [
+              "Uptime monitoring",
+              "Do you track uptime against a defined SLA?",
+              "Low"
+            ],
+            [
+              "Input/output validation",
+              "Are transactions validated for completeness and accuracy?",
+              "Medium"
+            ],
+            [
+              "Data classification",
+              "Is sensitive data classified, with access controlled accordingly?",
+              "High"
+            ],
+            [
+              "PII handling & retention",
+              "Do you have documented PII processes and data retention/deletion policies?",
+              "High"
+            ],
+            [
+              "Vendor risk management",
+              "Do you review the security posture of critical vendors before onboarding them?",
+              "Medium"
             ]
           ]
         },
@@ -549,6 +580,28 @@
           "items": [
             "Review policies, tech stack, and actual employee practices — not just what's written down.",
             "[AICPA's Trust Services Criteria document](https://www.aicpa-cima.com/resources/download/2017-trust-services-criteria-with-revised-points-of-focus-2022) is the canonical resource for scoping this yourself."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "What Takes Longest"
+        },
+        {
+          "type": "callout",
+          "text": "The slowest items to stand up are usually the ones that need new tooling or cross-team buy-in, not just a written policy: centralized logging/SIEM, a real data classification program, and PII retention/deletion automation. Budget the most lead time for these three — they're consistently what pushes a timeline from 6 months to 9+."
+        },
+        {
+          "type": "heading",
+          "text": "What to Implement First"
+        },
+        {
+          "type": "ordered-list",
+          "items": [
+            "**MFA everywhere** — highest security impact for the lowest implementation cost, usually a config change in tools you already run.",
+            "**A formal access request/approval workflow** — auditors sample this heavily, and it's mostly process, not new tooling.",
+            "**Encryption at rest and in transit** — often just flipping on settings already available in your cloud infrastructure.",
+            "**A written incident response plan** — cheap to draft, and required regardless of maturity level.",
+            "Once those are in place, move to the harder infrastructure/process work — centralized logging, a defined vulnerability-scanning cadence, and data classification — since those take the longest and benefit from starting early."
           ]
         }
       ]
