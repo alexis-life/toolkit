@@ -19,6 +19,13 @@ export default function FrameworkControls({ content }) {
     return () => observer.disconnect();
   }, []);
 
+  // Only show group dividers (in the jump nav and above the body sections)
+  // when a framework actually has more than one distinct group — e.g. SOC 2's
+  // Required/Optional split, or NIST CSF's 6 functions. Frameworks with a
+  // single group (ISO, HIPAA, CMMC, GDPR) skip this entirely rather than
+  // showing one redundant label at the top.
+  const hasMultipleGroups = new Set(content.categories.map((c) => c.group)).size > 1;
+
   return (
     <>
       {content.description && <p className="ax-meta framework-description">{content.description}</p>}
@@ -27,11 +34,8 @@ export default function FrameworkControls({ content }) {
         <nav className="framework-jump-card" aria-label="Jump to category">
           {content.categories.map((cat, i) => (
             <Fragment key={cat.id}>
-              {cat.group === "core" && i === 0 && (
-                <div className="framework-jump-group-label label-micro">Required</div>
-              )}
-              {cat.group === "additional" && content.categories[i - 1]?.group !== "additional" && (
-                <div className="framework-jump-group-label label-micro">Optional</div>
+              {hasMultipleGroups && cat.group !== content.categories[i - 1]?.group && (
+                <div className="framework-jump-group-label label-micro">{cat.group}</div>
               )}
               <a href={`#${cat.id}`} className={`nav-item ${activeId === cat.id ? "active" : ""}`}>
                 {cat.id}
@@ -43,8 +47,8 @@ export default function FrameworkControls({ content }) {
         <div className="framework-categories">
           {content.categories.map((cat, i) => (
             <div key={cat.id}>
-              {cat.group === "additional" && content.categories[i - 1]?.group !== "additional" && (
-                <h2 className="framework-group-heading">Additional Trust Services Categories</h2>
+              {hasMultipleGroups && cat.group !== content.categories[i - 1]?.group && (
+                <h2 className="framework-group-heading">{cat.group}</h2>
               )}
               <section id={cat.id} className="framework-category">
                 <h2 className="framework-category-title">

@@ -3,6 +3,8 @@ import hipaa from "./hipaa.json";
 import iso27001 from "./iso-27001.json";
 import gdpr from "./gdpr.json";
 import cmmc from "./cmmc.json";
+import nistCsf from "./nist-csf.json";
+import ccpa from "./ccpa.json";
 
 // How compliance is actually demonstrated — shown as a tag alongside each
 // framework, since it's easy to conflate "certification" and "attestation"
@@ -35,7 +37,7 @@ export const FRAMEWORKS = [
     name: "NIST CSF 2.0",
     blurb: "Govern, Identify, Protect, Detect, Respond, Recover.",
     type: "framework",
-    content: null,
+    content: nistCsf,
   },
   {
     slug: "pci-dss",
@@ -64,6 +66,13 @@ export const FRAMEWORKS = [
     blurb: "Level 2 — all 110 NIST SP 800-171 practices.",
     type: "certification",
     content: cmmc,
+  },
+  {
+    slug: "ccpa",
+    name: "CCPA",
+    blurb: "Consumer rights & business obligations, as amended by CPRA.",
+    type: "law",
+    content: ccpa,
   },
 ];
 

@@ -1,0 +1,997 @@
+{
+  "framework": "NIST CSF",
+  "section": "2.0 Core (6 Functions)",
+  "slug": "nist-csf",
+  "description": "NIST Cybersecurity Framework (CSF) 2.0 — a voluntary risk-management framework organized into 6 Functions, 22 Categories, and 106 Subcategories. Unlike SOC 2 or ISO 27001, it isn't a checklist of controls to pass — it's a common vocabulary for describing and managing cybersecurity risk, meant to be adapted (via a \"Profile\") to your organization's actual risk tolerance.",
+  "source": {
+    "label": "NIST — The Cybersecurity Framework (CSF) 2.0 (CSWP 29)",
+    "url": "https://csrc.nist.gov/pubs/cswp/29/the-nist-cybersecurity-framework-csf-20/final"
+  },
+  "overview": [
+    {
+      "icon": "🧩",
+      "title": "Introduction to NIST CSF",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "NIST CSF — the Cybersecurity Framework, published by NIST. Current version: **CSF 2.0** (February 2024), the first major update since CSF 1.1 in 2018.",
+            "A **voluntary risk-management framework**, not a certifiable standard — there's no CSF \"audit\" or \"certification.\" Organizations use it as a common language to describe their current and target cybersecurity posture.",
+            "The biggest change in 2.0: a new sixth function, **Govern**, added specifically because organizations kept treating cybersecurity as a purely technical problem rather than a governance one."
+          ]
+        }
+      ]
+    },
+    {
+      "icon": "🧭",
+      "title": "Key Differences from Other Compliance Frameworks",
+      "blocks": [
+        {
+          "type": "heading",
+          "text": "NIST CSF vs SOC 2 / ISO 27001"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**NIST CSF** — no certification or attestation mechanism at all; you can't \"pass\" or \"fail\" it. It's a structure for organizing a risk conversation, not a pass/fail control set.",
+            "**SOC 2 / ISO 27001** — result in a report or certificate you can hand to a customer as evidence. CSF gives you no equivalent artifact by itself."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "NIST CSF vs NIST SP 800-171 / CMMC"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**NIST CSF** — a high-level, function-based way of organizing risk management, applicable to any organization regardless of sector.",
+            "**NIST SP 800-171 / CMMC** — a specific, prescriptive control set (110 requirements) for protecting one specific data type (CUI) in one specific context (DoD contracts)."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "See the [CMMC page](/frameworks/cmmc) for the prescriptive-controls end of the NIST spectrum — CSF sits at the opposite, more flexible end."
+        },
+        {
+          "type": "callout",
+          "text": "A useful way to think about it: CSF tells you *what categories of things* to manage (govern, identify, protect, detect, respond, recover) and lets you pick the specific controls; SOC 2/ISO 27001/CMMC tell you the *specific controls* directly. Many organizations use CSF as the umbrella structure and then point to SOC 2, ISO 27001, or NIST 800-53 controls to fill in the specifics."
+        }
+      ]
+    },
+    {
+      "icon": "🗂️",
+      "title": "The Six Functions",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "**Govern (GV)** — new in 2.0. Cybersecurity risk management strategy, roles, policy, oversight, and supply chain risk management. The organizational context everything else operates within.",
+            "**Identify (ID)** — understanding your assets and the risks to them: asset management, risk assessment, and continuous improvement.",
+            "**Protect (PR)** — safeguards to manage risk: identity/access management, awareness training, data security, platform security, and infrastructure resilience.",
+            "**Detect (DE)** — finding and analyzing cybersecurity events: continuous monitoring and adverse event analysis.",
+            "**Respond (RS)** — actions taken once an incident is detected: incident management, analysis, mitigation, and communication.",
+            "**Recover (RC)** — restoring capabilities impaired by an incident: recovery plan execution and communication."
+          ]
+        },
+        {
+          "type": "callout",
+          "text": "This site's Controls tab covers all 6 functions, 22 categories, and 106 subcategories — verified directly against NIST's own official CSF 2.0 data export, not a secondary summary (several third-party blog sources cite slightly different subcategory counts due to counting withdrawn/renumbered items from the 1.1-to-2.0 transition)."
+        },
+        {
+          "type": "paragraph",
+          "text": "See the [Controls tab](/frameworks/nist-csf/controls) for the full breakdown."
+        }
+      ]
+    },
+    {
+      "icon": "💡",
+      "title": "Why Use NIST CSF",
+      "blocks": [
+        {
+          "type": "heading",
+          "text": "Benefits"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**A common vocabulary** — GV/ID/PR/DE/RS/RC gives security and business stakeholders a shared structure for talking about risk, without requiring everyone to be a security expert.",
+            "**Flexible by design** — organizations build a \"Profile\" describing their current state and target state, then prioritize the gap — unlike a fixed control checklist, it scales down to small orgs and up to complex enterprises.",
+            "**Widely adopted reference point** — even organizations pursuing SOC 2 or ISO 27001 often use CSF functions internally to organize how they talk about their program to leadership and the board."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "What It Doesn't Give You"
+        },
+        {
+          "type": "paragraph",
+          "text": "No certificate, no audit report, no customer-facing proof of compliance. If you need something to hand a customer or auditor as evidence, CSF alone isn't it — pair it with SOC 2, ISO 27001, or a specific control set like NIST SP 800-53."
+        }
+      ]
+    },
+    {
+      "icon": "📋",
+      "title": "Assessing NIST CSF Maturity",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "CSF doesn't use a pass/fail self-score the way SOC 2 or ISO does — it uses four \"Tiers\" describing how formalized your risk management practices are, applied per-function. Quick self-check across all six functions instead:"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Function",
+            "Key Question",
+            "Typical Effort to Formalize"
+          ],
+          "rows": [
+            [
+              "Govern",
+              "Is there a documented cybersecurity risk management strategy with clear roles and board-level oversight?",
+              "High"
+            ],
+            [
+              "Govern",
+              "Do you have a supply chain risk management process for suppliers and vendors?",
+              "Medium"
+            ],
+            [
+              "Identify",
+              "Do you maintain a current asset inventory and run periodic risk assessments?",
+              "Medium"
+            ],
+            [
+              "Protect",
+              "Is access managed on least privilege, with MFA and regular security awareness training?",
+              "Medium"
+            ],
+            [
+              "Protect",
+              "Is sensitive data protected at rest and in transit, with secure platform configurations?",
+              "Medium"
+            ],
+            [
+              "Detect",
+              "Do you continuously monitor for anomalies and have a process to analyze adverse events?",
+              "High"
+            ],
+            [
+              "Respond",
+              "Do you have a tested incident response plan with defined communication procedures?",
+              "Medium"
+            ],
+            [
+              "Recover",
+              "Do you have a tested recovery plan with defined communication to stakeholders?",
+              "Medium"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "The Four Tiers"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Tier 1 (Partial)** — risk management is ad hoc and reactive, with limited awareness at the organizational level.",
+            "**Tier 2 (Risk Informed)** — risk management practices exist and are approved by management, but aren't yet organization-wide policy.",
+            "**Tier 3 (Repeatable)** — formal policies exist, are regularly updated, and risk management is a consistent organization-wide practice.",
+            "**Tier 4 (Adaptive)** — risk management practices are continuously improved based on lessons learned and predictive indicators, and are deeply embedded in culture."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "What Takes Longest"
+        },
+        {
+          "type": "callout",
+          "text": "Govern and Detect consistently take the longest to mature. Govern requires genuine board/executive engagement, not just a written policy — that's an organizational change, not a technical project. Detect requires real tooling investment (continuous monitoring, log correlation) that most organizations underinvest in relative to Protect."
+        },
+        {
+          "type": "heading",
+          "text": "What to Implement First"
+        },
+        {
+          "type": "ordered-list",
+          "items": [
+            "**A current Profile** — document where you actually are today across all 6 functions before deciding where to invest; without this, prioritization is just guessing.",
+            "**Basic Identify practices** — an asset inventory and a risk assessment process, since almost everything else depends on knowing what you have and what threatens it.",
+            "**Core Protect controls** — MFA, access management, and security awareness training; the highest-impact, lowest-effort wins.",
+            "**A named Govern owner** — someone accountable for the overall program, even before every Govern practice is formalized.",
+            "Once those are in place, invest in Detect and Respond maturity — they're the ones most often left underdeveloped relative to Protect."
+          ]
+        }
+      ]
+    },
+    {
+      "icon": "🗺️",
+      "title": "NIST CSF Adoption Roadmap",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "CSF adoption is iterative, not a fixed project with an end date — but a first meaningful Profile typically takes 2–4 months to build."
+        },
+        {
+          "type": "heading",
+          "text": "Step-by-Step Process"
+        },
+        {
+          "type": "ordered-list",
+          "items": [
+            "**Scope** — decide which part of the organization the Profile covers.",
+            "**Current Profile** — assess and document where you actually stand today across all 6 functions.",
+            "**Target Profile** — define where you want to be, informed by your actual risk tolerance and business priorities, not a generic maximum.",
+            "**Gap analysis** — compare current vs. target, and prioritize based on risk and cost.",
+            "**Action plan** — implement changes to close the priority gaps.",
+            "**Repeat** — CSF is meant to be revisited regularly, not completed once."
+          ]
+        }
+      ]
+    },
+    {
+      "icon": "🔍",
+      "title": "How CSF Gets Evaluated in Practice",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "There's no third-party CSF auditor or certification body — evaluation is internal, or occasionally requested by a customer or regulator as evidence of a structured risk management approach."
+        },
+        {
+          "type": "heading",
+          "text": "Common Uses in Practice"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Internal self-assessment** — security teams score their own maturity per-function/category, often using CSF Tiers.",
+            "**Customer questionnaires** — some enterprise security questionnaires ask vendors to map their program to CSF functions, even without requiring a specific score.",
+            "**Regulatory reference** — some U.S. regulators and executive orders reference CSF as an expected baseline approach, without mandating literal certification."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Common Gaps"
+        },
+        {
+          "type": "paragraph",
+          "text": "The most common shortfall isn't a missing technical control — it's treating CSF as a one-time checklist exercise instead of an ongoing Profile that actually gets revisited as the organization and threat landscape change."
+        }
+      ]
+    },
+    {
+      "icon": "♻️",
+      "title": "Maintaining a CSF Program",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A CSF Profile is a living document, not a one-time deliverable."
+        },
+        {
+          "type": "heading",
+          "text": "Ongoing Requirements"
+        },
+        {
+          "type": "paragraph",
+          "text": "Revisit the Current and Target Profiles at a defined cadence (annually at minimum, or after major organizational/threat changes), and track progress on closing identified gaps as an ongoing program, not a project with a fixed end date."
+        },
+        {
+          "type": "heading",
+          "text": "Scaling"
+        },
+        {
+          "type": "paragraph",
+          "text": "As the organization grows or its risk profile changes (new products, new data types, new regulatory exposure), update the Target Profile and Tier expectations accordingly — CSF is meant to flex with the organization, not stay fixed."
+        }
+      ]
+    }
+  ],
+  "categories": [
+    {
+      "id": "GV.OC",
+      "title": "Organizational Context",
+      "group": "Govern",
+      "summary": "The circumstances - mission, stakeholder expectations, dependencies, and legal, regulatory, and contractual requirements - surrounding the organization's cybersecurity risk management decisions are understood.",
+      "controls": [
+        {
+          "id": "GV.OC-01",
+          "criteria": "The organizational mission is understood and informs cybersecurity risk management.",
+          "notes": "Share the organization's mission (e.g., through vision and mission statements, marketing, and service strategies) to provide a basis for identifying risks that may impede that mission."
+        },
+        {
+          "id": "GV.OC-02",
+          "criteria": "Internal and external stakeholders are understood, and their needs and expectations regarding cybersecurity risk management are understood and considered.",
+          "notes": "Identify relevant internal stakeholders and their cybersecurity-related expectations (e.g., performance and risk expectations of officers, directors, and advisors; cultural expectations of employees)."
+        },
+        {
+          "id": "GV.OC-03",
+          "criteria": "Legal, regulatory, and contractual requirements regarding cybersecurity - including privacy and civil liberties obligations - are understood and managed.",
+          "notes": "Determine a process to track and manage legal and regulatory requirements regarding protection of individuals' information (e.g., Health Insurance Portability and Accountability Act, California Consumer Privacy Act, General Data Protection Regulation)."
+        },
+        {
+          "id": "GV.OC-04",
+          "criteria": "Critical objectives, capabilities, and services that external stakeholders depend on or expect from the organization are understood and communicated.",
+          "notes": "Establish criteria for determining the criticality of capabilities and services as viewed by internal and external stakeholders."
+        },
+        {
+          "id": "GV.OC-05",
+          "criteria": "Outcomes, capabilities, and services that the organization depends on are understood and communicated.",
+          "notes": "Create an inventory of the organization's dependencies on external resources (e.g., facilities, cloud-based hosting providers) and their relationships to organizational assets and business functions."
+        }
+      ]
+    },
+    {
+      "id": "GV.RM",
+      "title": "Risk Management Strategy",
+      "group": "Govern",
+      "summary": "The organization's priorities, constraints, risk tolerance and appetite statements, and assumptions are established, communicated, and used to support operational risk decisions.",
+      "controls": [
+        {
+          "id": "GV.RM-01",
+          "criteria": "Risk management objectives are established and agreed to by organizational stakeholders.",
+          "notes": "Update near-term and long-term cybersecurity risk management objectives as part of annual strategic planning and when major changes occur."
+        },
+        {
+          "id": "GV.RM-02",
+          "criteria": "Risk appetite and risk tolerance statements are established, communicated, and maintained.",
+          "notes": "Determine and communicate risk appetite statements that convey expectations about the appropriate level of risk for the organization."
+        },
+        {
+          "id": "GV.RM-03",
+          "criteria": "Cybersecurity risk management activities and outcomes are included in enterprise risk management processes.",
+          "notes": "Aggregate and manage cybersecurity risks alongside other enterprise risks (e.g., compliance, financial, operational, regulatory, reputational, safety)."
+        },
+        {
+          "id": "GV.RM-04",
+          "criteria": "Strategic direction that describes appropriate risk response options is established and communicated.",
+          "notes": "Specify criteria for accepting and avoiding cybersecurity risk for various classifications of data."
+        },
+        {
+          "id": "GV.RM-05",
+          "criteria": "Lines of communication across the organization are established for cybersecurity risks, including risks from suppliers and other third parties.",
+          "notes": "Determine how to update senior executives, directors, and management on the organization's cybersecurity posture at agreed-upon intervals."
+        },
+        {
+          "id": "GV.RM-06",
+          "criteria": "A standardized method for calculating, documenting, categorizing, and prioritizing cybersecurity risks is established and communicated.",
+          "notes": "Establish criteria for using a quantitative approach to cybersecurity risk analysis, and specify probability and exposure formulas."
+        },
+        {
+          "id": "GV.RM-07",
+          "criteria": "Strategic opportunities (i.e., positive risks) are characterized and are included in organizational cybersecurity risk discussions.",
+          "notes": "Define and communicate guidance and methods for identifying opportunities and including them in risk discussions (e.g., strengths, weaknesses, opportunities, and threats [SWOT] analysis)."
+        }
+      ]
+    },
+    {
+      "id": "GV.RR",
+      "title": "Roles, Responsibilities, and Authorities",
+      "group": "Govern",
+      "summary": "Cybersecurity roles, responsibilities, and authorities to foster accountability, performance assessment, and continuous improvement are established and communicated.",
+      "controls": [
+        {
+          "id": "GV.RR-01",
+          "criteria": "Organizational leadership is responsible and accountable for cybersecurity risk and fosters a culture that is risk-aware, ethical, and continually improving.",
+          "notes": "Leaders (e.g., directors) agree on their roles and responsibilities in developing, implementing, and assessing the organization's cybersecurity strategy."
+        },
+        {
+          "id": "GV.RR-02",
+          "criteria": "Roles, responsibilities, and authorities related to cybersecurity risk management are established, communicated, understood, and enforced.",
+          "notes": "Document risk management roles and responsibilities in policy."
+        },
+        {
+          "id": "GV.RR-03",
+          "criteria": "Adequate resources are allocated commensurate with the cybersecurity risk strategy, roles, responsibilities, and policies.",
+          "notes": "Conduct periodic management reviews to ensure that those given cybersecurity risk management responsibilities have the necessary authority."
+        },
+        {
+          "id": "GV.RR-04",
+          "criteria": "Cybersecurity is included in human resources practices.",
+          "notes": "Integrate cybersecurity risk management considerations into human resources processes (e.g., personnel screening, onboarding, change notification, offboarding)."
+        }
+      ]
+    },
+    {
+      "id": "GV.PO",
+      "title": "Policy",
+      "group": "Govern",
+      "summary": "Organizational cybersecurity policy is established, communicated, and enforced.",
+      "controls": [
+        {
+          "id": "GV.PO-01",
+          "criteria": "Policy for managing cybersecurity risks is established based on organizational context, cybersecurity strategy, and priorities and is communicated and enforced.",
+          "notes": "Create, disseminate, and maintain an understandable, usable risk management policy with statements of management intent, expectations, and direction."
+        },
+        {
+          "id": "GV.PO-02",
+          "criteria": "Policy for managing cybersecurity risks is reviewed, updated, communicated, and enforced to reflect changes in requirements, threats, technology, and organizational mission.",
+          "notes": "Update policy based on periodic reviews of cybersecurity risk management results to ensure that policy and supporting processes and procedures adequately maintain risk at an acceptable level."
+        }
+      ]
+    },
+    {
+      "id": "GV.OV",
+      "title": "Oversight",
+      "group": "Govern",
+      "summary": "Results of organization-wide cybersecurity risk management activities and performance are used to inform, improve, and adjust the risk management strategy.",
+      "controls": [
+        {
+          "id": "GV.OV-01",
+          "criteria": "Cybersecurity risk management strategy outcomes are reviewed to inform and adjust strategy and direction.",
+          "notes": "Measure how well the risk management strategy and risk results have helped leaders make decisions and achieve organizational objectives."
+        },
+        {
+          "id": "GV.OV-02",
+          "criteria": "The cybersecurity risk management strategy is reviewed and adjusted to ensure coverage of organizational requirements and risks.",
+          "notes": "Review audit findings to confirm whether the existing cybersecurity strategy has ensured compliance with internal and external requirements."
+        },
+        {
+          "id": "GV.OV-03",
+          "criteria": "Organizational cybersecurity risk management performance is evaluated and reviewed for adjustments needed.",
+          "notes": "Review key performance indicators (KPIs) to ensure that organization-wide policies and procedures achieve objectives."
+        }
+      ]
+    },
+    {
+      "id": "GV.SC",
+      "title": "Cybersecurity Supply Chain Risk Management",
+      "group": "Govern",
+      "summary": "Cyber supply chain risk management processes are identified, established, managed, monitored, and improved by organizational stakeholders.",
+      "controls": [
+        {
+          "id": "GV.SC-01",
+          "criteria": "A cybersecurity supply chain risk management program, strategy, objectives, policies, and processes are established and agreed to by organizational stakeholders.",
+          "notes": "Establish a strategy that expresses the objectives of the cybersecurity supply chain risk management program."
+        },
+        {
+          "id": "GV.SC-02",
+          "criteria": "Cybersecurity roles and responsibilities for suppliers, customers, and partners are established, communicated, and coordinated internally and externally.",
+          "notes": "Identify one or more specific roles or positions that will be responsible and accountable for planning, resourcing, and executing cybersecurity supply chain risk management activities."
+        },
+        {
+          "id": "GV.SC-03",
+          "criteria": "Cybersecurity supply chain risk management is integrated into cybersecurity and enterprise risk management, risk assessment, and improvement processes.",
+          "notes": "Identify areas of alignment and overlap with cybersecurity and enterprise risk management."
+        },
+        {
+          "id": "GV.SC-04",
+          "criteria": "Suppliers are known and prioritized by criticality.",
+          "notes": "Develop criteria for supplier criticality based on, for example, the sensitivity of data processed or possessed by suppliers, the degree of access to the organization's systems, and the importance of the products or services to the organization's mission."
+        },
+        {
+          "id": "GV.SC-05",
+          "criteria": "Requirements to address cybersecurity risks in supply chains are established, prioritized, and integrated into contracts and other types of agreements with suppliers and other relevant third parties.",
+          "notes": "Establish security requirements for suppliers, products, and services commensurate with their criticality level and potential impact if compromised."
+        },
+        {
+          "id": "GV.SC-06",
+          "criteria": "Planning and due diligence are performed to reduce risks before entering into formal supplier or other third-party relationships.",
+          "notes": "Perform thorough due diligence on prospective suppliers that is consistent with procurement planning and commensurate with the level of risk, criticality, and complexity of each supplier relationship."
+        },
+        {
+          "id": "GV.SC-07",
+          "criteria": "The risks posed by a supplier, their products and services, and other third parties are understood, recorded, prioritized, assessed, responded to, and monitored over the course of the relationship.",
+          "notes": "Adjust assessment formats and frequencies based on the third party's reputation and the criticality of the products or services they provide."
+        },
+        {
+          "id": "GV.SC-08",
+          "criteria": "Relevant suppliers and other third parties are included in incident planning, response, and recovery activities.",
+          "notes": "Define and use rules and protocols for reporting incident response and recovery activities and the status between the organization and its suppliers."
+        },
+        {
+          "id": "GV.SC-09",
+          "criteria": "Supply chain security practices are integrated into cybersecurity and enterprise risk management programs, and their performance is monitored throughout the technology product and service life cycle.",
+          "notes": "Policies and procedures require provenance records for all acquired technology products and services."
+        },
+        {
+          "id": "GV.SC-10",
+          "criteria": "Cybersecurity supply chain risk management plans include provisions for activities that occur after the conclusion of a partnership or service agreement.",
+          "notes": "Establish processes for terminating critical relationships under both normal and adverse circumstances."
+        }
+      ]
+    },
+    {
+      "id": "ID.AM",
+      "title": "Asset Management",
+      "group": "Identify",
+      "summary": "Assets (e.g., data, hardware, software, systems, facilities, services, people) that enable the organization to achieve business purposes are identified and managed consistent with their relative importance to organizational objectives and the organization's risk strategy.",
+      "controls": [
+        {
+          "id": "ID.AM-01",
+          "criteria": "Inventories of hardware managed by the organization are maintained.",
+          "notes": "Maintain inventories for all types of hardware, including IT, IoT, OT, and mobile devices."
+        },
+        {
+          "id": "ID.AM-02",
+          "criteria": "Inventories of software, services, and systems managed by the organization are maintained.",
+          "notes": "Maintain inventories for all types of software and services, including commercial-off-the-shelf, open-source, custom applications, API services, and cloud-based applications and services."
+        },
+        {
+          "id": "ID.AM-03",
+          "criteria": "Representations of the organization's authorized network communication and internal and external network data flows are maintained.",
+          "notes": "Maintain baselines of communication and data flows within the organization's wired and wireless networks."
+        },
+        {
+          "id": "ID.AM-04",
+          "criteria": "Inventories of services provided by suppliers are maintained.",
+          "notes": "Inventory all external services used by the organization, including third-party infrastructure-as-a-service (IaaS), platform-as-a-service (PaaS), and software-as-a-service (SaaS) offerings; APIs; and other externally hosted application services."
+        },
+        {
+          "id": "ID.AM-05",
+          "criteria": "Assets are prioritized based on classification, criticality, resources, and impact on the mission.",
+          "notes": "Define criteria for prioritizing each class of assets."
+        },
+        {
+          "id": "ID.AM-07",
+          "criteria": "Inventories of data and corresponding metadata for designated data types are maintained.",
+          "notes": "Maintain a list of the designated data types of interest (e.g., personally identifiable information, protected health information, financial account numbers, organization intellectual property, operational technology data)."
+        },
+        {
+          "id": "ID.AM-08",
+          "criteria": "Systems, hardware, software, services, and data are managed throughout their life cycles.",
+          "notes": "Integrate cybersecurity considerations throughout the life cycles of systems, hardware, software, and services."
+        }
+      ]
+    },
+    {
+      "id": "ID.RA",
+      "title": "Risk Assessment",
+      "group": "Identify",
+      "summary": "The cybersecurity risk to the organization, assets, and individuals is understood by the organization.",
+      "controls": [
+        {
+          "id": "ID.RA-01",
+          "criteria": "Vulnerabilities in assets are identified, validated, and recorded.",
+          "notes": "Use vulnerability management technologies to identify unpatched and misconfigured software."
+        },
+        {
+          "id": "ID.RA-02",
+          "criteria": "Cyber threat intelligence is received from information sharing forums and sources.",
+          "notes": "Configure cybersecurity tools and technologies with detection or response capabilities to securely ingest cyber threat intelligence feeds."
+        },
+        {
+          "id": "ID.RA-03",
+          "criteria": "Internal and external threats to the organization are identified and recorded.",
+          "notes": "Use cyber threat intelligence to maintain awareness of the types of threat actors likely to target the organization and the TTPs they are likely to use."
+        },
+        {
+          "id": "ID.RA-04",
+          "criteria": "Potential impacts and likelihoods of threats exploiting vulnerabilities are identified and recorded.",
+          "notes": "Business leaders and cybersecurity risk management practitioners work together to estimate the likelihood and impact of risk scenarios and record them in risk registers."
+        },
+        {
+          "id": "ID.RA-05",
+          "criteria": "Threats, vulnerabilities, likelihoods, and impacts are used to understand inherent risk and inform risk response prioritization.",
+          "notes": "Develop threat models to better understand risks to the data and identify appropriate risk responses."
+        },
+        {
+          "id": "ID.RA-06",
+          "criteria": "Risk responses are chosen, prioritized, planned, tracked, and communicated.",
+          "notes": "Apply the vulnerability management plan's criteria for deciding whether to accept, transfer, mitigate, or avoid risk."
+        },
+        {
+          "id": "ID.RA-07",
+          "criteria": "Changes and exceptions are managed, assessed for risk impact, recorded, and tracked.",
+          "notes": "Implement and follow procedures for the formal documentation, review, testing, and approval of proposed changes and requested exceptions."
+        },
+        {
+          "id": "ID.RA-08",
+          "criteria": "Processes for receiving, analyzing, and responding to vulnerability disclosures are established.",
+          "notes": "Conduct vulnerability information sharing between the organization and its suppliers following the rules and protocols defined in contracts."
+        },
+        {
+          "id": "ID.RA-09",
+          "criteria": "The authenticity and integrity of hardware and software are assessed prior to acquisition and use.",
+          "notes": "Assess the authenticity and cybersecurity of critical technology products and services prior to acquisition and use."
+        },
+        {
+          "id": "ID.RA-10",
+          "criteria": "Critical suppliers are assessed prior to acquisition.",
+          "notes": "Conduct supplier risk assessments against business and applicable cybersecurity requirements, including the supply chain."
+        }
+      ]
+    },
+    {
+      "id": "ID.IM",
+      "title": "Improvement",
+      "group": "Identify",
+      "summary": "Improvements to organizational cybersecurity risk management processes, procedures and activities are identified across all CSF Functions.",
+      "controls": [
+        {
+          "id": "ID.IM-01",
+          "criteria": "Improvements are identified from evaluations.",
+          "notes": "Perform self-assessments of critical services that take current threats and TTPs into consideration."
+        },
+        {
+          "id": "ID.IM-02",
+          "criteria": "Improvements are identified from security tests and exercises, including those done in coordination with suppliers and relevant third parties.",
+          "notes": "Identify improvements for future incident response activities based on findings from incident response assessments (e.g., tabletop exercises and simulations, tests, internal reviews, independent audits)."
+        },
+        {
+          "id": "ID.IM-03",
+          "criteria": "Improvements are identified from execution of operational processes, procedures, and activities.",
+          "notes": "Conduct collaborative lessons learned sessions with suppliers."
+        },
+        {
+          "id": "ID.IM-04",
+          "criteria": "Incident response plans and other cybersecurity plans that affect operations are established, communicated, maintained, and improved.",
+          "notes": "Establish contingency plans (e.g., incident response, business continuity, disaster recovery) for responding to and recovering from adverse events that can interfere with operations, expose confidential information, or otherwise endanger the organization's mission and viability."
+        }
+      ]
+    },
+    {
+      "id": "PR.AA",
+      "title": "Identity Management, Authentication, and Access Control",
+      "group": "Protect",
+      "summary": "Access to physical and logical assets is limited to authorized users, services, and hardware and  managed commensurate with the assessed risk of unauthorized access.",
+      "controls": [
+        {
+          "id": "PR.AA-01",
+          "criteria": "Identities and credentials for authorized users, services, and hardware are managed by the organization.",
+          "notes": "Initiate requests for new access or additional access for employees, contractors, and others, and track, review, and fulfill the requests, with permission from system or data owners when needed."
+        },
+        {
+          "id": "PR.AA-02",
+          "criteria": "Identities are proofed and bound to credentials based on the context of interactions.",
+          "notes": "Verify a person's claimed identity at enrollment time using government-issued identity credentials (e.g., passport, visa, driver's license)."
+        },
+        {
+          "id": "PR.AA-03",
+          "criteria": "Users, services, and hardware are authenticated.",
+          "notes": "Require multifactor authentication."
+        },
+        {
+          "id": "PR.AA-04",
+          "criteria": "Identity assertions are protected, conveyed, and verified.",
+          "notes": "Protect identity assertions that are used to convey authentication and user information through single sign-on systems."
+        },
+        {
+          "id": "PR.AA-05",
+          "criteria": "Access permissions, entitlements, and authorizations are defined in a policy, managed, enforced, and reviewed, and incorporate the principles of least privilege and separation of duties.",
+          "notes": "Review logical and physical access privileges periodically and whenever someone changes roles or leaves the organization, and promptly rescind privileges that are no longer needed."
+        },
+        {
+          "id": "PR.AA-06",
+          "criteria": "Physical access to assets is managed, monitored, and enforced commensurate with risk.",
+          "notes": "Use security guards, security cameras, locked entrances, alarm systems, and other physical controls to monitor facilities and restrict access."
+        }
+      ]
+    },
+    {
+      "id": "PR.AT",
+      "title": "Awareness and Training",
+      "group": "Protect",
+      "summary": "The organization's personnel are provided with cybersecurity awareness and training so that they can perform their cybersecurity-related tasks.",
+      "controls": [
+        {
+          "id": "PR.AT-01",
+          "criteria": "Personnel are provided with awareness and training so that they possess the knowledge and skills to perform general tasks with cybersecurity risks in mind.",
+          "notes": "Provide basic cybersecurity awareness and training to employees, contractors, partners, suppliers, and all other users of the organization's non-public resources."
+        },
+        {
+          "id": "PR.AT-02",
+          "criteria": "Individuals in specialized roles are provided with awareness and training so that they possess the knowledge and skills to perform relevant tasks with cybersecurity risks in mind.",
+          "notes": "Identify the specialized roles within the organization that require additional cybersecurity training, such as physical and cybersecurity personnel, finance personnel, senior leadership, and anyone with access to business-critical data."
+        }
+      ]
+    },
+    {
+      "id": "PR.DS",
+      "title": "Data Security",
+      "group": "Protect",
+      "summary": "Data are managed consistent with the organization's risk strategy to protect the confidentiality, integrity, and availability of information.",
+      "controls": [
+        {
+          "id": "PR.DS-01",
+          "criteria": "The confidentiality, integrity, and availability of data-at-rest are protected.",
+          "notes": "Use encryption, digital signatures, and cryptographic hashes to protect the confidentiality and integrity of stored data in files, databases, virtual machine disk images, container images, and other resources."
+        },
+        {
+          "id": "PR.DS-02",
+          "criteria": "The confidentiality, integrity, and availability of data-in-transit are protected.",
+          "notes": "Use encryption, digital signatures, and cryptographic hashes to protect the confidentiality and integrity of network communications."
+        },
+        {
+          "id": "PR.DS-10",
+          "criteria": "The confidentiality, integrity, and availability of data-in-use are protected.",
+          "notes": "Remove data that must remain confidential (e.g., from processors and memory) as soon as it is no longer needed."
+        },
+        {
+          "id": "PR.DS-11",
+          "criteria": "Backups of data are created, protected, maintained, and tested.",
+          "notes": "Continuously back up critical data in near-real-time, and back up other data frequently at agreed-upon schedules."
+        }
+      ]
+    },
+    {
+      "id": "PR.PS",
+      "title": "Platform Security",
+      "group": "Protect",
+      "summary": "The hardware, software (e.g., firmware, operating systems, applications), and services of physical and virtual platforms are managed consistent with the organization's risk strategy to protect their confidentiality, integrity, and availability.",
+      "controls": [
+        {
+          "id": "PR.PS-01",
+          "criteria": "Configuration management practices are established and applied.",
+          "notes": "Establish, test, deploy, and maintain hardened baselines that enforce the organization's cybersecurity policies and provide only essential capabilities (i.e., principle of least functionality)."
+        },
+        {
+          "id": "PR.PS-02",
+          "criteria": "Software is maintained, replaced, and removed commensurate with risk.",
+          "notes": "Perform routine and emergency patching within the timeframes specified in the vulnerability management plan."
+        },
+        {
+          "id": "PR.PS-03",
+          "criteria": "Hardware is maintained, replaced, and removed commensurate with risk.",
+          "notes": "Replace hardware when it lacks needed security capabilities or when it cannot support software with needed security capabilities."
+        },
+        {
+          "id": "PR.PS-04",
+          "criteria": "Log records are generated and made available for continuous monitoring.",
+          "notes": "Configure all operating systems, applications, and services (including cloud-based services) to generate log records."
+        },
+        {
+          "id": "PR.PS-05",
+          "criteria": "Installation and execution of unauthorized software are prevented.",
+          "notes": "When risk warrants it, restrict software execution to permitted products only or deny the execution of prohibited and unauthorized software."
+        },
+        {
+          "id": "PR.PS-06",
+          "criteria": "Secure software development practices are integrated, and their performance is monitored throughout the software development life cycle.",
+          "notes": "Protect all components of organization-developed software from tampering and unauthorized access."
+        }
+      ]
+    },
+    {
+      "id": "PR.IR",
+      "title": "Technology Infrastructure Resilience",
+      "group": "Protect",
+      "summary": "Security architectures are managed with the organization's risk strategy to protect asset confidentiality, integrity, and availability, and organizational resilience.",
+      "controls": [
+        {
+          "id": "PR.IR-01",
+          "criteria": "Networks and environments are protected from unauthorized logical access and usage.",
+          "notes": "Logically segment organization networks and cloud-based platforms according to trust boundaries and platform types (e.g., IT, IoT, OT, mobile, guests), and permit required communications only between segments."
+        },
+        {
+          "id": "PR.IR-02",
+          "criteria": "The organization's technology assets are protected from environmental threats.",
+          "notes": "Protect organizational equipment from known environmental threats, such as flooding, fire, wind, and excessive heat and humidity."
+        },
+        {
+          "id": "PR.IR-03",
+          "criteria": "Mechanisms are implemented to achieve resilience requirements in normal and adverse situations.",
+          "notes": "Avoid single points of failure in systems and infrastructure."
+        },
+        {
+          "id": "PR.IR-04",
+          "criteria": "Adequate resource capacity to ensure availability is maintained.",
+          "notes": "Monitor usage of storage, power, compute, network bandwidth, and other resources."
+        }
+      ]
+    },
+    {
+      "id": "DE.CM",
+      "title": "Continuous Monitoring",
+      "group": "Detect",
+      "summary": "Assets are monitored to find anomalies, indicators of compromise, and other potentially adverse events.",
+      "controls": [
+        {
+          "id": "DE.CM-01",
+          "criteria": "Networks and network services are monitored to find potentially adverse events.",
+          "notes": "Monitor DNS, BGP, and other network services for adverse events."
+        },
+        {
+          "id": "DE.CM-02",
+          "criteria": "The physical environment is monitored to find potentially adverse events.",
+          "notes": "Monitor logs from physical access control systems (e.g., badge readers) to find unusual access patterns (e.g., deviations from the norm) and failed access attempts."
+        },
+        {
+          "id": "DE.CM-03",
+          "criteria": "Personnel activity and technology usage are monitored to find potentially adverse events.",
+          "notes": "Use behavior analytics software to detect anomalous user activity to mitigate insider threats."
+        },
+        {
+          "id": "DE.CM-06",
+          "criteria": "External service provider activities and services are monitored to find potentially adverse events.",
+          "notes": "Monitor remote and onsite administration and maintenance activities that external providers perform on organizational systems."
+        },
+        {
+          "id": "DE.CM-09",
+          "criteria": "Computing hardware and software, runtime environments, and their data are monitored to find potentially adverse events.",
+          "notes": "Monitor email, web, file sharing, collaboration services, and other common attack vectors to detect malware, phishing, data leaks and exfiltration, and other adverse events."
+        }
+      ]
+    },
+    {
+      "id": "DE.AE",
+      "title": "Adverse Event Analysis",
+      "group": "Detect",
+      "summary": "Anomalies, indicators of compromise, and other potentially adverse events are analyzed to characterize the events and detect cybersecurity incidents.",
+      "controls": [
+        {
+          "id": "DE.AE-02",
+          "criteria": "Potentially adverse events are analyzed to better understand associated activities.",
+          "notes": "Use security information and event management (SIEM) or other tools to continuously monitor log events for known malicious and suspicious activity."
+        },
+        {
+          "id": "DE.AE-03",
+          "criteria": "Information is correlated from multiple sources.",
+          "notes": "Constantly transfer log data generated by other sources to a relatively small number of log servers."
+        },
+        {
+          "id": "DE.AE-04",
+          "criteria": "The estimated impact and scope of adverse events are understood.",
+          "notes": "Use SIEMs or other tools to estimate impact and scope, and review and refine the estimates."
+        },
+        {
+          "id": "DE.AE-06",
+          "criteria": "Information on adverse events is provided to authorized staff and tools.",
+          "notes": "Use cybersecurity software to generate alerts and provide them to the security operations center (SOC), incident responders, and incident response tools."
+        },
+        {
+          "id": "DE.AE-07",
+          "criteria": "Cyber threat intelligence and other contextual information are integrated into the analysis.",
+          "notes": "Securely provide cyber threat intelligence feeds to detection technologies, processes, and personnel."
+        },
+        {
+          "id": "DE.AE-08",
+          "criteria": "Incidents are declared when adverse events meet the defined incident criteria.",
+          "notes": "Apply incident criteria to known and assumed characteristics of activity in order to determine whether an incident should be declared."
+        }
+      ]
+    },
+    {
+      "id": "RS.MA",
+      "title": "Incident Management",
+      "group": "Respond",
+      "summary": "Responses to detected cybersecurity incidents are managed.",
+      "controls": [
+        {
+          "id": "RS.MA-01",
+          "criteria": "The incident response plan is executed in coordination with relevant third parties once an incident is declared.",
+          "notes": "Detection technologies automatically report confirmed incidents."
+        },
+        {
+          "id": "RS.MA-02",
+          "criteria": "Incident reports are triaged and validated.",
+          "notes": "Preliminarily review incident reports to confirm that they are cybersecurity-related and necessitate incident response activities."
+        },
+        {
+          "id": "RS.MA-03",
+          "criteria": "Incidents are categorized and prioritized.",
+          "notes": "Further review and categorize incidents based on the type of incident (e.g., data breach, ransomware, DDoS, account compromise)."
+        },
+        {
+          "id": "RS.MA-04",
+          "criteria": "Incidents are escalated or elevated as needed.",
+          "notes": "Track and validate the status of all ongoing incidents."
+        },
+        {
+          "id": "RS.MA-05",
+          "criteria": "The criteria for initiating incident recovery are applied.",
+          "notes": "Apply incident recovery criteria to known and assumed characteristics of the incident to determine whether incident recovery processes should be initiated."
+        }
+      ]
+    },
+    {
+      "id": "RS.AN",
+      "title": "Incident Analysis",
+      "group": "Respond",
+      "summary": "Investigations are conducted to ensure effective response and support forensics and recovery activities.",
+      "controls": [
+        {
+          "id": "RS.AN-03",
+          "criteria": "Analysis is performed to establish what has taken place during an incident and the root cause of the incident.",
+          "notes": "Determine the sequence of events that occurred during the incident and which assets and resources were involved in each event."
+        },
+        {
+          "id": "RS.AN-06",
+          "criteria": "Actions performed during an investigation are recorded, and the records' integrity and provenance are preserved.",
+          "notes": "Require each incident responder and others (e.g., system administrators, cybersecurity engineers) who perform incident response tasks to record their actions and make the record immutable."
+        },
+        {
+          "id": "RS.AN-07",
+          "criteria": "Incident data and metadata are collected, and their integrity and provenance are preserved.",
+          "notes": "Collect, preserve, and safeguard the integrity of all pertinent incident data and metadata (e.g., data source, date/time of collection) based on evidence preservation and chain-of-custody procedures."
+        },
+        {
+          "id": "RS.AN-08",
+          "criteria": "An incident's magnitude is estimated and validated.",
+          "notes": "Review other potential targets of the incident to search for indicators of compromise and evidence of persistence."
+        }
+      ]
+    },
+    {
+      "id": "RS.CO",
+      "title": "Incident Response Reporting and Communication",
+      "group": "Respond",
+      "summary": "Response activities are coordinated with internal and external stakeholders as required by laws, regulations, or policies.",
+      "controls": [
+        {
+          "id": "RS.CO-02",
+          "criteria": "Internal and external stakeholders are notified of incidents.",
+          "notes": "Follow the organization's breach notification procedures after discovering a data breach incident, including notifying affected customers."
+        },
+        {
+          "id": "RS.CO-03",
+          "criteria": "Information is shared with designated internal and external stakeholders.",
+          "notes": "Securely share information consistent with response plans and information sharing agreements."
+        }
+      ]
+    },
+    {
+      "id": "RS.MI",
+      "title": "Incident Mitigation",
+      "group": "Respond",
+      "summary": "Activities are performed to prevent expansion of an event and mitigate its effects.",
+      "controls": [
+        {
+          "id": "RS.MI-01",
+          "criteria": "Incidents are contained.",
+          "notes": "Cybersecurity technologies (e.g., antivirus software) and cybersecurity features of other technologies (e.g., operating systems, network infrastructure devices) automatically perform containment actions."
+        },
+        {
+          "id": "RS.MI-02",
+          "criteria": "Incidents are eradicated.",
+          "notes": "Cybersecurity technologies and cybersecurity features of other technologies (e.g., operating systems, network infrastructure devices) automatically perform eradication actions."
+        }
+      ]
+    },
+    {
+      "id": "RC.RP",
+      "title": "Incident Recovery Plan Execution",
+      "group": "Recover",
+      "summary": "Restoration activities are performed to ensure operational availability of systems and services affected by cybersecurity incidents.",
+      "controls": [
+        {
+          "id": "RC.RP-01",
+          "criteria": "The recovery portion of the incident response plan is executed once initiated from the incident response process.",
+          "notes": "Begin recovery procedures during or after incident response processes."
+        },
+        {
+          "id": "RC.RP-02",
+          "criteria": "Recovery actions are selected, scoped, prioritized, and performed.",
+          "notes": "Select recovery actions based on the criteria defined in the incident response plan and available resources."
+        },
+        {
+          "id": "RC.RP-03",
+          "criteria": "The integrity of backups and other restoration assets is verified before using them for restoration.",
+          "notes": "Check restoration assets for indicators of compromise, file corruption, and other integrity issues before use."
+        },
+        {
+          "id": "RC.RP-04",
+          "criteria": "Critical mission functions and cybersecurity risk management are considered to establish post-incident operational norms.",
+          "notes": "Use business impact and system categorization records (including service delivery objectives) to validate that essential services are restored in the appropriate order."
+        },
+        {
+          "id": "RC.RP-05",
+          "criteria": "The integrity of restored assets is verified, systems and services are restored, and normal operating status is confirmed.",
+          "notes": "Check restored assets for indicators of compromise and remediation of root causes of the incident before production use."
+        },
+        {
+          "id": "RC.RP-06",
+          "criteria": "The end of incident recovery is declared based on criteria, and incident-related documentation is completed.",
+          "notes": "Prepare an after-action report that documents the incident itself, the response and recovery actions taken, and lessons learned."
+        }
+      ]
+    },
+    {
+      "id": "RC.CO",
+      "title": "Incident Recovery Communication",
+      "group": "Recover",
+      "summary": "Restoration activities are coordinated with internal and external parties.",
+      "controls": [
+        {
+          "id": "RC.CO-03",
+          "criteria": "Recovery activities and progress in restoring operational capabilities are communicated to designated internal and external stakeholders.",
+          "notes": "Securely share recovery information, including restoration progress, consistent with response plans and information sharing agreements."
+        },
+        {
+          "id": "RC.CO-04",
+          "criteria": "Public updates on incident recovery are shared using approved methods and messaging.",
+          "notes": "Follow the organization's breach notification procedures for recovering from a data breach incident."
+        }
+      ]
+    }
+  ]
+}

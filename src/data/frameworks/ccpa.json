@@ -1,0 +1,397 @@
+{
+  "framework": "CCPA",
+  "section": "Consumer Rights & Business Obligations (as amended by CPRA)",
+  "slug": "ccpa",
+  "description": "The California Consumer Privacy Act (as substantially amended and expanded by the California Privacy Rights Act, CPRA) — codified at California Civil Code § 1798.100 et seq. A U.S. state privacy law, not a federal one, enforced by the California Privacy Protection Agency (CPPA) and the state Attorney General.",
+  "source": {
+    "label": "California Legislative Information — Civil Code § 1798.100 et seq. (CCPA)",
+    "url": "https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?division=3.&part=4.&lawCode=CIV&title=1.81.5"
+  },
+  "overview": [
+    {
+      "icon": "🐻",
+      "title": "Introduction to CCPA",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "CCPA — the California Consumer Privacy Act (2018), substantially amended and expanded by the **California Privacy Rights Act (CPRA)**, effective January 1, 2023.",
+            "A **California state law**, not federal — codified at California Civil Code § 1798.100 et seq. Applies based on doing business in California and meeting revenue/data-volume thresholds, not on where your company is headquartered.",
+            "Enforced by the **California Privacy Protection Agency (CPPA)** — the first dedicated U.S. state privacy regulator — plus the California Attorney General."
+          ]
+        }
+      ]
+    },
+    {
+      "icon": "🧭",
+      "title": "Key Differences from Other Compliance Frameworks",
+      "blocks": [
+        {
+          "type": "heading",
+          "text": "CCPA vs GDPR"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**CCPA** — opt-out model by default for most data uses (you can sell/share data until a consumer opts out), with California residents specifically in scope.",
+            "**GDPR** — opt-in model by default (you generally need a legal basis, often consent, before processing), with anyone in the EU in scope regardless of nationality."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "See the [GDPR page](/frameworks/gdpr) for the EU's opt-in model side by side with CCPA's opt-out default — this is the single biggest structural difference between the two."
+        },
+        {
+          "type": "heading",
+          "text": "CCPA vs HIPAA"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**CCPA** — general-purpose consumer privacy law covering most personal information, with broad business-facing obligations (notice, rights fulfillment, vendor contracts).",
+            "**HIPAA** — narrowly scoped to protected health information (PHI) specifically, with its own separate rights and safeguards model. CCPA explicitly exempts information already covered by HIPAA."
+          ]
+        },
+        {
+          "type": "callout",
+          "text": "\"Sale\" and \"sharing\" under CCPA are defined broadly enough to capture things many companies don't think of as selling data — including some forms of ad tech and cross-context behavioral advertising. Don't assume \"we don't sell data\" without checking the statutory definition."
+        }
+      ]
+    },
+    {
+      "icon": "📖",
+      "title": "How CCPA Is Structured",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "**Consumer Rights** — the specific rights California residents have over their personal information: know, delete, correct, opt-out of sale/sharing, limit use of sensitive data, and non-discrimination.",
+            "**Business Obligations & Enforcement** — the operational requirements on businesses: notice, timelines for responding to requests, definitions, and how the law is actually enforced (private right of action for breaches, administrative penalties, CPPA rulemaking)."
+          ]
+        },
+        {
+          "type": "callout",
+          "text": "CCPA/CPRA doesn't use \"Articles\" like GDPR — it's organized as sequential Civil Code sections (§ 1798.100, § 1798.105, etc.), each covering one specific right or obligation."
+        },
+        {
+          "type": "paragraph",
+          "text": "See the [Controls tab](/frameworks/ccpa/controls) for the specific Civil Code sections, with plain-English notes on what each actually requires."
+        }
+      ]
+    },
+    {
+      "icon": "💡",
+      "title": "Why Comply with CCPA",
+      "blocks": [
+        {
+          "type": "heading",
+          "text": "It's Not Optional (If You're In Scope)"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Legal requirement** — if you meet the applicability thresholds (revenue, data volume, or revenue from selling personal information), compliance is mandatory, not optional.",
+            "**Private right of action for breaches** — unlike most of CCPA (which is enforced by the CPPA/AG), a data breach specifically exposes you to direct consumer lawsuits with statutory damages of $100-$750 per consumer per incident.",
+            "**Administrative penalties** — the CPPA can levy fines per violation, with intentional violations and violations involving minors' data penalized more heavily."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Business Reasons Beyond the Legal Floor"
+        },
+        {
+          "type": "paragraph",
+          "text": "CCPA/CPRA has become a de facto national baseline for many U.S. companies, since building separate privacy programs per state is rarely practical — a solid CCPA program covers a meaningful chunk of what other state privacy laws (Virginia, Colorado, and others) require too."
+        }
+      ]
+    },
+    {
+      "icon": "📋",
+      "title": "Assessing CCPA Readiness",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Quick self-score across both categories. If you're answering \"no\" to more than half in either, prioritize it."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Category",
+            "Control Area",
+            "Key Question",
+            "Typical Effort"
+          ],
+          "rows": [
+            [
+              "Consumer Rights",
+              "Right to know/access",
+              "Can you disclose what personal information you've collected about a specific consumer on request?",
+              "High"
+            ],
+            [
+              "Consumer Rights",
+              "Right to delete",
+              "Can you actually delete a consumer's data on request, including from vendors?",
+              "High"
+            ],
+            [
+              "Consumer Rights",
+              "Right to correct",
+              "Can you correct inaccurate personal information a consumer identifies?",
+              "Medium"
+            ],
+            [
+              "Consumer Rights",
+              "Opt-out of sale/sharing",
+              "Do you have a working \"Do Not Sell or Share\" mechanism if you sell/share data?",
+              "Medium"
+            ],
+            [
+              "Consumer Rights",
+              "Sensitive personal information",
+              "Can consumers limit use of sensitive personal information (if you process any)?",
+              "Medium"
+            ],
+            [
+              "Consumer Rights",
+              "Non-discrimination",
+              "Do you avoid penalizing consumers (price, service level) for exercising their rights?",
+              "Low"
+            ],
+            [
+              "Business Obligations",
+              "Privacy notice",
+              "Does your privacy notice disclose categories collected, purposes, and retention?",
+              "Low"
+            ],
+            [
+              "Business Obligations",
+              "Request response timelines",
+              "Can you verify and respond to a consumer request within the required timeframe?",
+              "Medium"
+            ],
+            [
+              "Business Obligations",
+              "Opt-out link",
+              "Do you have a \"Do Not Sell or Share My Personal Information\" link if required?",
+              "Low"
+            ],
+            [
+              "Business Obligations",
+              "Vendor contracts",
+              "Do your contracts with service providers include CCPA-required data protection terms?",
+              "Medium"
+            ],
+            [
+              "Business Obligations",
+              "Reasonable security",
+              "Do you maintain reasonable security procedures appropriate to the data you hold?",
+              "Medium"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Identifying Gaps"
+        },
+        {
+          "type": "list",
+          "items": [
+            "A data inventory/mapping exercise — similar to GDPR's RoPA — is the fastest way to surface where CCPA actually applies in your systems.",
+            "[The CPPA's official regulations](https://cppa.ca.gov/regulations/) are the canonical practical guidance beyond the statute text itself."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "What Takes Longest"
+        },
+        {
+          "type": "callout",
+          "text": "Operationalizing the right to delete consistently takes the longest — the same challenge as GDPR's erasure right — because deletion has to actually propagate through backups, logs, and every downstream vendor you've shared data with, not just your primary database."
+        },
+        {
+          "type": "heading",
+          "text": "What to Implement First"
+        },
+        {
+          "type": "ordered-list",
+          "items": [
+            "**A data inventory** — the foundational step everything else depends on, same as GDPR's RoPA.",
+            "**An accurate privacy notice** — required regardless of maturity, and cheap to get right once the inventory exists.",
+            "**A working opt-out mechanism** — if you sell or share data, this is one of the most visible/checked requirements.",
+            "**Vendor contract updates** — an inventory-and-paperwork exercise, easy to let slip.",
+            "Once those are in place, build out full rights-fulfillment (access/delete/correct) with real verification and response-time tracking, since that needs system-level support, not just a policy."
+          ]
+        }
+      ]
+    },
+    {
+      "icon": "🗺️",
+      "title": "CCPA Compliance Roadmap",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Like GDPR, there's no certification or audit cycle — CCPA compliance is demonstrated on an ongoing basis and tested when a regulator investigates or a consumer sues over a breach."
+        },
+        {
+          "type": "heading",
+          "text": "Step-by-Step Process"
+        },
+        {
+          "type": "ordered-list",
+          "items": [
+            "**Determine applicability** — check whether you meet CCPA's revenue/data-volume thresholds.",
+            "**Map your data** — inventory what personal information you collect, why, and where it goes.",
+            "**Update your privacy notice** — disclose categories, purposes, retention, and consumer rights.",
+            "**Build rights-fulfillment processes** — know, delete, correct, opt-out, limit use of sensitive data.",
+            "**Update vendor contracts** — CCPA-required terms with every service provider/contractor touching personal information.",
+            "**Implement reasonable security** — appropriate technical and organizational measures, since this is what the private right of action for breaches actually turns on."
+          ]
+        }
+      ]
+    },
+    {
+      "icon": "🔍",
+      "title": "Enforcement Process",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "CCPA doesn't have a voluntary third-party audit. Enforcement runs through two distinct tracks depending on the violation type."
+        },
+        {
+          "type": "heading",
+          "text": "Two Enforcement Tracks"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**CPPA/AG administrative enforcement** — covers most CCPA violations (notice failures, rights-fulfillment failures, etc.), with civil penalties per violation.",
+            "**Private right of action** — narrowly limited to data breaches involving nonencrypted, nonredacted personal information resulting from a failure to maintain reasonable security. Consumers get 30 days to notify the business, which can cure the violation to avoid statutory damages."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Common Findings"
+        },
+        {
+          "type": "paragraph",
+          "text": "Enforcement actions consistently point to the same gaps: privacy notices that don't match actual data practices, missing or broken opt-out mechanisms, and inadequate security controls that turn an incident into breach litigation exposure."
+        }
+      ]
+    },
+    {
+      "icon": "♻️",
+      "title": "Maintaining CCPA Compliance",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Compliance is continuous — there's no report to renew annually, but obligations apply to every new data collection practice you introduce."
+        },
+        {
+          "type": "heading",
+          "text": "Ongoing Requirements"
+        },
+        {
+          "type": "paragraph",
+          "text": "Keep the data inventory current, review vendor contracts as you onboard new service providers, and monitor CPPA rulemaking — the regulations have continued evolving materially since CPRA took effect."
+        },
+        {
+          "type": "heading",
+          "text": "Scaling Compliance"
+        },
+        {
+          "type": "paragraph",
+          "text": "New products or features that introduce new categories of personal information (especially sensitive personal information) need to be reflected in your privacy notice and rights-fulfillment processes before launch, not after."
+        }
+      ]
+    }
+  ],
+  "categories": [
+    {
+      "id": "Rights",
+      "title": "Consumer Rights",
+      "group": "core",
+      "summary": "The specific rights California residents have over their own personal information (§ 1798.100–1798.125).",
+      "controls": [
+        {
+          "id": "§1798.100",
+          "criteria": "General duties of businesses that collect personal information — disclose categories collected and the purposes for collecting them, at or before collection.",
+          "notes": "Your privacy notice needs to actually name the categories and purposes, reviewed whenever data practices change."
+        },
+        {
+          "id": "§1798.105",
+          "criteria": "Right to delete — consumers can request deletion of personal information a business has collected from them, subject to specific statutory exceptions.",
+          "notes": "The hardest right to operationalize — deletion needs to propagate through backups, logs, and any service providers you've shared data with."
+        },
+        {
+          "id": "§1798.106",
+          "criteria": "Right to correct — consumers can request correction of inaccurate personal information, taking into account the nature of the data and purposes of processing.",
+          "notes": "A straightforward self-service or support-ticket correction mechanism usually satisfies this."
+        },
+        {
+          "id": "§1798.110",
+          "criteria": "Right to know / access — consumers can request the categories and specific pieces of personal information a business has collected about them.",
+          "notes": "The core access-request right — needs a defined verification process and response timeline, similar to GDPR's DSAR."
+        },
+        {
+          "id": "§1798.115",
+          "criteria": "Right to know about disclosures — consumers can request disclosure of what personal information is sold or shared, and the categories of third parties receiving it.",
+          "notes": "Track what you disclose to whom so you can actually answer this request, not just what you collect."
+        },
+        {
+          "id": "§1798.120",
+          "criteria": "Right to opt out of sale or sharing — consumers can direct a business not to sell or share their personal information to third parties.",
+          "notes": "\"Sharing\" is defined broadly enough to include some cross-context behavioral advertising — don't assume this doesn't apply just because you don't call it a \"sale.\""
+        },
+        {
+          "id": "§1798.121",
+          "criteria": "Right to limit use of sensitive personal information — consumers can direct a business to limit use of sensitive personal information to what's necessary to perform the requested services.",
+          "notes": "Only relevant if you process sensitive personal information (as CCPA defines it — precise ID numbers, precise geolocation, health data, and more) — but if you do, this needs its own opt-out mechanism."
+        },
+        {
+          "id": "§1798.125",
+          "criteria": "Non-discrimination — businesses cannot deny goods/services, charge different prices, or provide a different level of service because a consumer exercised a CCPA right.",
+          "notes": "Financial incentive programs are allowed but must be reasonably related to the value of the data, and disclosed transparently — don't structure opt-outs to functionally punish consumers."
+        }
+      ]
+    },
+    {
+      "id": "Obligations",
+      "title": "Business Obligations & Enforcement",
+      "group": "core",
+      "summary": "The operational requirements on businesses, and how the law is actually enforced (§ 1798.130–1798.185).",
+      "controls": [
+        {
+          "id": "§1798.130",
+          "criteria": "Notice, disclosure, correction, and deletion requirements — specific methods and timelines businesses must follow to receive and respond to consumer requests.",
+          "notes": "Response timelines are statutory, not discretionary — build a defined SLA and verification process rather than handling requests ad hoc."
+        },
+        {
+          "id": "§1798.135",
+          "criteria": "Requirement to post a \"Do Not Sell or Share My Personal Information\" (and, where applicable, \"Limit the Use of My Sensitive Personal Information\") link on the homepage.",
+          "notes": "One of the most visible, easily-checked CCPA requirements — a broken or missing opt-out link is a common, avoidable finding."
+        },
+        {
+          "id": "§1798.140",
+          "criteria": "Definitions — including \"personal information,\" \"sensitive personal information,\" \"sale,\" \"share,\" \"business,\" and the applicability thresholds.",
+          "notes": "Read this section carefully before assuming CCPA doesn't apply to you or that a given activity doesn't count as a \"sale\"/\"share\" — the definitions are broader than plain-English intuition suggests."
+        },
+        {
+          "id": "§1798.150",
+          "criteria": "Private right of action — consumers whose nonencrypted, nonredacted personal information is breached due to a business's failure to maintain reasonable security can sue for statutory damages of $100–$750 per consumer per incident, or actual damages.",
+          "notes": "This is the one part of CCPA enforced directly by consumers rather than the regulator — reasonable security isn't optional risk-management advice, it's what stands between an incident and class-action-scale liability."
+        },
+        {
+          "id": "§1798.155",
+          "criteria": "Administrative enforcement — the CPPA can investigate and levy civil penalties per violation, with higher penalties for intentional violations and violations involving minors' data.",
+          "notes": "Covers essentially all other CCPA violations beyond the breach-specific private right of action — notice failures, rights-fulfillment failures, and more."
+        },
+        {
+          "id": "§1798.185",
+          "criteria": "Rulemaking authority — the California Privacy Protection Agency (CPPA) has authority to adopt regulations implementing and interpreting CCPA.",
+          "notes": "CCPA compliance isn't just the statute text — CPPA's actual regulations (which continue to evolve) fill in significant operational detail the statute leaves open."
+        }
+      ]
+    }
+  ]
+}

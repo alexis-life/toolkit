@@ -39,7 +39,7 @@
           "notes": "Documented disciplinary process for policy violations, tied to performance management."
         }
       ],
-      "group": "core"
+      "group": "Required"
     },
     {
       "id": "CC2",
@@ -62,7 +62,7 @@
           "notes": "Trust center, security page, or documented process for responding to customer security questionnaires."
         }
       ],
-      "group": "core"
+      "group": "Required"
     },
     {
       "id": "CC3",
@@ -90,7 +90,7 @@
           "notes": "Change-triggered reassessment process — new product, acquisition, major vendor swap."
         }
       ],
-      "group": "core"
+      "group": "Required"
     },
     {
       "id": "CC4",
@@ -108,7 +108,7 @@
           "notes": "Defined deficiency-tracking process (ticket/register) with owners and due dates, not a lost Slack message."
         }
       ],
-      "group": "core"
+      "group": "Required"
     },
     {
       "id": "CC5",
@@ -131,7 +131,7 @@
           "notes": "Every policy should have a corresponding real-world procedure and evidence trail."
         }
       ],
-      "group": "core"
+      "group": "Required"
     },
     {
       "id": "CC6",
@@ -179,7 +179,7 @@
           "notes": "Endpoint protection with logging."
         }
       ],
-      "group": "core"
+      "group": "Required"
     },
     {
       "id": "CC7",
@@ -212,7 +212,7 @@
           "notes": "Post-incident/lessons-learned process."
         }
       ],
-      "group": "core"
+      "group": "Required"
     },
     {
       "id": "CC8",
@@ -225,7 +225,7 @@
           "notes": "Change management policy with required approvals, mandatory testing before production deploy, dev/test/prod segregation, rollback procedures. CI/CD pipeline logs and PR approval history are usually your evidence."
         }
       ],
-      "group": "core"
+      "group": "Required"
     },
     {
       "id": "CC9",
@@ -243,12 +243,12 @@
           "notes": "Tiered vendor risk management program; signed vendor security questionnaires/SOC 2 reports on file for critical vendors."
         }
       ],
-      "group": "core"
+      "group": "Required"
     },
     {
       "id": "A1",
       "title": "Availability",
-      "group": "additional",
+      "group": "Optional",
       "summary": "Whether the system is available for operation and use as committed or agreed. Optional — relevant if your contracts/SLAs promise uptime.",
       "controls": [
         {
@@ -271,7 +271,7 @@
     {
       "id": "C1",
       "title": "Confidentiality",
-      "group": "additional",
+      "group": "Optional",
       "summary": "Whether information designated as confidential is protected as committed or agreed. Optional — relevant if you handle client data, IP, or other sensitive info beyond PII.",
       "controls": [
         {
@@ -289,7 +289,7 @@
     {
       "id": "PI1",
       "title": "Processing Integrity",
-      "group": "additional",
+      "group": "Optional",
       "summary": "Whether system processing is complete, valid, accurate, timely, and authorized to meet objectives. Optional — matters most for systems that transform, calculate, or transact on data (billing, payments, reporting).",
       "controls": [
         {
@@ -322,7 +322,7 @@
     {
       "id": "P",
       "title": "Privacy",
-      "group": "additional",
+      "group": "Optional",
       "summary": "Whether personal information is collected, used, retained, disclosed, and disposed of in conformity with the entity's privacy notice and criteria. Optional — the category most SaaS companies skip unless they handle significant consumer PII, since GDPR/CCPA often cover this ground contractually instead.",
       "controls": [
         {
