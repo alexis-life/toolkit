@@ -43,6 +43,9 @@ export default function FrameworkPage() {
         <div className="ax-header-titles">
           <div className="framework-title-row">
             <h1 className="ax-title">{framework.name}</h1>
+            <span className="framework-title-dot" aria-hidden="true">
+              ·
+            </span>
             <span className="label-micro framework-type-label" title={FRAMEWORK_TYPES[framework.type]}>
               {framework.type}
             </span>

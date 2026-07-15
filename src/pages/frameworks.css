@@ -27,10 +27,17 @@
 .framework-title-row {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 
 .framework-title-row .framework-type-label {
+  margin-top: 3px;
+}
+
+.framework-title-dot {
+  color: var(--c3);
+  font-size: 1.2rem;
+  line-height: 1;
   margin-top: 3px;
 }
 
