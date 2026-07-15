@@ -25,6 +25,11 @@
   cursor: help;
 }
 
+.framework-type-label {
+  margin-top: -4px;
+  cursor: help;
+}
+
 .framework-title-row {
   display: flex;
   align-items: center;

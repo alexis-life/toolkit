@@ -39,7 +39,7 @@ export default function FrameworksIndex() {
                 <h3>{f.name}</h3>
                 <span className="ax-badge">{f.content ? "Live" : "Coming soon"}</span>
               </div>
-              <span className="ax-chip framework-type-chip" title={FRAMEWORK_TYPES[f.type]}>
+              <span className="label-micro framework-type-label" title={FRAMEWORK_TYPES[f.type]}>
                 {f.type}
               </span>
               <p className="ax-meta">{f.blurb}</p>
