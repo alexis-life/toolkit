@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import TopNav from "../components/TopNav.jsx";
-import { FRAMEWORKS } from "../data/frameworks/index.js";
+import { FRAMEWORKS, FRAMEWORK_TYPES } from "../data/frameworks/index.js";
 
 // SOC 2, ISO 27001, and HIPAA are the ones most commonly required in
 // practice, so they're pinned first in this exact order regardless of what
@@ -39,6 +39,9 @@ export default function FrameworksIndex() {
                 <h3>{f.name}</h3>
                 <span className="ax-badge">{f.content ? "Live" : "Coming soon"}</span>
               </div>
+              <span className="ax-chip framework-type-chip" title={FRAMEWORK_TYPES[f.type]}>
+                {f.type}
+              </span>
               <p className="ax-meta">{f.blurb}</p>
             </Link>
           ))}

@@ -19,6 +19,18 @@
   transform: translateY(-2px);
 }
 
+.framework-type-chip {
+  align-self: flex-start;
+  text-transform: capitalize;
+  cursor: help;
+}
+
+.framework-title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .framework-card-head {
   display: flex;
   align-items: flex-start;

@@ -2,7 +2,7 @@ import { Link, useLocation, useParams } from "react-router-dom";
 import TopNav from "../components/TopNav.jsx";
 import FrameworkOverview from "../components/FrameworkOverview.jsx";
 import FrameworkControls from "../components/FrameworkControls.jsx";
-import { getFramework } from "../data/frameworks/index.js";
+import { getFramework, FRAMEWORK_TYPES } from "../data/frameworks/index.js";
 
 export default function FrameworkPage() {
   const { slug } = useParams();
@@ -41,7 +41,12 @@ export default function FrameworkPage() {
     <div>
       <header className="ax-header">
         <div className="ax-header-titles">
-          <h1 className="ax-title">{framework.name}</h1>
+          <div className="framework-title-row">
+            <h1 className="ax-title">{framework.name}</h1>
+            <span className="ax-chip framework-type-chip" title={FRAMEWORK_TYPES[framework.type]}>
+              {framework.type}
+            </span>
+          </div>
           <p className="text-meta">{content ? content.section : framework.blurb}</p>
         </div>
         <div className="ax-header-actions">
