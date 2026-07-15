@@ -1,6 +1,8 @@
 import soc2 from "./soc2.json";
 import hipaa from "./hipaa.json";
 import iso27001 from "./iso-27001.json";
+import gdpr from "./gdpr.json";
+import cmmc from "./cmmc.json";
 
 export const FRAMEWORKS = [
   {
@@ -36,8 +38,14 @@ export const FRAMEWORKS = [
   {
     slug: "gdpr",
     name: "GDPR",
-    blurb: "Chapters 2–4 — the parts that map most cleanly to security controls.",
-    content: null,
+    blurb: "Chapters II–IV — the parts that map most cleanly to security controls.",
+    content: gdpr,
+  },
+  {
+    slug: "cmmc",
+    name: "CMMC",
+    blurb: "Level 2 — all 110 NIST SP 800-171 practices.",
+    content: cmmc,
   },
 ];
 

@@ -1,0 +1,1000 @@
+{
+  "framework": "CMMC",
+  "section": "Level 2 Practices (NIST SP 800-171)",
+  "slug": "cmmc",
+  "description": "Cybersecurity Maturity Model Certification 2.0 — a U.S. Department of Defense contract requirement for the Defense Industrial Base. Level 2, the most widely applicable tier, requires implementing all 110 security requirements of NIST SP 800-171 Rev. 2 to protect Controlled Unclassified Information (CUI).",
+  "source": {
+    "label": "NIST SP 800-171 Rev. 2 (the basis for CMMC Level 2)",
+    "url": "https://csrc.nist.gov/pubs/sp/800/171/r2/upd1/final"
+  },
+  "overview": [
+    {
+      "icon": "🎖️",
+      "title": "Introduction to CMMC",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "CMMC — Cybersecurity Maturity Model Certification (current version: CMMC 2.0), a U.S. Department of Defense requirement for companies in the Defense Industrial Base (DIB).",
+            "Verifies that contractors protect **Federal Contract Information (FCI)** and **Controlled Unclassified Information (CUI)** at a level appropriate to what they actually handle.",
+            "Unlike SOC 2, ISO 27001, or HIPAA, this isn't optional if you want DoD contracts — it's being phased in as a contract requirement via the DFARS acquisition regulation, not something a company opts into for trust/marketing reasons."
+          ]
+        }
+      ]
+    },
+    {
+      "icon": "🧭",
+      "title": "Key Differences from Other Compliance Frameworks",
+      "blocks": [
+        {
+          "type": "heading",
+          "text": "CMMC vs NIST SP 800-171"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**NIST SP 800-171** — the underlying security requirements (110 of them); historically satisfied via self-attestation only, with no independent verification required.",
+            "**CMMC** — built directly on top of NIST SP 800-171 (CMMC Level 2 *is* all 110 requirements, unchanged) but adds a formal assessment structure — self-assessment or third-party certification — because DoD found self-attestation alone wasn't reliable."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "CMMC vs SOC 2 / ISO 27001"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**CMMC** — a government-mandated condition of contract eligibility for a specific customer (DoD); not a general-purpose trust signal.",
+            "**SOC 2 / ISO 27001** — voluntary, customer- or market-driven; you pursue them to win business broadly, not because one specific counterparty requires them by law."
+          ]
+        },
+        {
+          "type": "callout",
+          "text": "A defense contractor can hold SOC 2, ISO 27001, and CMMC certifications simultaneously — they overlap heavily on the underlying technical controls (access control, encryption, logging), but CMMC is the one that's non-negotiable if CUI shows up in your contract."
+        }
+      ]
+    },
+    {
+      "icon": "🗂️",
+      "title": "The Three CMMC Levels",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "**Level 1 (Foundational)** — 17 practices protecting FCI, drawn from FAR 52.204-21. Annual self-assessment; applies to contractors that only handle FCI, not CUI.",
+            "**Level 2 (Advanced)** — the full 110 requirements of NIST SP 800-171, protecting CUI. Most companies self-assess annually; those handling the most critical CUI require a third-party assessment by a certified C3PAO, valid for 3 years.",
+            "**Level 3 (Expert)** — Level 2 plus a subset of enhanced requirements from NIST SP 800-172, for the highest-priority programs. Assessed by the government (DIBCAC), not a commercial assessor."
+          ]
+        },
+        {
+          "type": "callout",
+          "text": "Which level applies isn't a company-wide choice — it's driven by the specific FCI/CUI in each contract. A company can be Level 1 for one contract and need Level 2 for another."
+        },
+        {
+          "type": "paragraph",
+          "text": "See the [Controls tab](/frameworks/cmmc/controls) for the full list of all 110 Level 2 requirements across the 14 NIST SP 800-171 families."
+        }
+      ]
+    },
+    {
+      "icon": "💡",
+      "title": "Why Comply with CMMC",
+      "blocks": [
+        {
+          "type": "heading",
+          "text": "It's a Contract Requirement, Not a Choice"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Eligibility gate** — for contracts requiring Level 2, certification (or a passing self-assessment score) is a condition of award, not a nice-to-have.",
+            "**Flow-down** — prime contractors must require the same level from subcontractors handling the same FCI/CUI, so this reaches deep into the supply chain.",
+            "**False Claims Act exposure** — falsely certifying compliance carries real legal risk, separate from losing the contract itself."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Beyond the Legal Floor"
+        },
+        {
+          "type": "paragraph",
+          "text": "Because CMMC Level 2 is literally NIST SP 800-171, doing this work also gives you a genuinely strong technical security baseline — most of it maps cleanly onto SOC 2's Security criteria and ISO 27001's Technological controls, so it's rarely wasted effort even outside defense contracting."
+        }
+      ]
+    },
+    {
+      "icon": "📋",
+      "title": "Assessing CMMC Level 2 Readiness",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Quick self-score across the largest and most commonly-cited-as-difficult families. If you're answering \"no\" to more than half in any family, prioritize it."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Family",
+            "Control Area",
+            "Key Question",
+            "Typical Effort"
+          ],
+          "rows": [
+            [
+              "Access Control",
+              "Least privilege & remote access",
+              "Is access role-based, with remote sessions monitored and encrypted?",
+              "Medium"
+            ],
+            [
+              "Access Control",
+              "External systems & mobile",
+              "Are external system connections verified, and is CUI encrypted on mobile devices?",
+              "Medium"
+            ],
+            [
+              "Identification & Authentication",
+              "MFA",
+              "Is MFA enforced for all privileged access, and network access generally?",
+              "Medium"
+            ],
+            [
+              "Audit & Accountability",
+              "Centralized logging",
+              "Do you have centralized, tamper-protected audit logs with a defined review process?",
+              "High"
+            ],
+            [
+              "Configuration Management",
+              "Baselines & change control",
+              "Do you maintain secure configuration baselines and a formal change management process?",
+              "Medium"
+            ],
+            [
+              "System & Communications Protection",
+              "Encryption (FIPS-validated)",
+              "Is CUI encrypted at rest and in transit using FIPS-validated cryptography?",
+              "High"
+            ],
+            [
+              "System & Communications Protection",
+              "Network boundary protection",
+              "Are external/internal boundaries monitored with default-deny network policy?",
+              "Medium"
+            ],
+            [
+              "System & Information Integrity",
+              "Patch & malware management",
+              "Do you have timely patching and active malware protection with real-time scanning?",
+              "Medium"
+            ],
+            [
+              "Incident Response",
+              "IR capability",
+              "Do you have a tested incident response plan with defined reporting obligations?",
+              "Medium"
+            ],
+            [
+              "Risk Assessment",
+              "Vulnerability scanning",
+              "Do you periodically scan for vulnerabilities and remediate based on risk?",
+              "Medium"
+            ],
+            [
+              "Security Assessment",
+              "System Security Plan & POA&M",
+              "Do you maintain a current SSP and a POA&M tracking open gaps?",
+              "High"
+            ],
+            [
+              "Media Protection",
+              "CUI on media",
+              "Is CUI on physical/digital media protected, tracked, and sanitized before disposal?",
+              "Medium"
+            ],
+            [
+              "Physical Protection",
+              "Facility & visitor controls",
+              "Is physical access to CUI-handling areas logged, with visitors escorted?",
+              "Low"
+            ],
+            [
+              "Personnel Security",
+              "Screening & offboarding",
+              "Are personnel screened before CUI access, with access revoked promptly on termination?",
+              "Low"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Identifying Gaps"
+        },
+        {
+          "type": "list",
+          "items": [
+            "A gap analysis against all 110 requirements (not a sample) is the standard starting point — this is what a C3PAO or your own self-assessment will ultimately test against.",
+            "[NIST SP 800-171A](https://csrc.nist.gov/pubs/sp/800/171/a/final) is the companion assessment procedures document — it tells you exactly how each requirement gets evaluated."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "What Takes Longest"
+        },
+        {
+          "type": "callout",
+          "text": "System and Communications Protection (16 requirements, including FIPS-validated cryptography) and Audit and Accountability (centralized, correlated logging) are consistently the slowest to fully operationalize — they require real tooling investment, not just policy. The System Security Plan and POA&M (Security Assessment family) also take real time to do properly, since they document how all 110 requirements are actually implemented."
+        },
+        {
+          "type": "heading",
+          "text": "What to Implement First"
+        },
+        {
+          "type": "ordered-list",
+          "items": [
+            "**MFA on all privileged and network access** — high impact, usually a configuration change in tools you already run.",
+            "**Unique user IDs and basic access control** — foundational, and most other Access Control requirements build on it.",
+            "**A System Security Plan skeleton** — start documenting scope and implementation status early; it only gets more valuable as you fill in the rest.",
+            "**Basic audit logging** — turn on logging broadly first, then layer in correlation/alerting (SIEM) as a later step.",
+            "Once those are in place, move to the higher-effort items — FIPS-validated cryptography, network segmentation, and a fully operational SIEM — since those need real infrastructure work, not just configuration."
+          ]
+        }
+      ]
+    },
+    {
+      "icon": "🗺️",
+      "title": "CMMC Roadmap",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Reaching Level 2 readiness typically takes 6–18 months depending on starting maturity — companies with an existing NIST 800-171 self-attestation on file have a real head start."
+        },
+        {
+          "type": "heading",
+          "text": "Step-by-Step Process"
+        },
+        {
+          "type": "ordered-list",
+          "items": [
+            "**Scope** — identify every system, network, and workflow that touches FCI or CUI.",
+            "**Gap analysis** — assess current state against all 110 NIST SP 800-171 requirements.",
+            "**Remediation** — implement fixes; anything not yet complete goes into a Plan of Action & Milestones (POA&M).",
+            "**System Security Plan (SSP)** — document scope, environment, and exactly how each requirement is implemented.",
+            "**Self-assessment & SPRS scoring** — score your implementation (110-point scale with deductions) and submit it to the Supplier Performance Risk System.",
+            "**C3PAO assessment (if required)** — third-party certification for contracts requiring it, valid for 3 years."
+          ]
+        }
+      ]
+    },
+    {
+      "icon": "🔍",
+      "title": "Assessment Process",
+      "blocks": [
+        {
+          "type": "heading",
+          "text": "Self-Assessment vs Third-Party (C3PAO)"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Self-assessment** — the company assesses itself against all 110 requirements and submits a score to SPRS; covers most Level 2 contracts.",
+            "**C3PAO assessment** — an accredited third-party assessor organization conducts the assessment, required for contracts involving the most critical CUI; results in a formal certification valid for 3 years."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "SPRS Scoring"
+        },
+        {
+          "type": "paragraph",
+          "text": "Each unmet requirement deducts points from a maximum score, with some requirements weighted more heavily than others (e.g. missing MFA or encryption costs more than a minor documentation gap). A negative or low score is a real problem for contract eligibility, not just a formality."
+        },
+        {
+          "type": "heading",
+          "text": "POA&Ms"
+        },
+        {
+          "type": "paragraph",
+          "text": "A limited set of unmet requirements can go into a Plan of Action & Milestones with a defined remediation timeline (generally capped at 180 days) rather than blocking certification outright — but this isn't a way to defer the hardest requirements indefinitely."
+        }
+      ]
+    },
+    {
+      "icon": "♻️",
+      "title": "Maintaining Compliance",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Compliance is ongoing — a passing score or certification at one point in time doesn't mean you're done."
+        },
+        {
+          "type": "heading",
+          "text": "Ongoing Requirements"
+        },
+        {
+          "type": "paragraph",
+          "text": "Annual affirmation of continued compliance, updating the SSP and POA&M as the environment changes, and continuous monitoring of the controls you've implemented — not just re-checking once a year."
+        },
+        {
+          "type": "heading",
+          "text": "Reassessment"
+        },
+        {
+          "type": "paragraph",
+          "text": "C3PAO certifications are valid for 3 years, after which a full reassessment is required, similar in structure to the original certification."
+        },
+        {
+          "type": "heading",
+          "text": "Scaling Compliance"
+        },
+        {
+          "type": "paragraph",
+          "text": "As you win new contracts or your CUI footprint grows, reassess whether a higher level applies, and bring new systems into scope for the SSP before they touch CUI, not after."
+        }
+      ]
+    }
+  ],
+  "categories": [
+    {
+      "id": "AC",
+      "title": "Access Control",
+      "group": "core",
+      "summary": "Who and what can access your systems, and what they're allowed to do once they're in — by far the largest family. (22 requirements.)",
+      "controls": [
+        {
+          "id": "3.1.1",
+          "criteria": "Limit system access to authorized users, processes acting on behalf of authorized users, and devices (including other systems).",
+          "notes": "A defined account provisioning process, not just \"everyone with a login can see everything.\""
+        },
+        {
+          "id": "3.1.2",
+          "criteria": "Limit system access to the types of transactions and functions that authorized users are permitted to execute.",
+          "notes": "Role-based permissions so users can only perform the specific actions their job requires."
+        },
+        {
+          "id": "3.1.3",
+          "criteria": "Control the flow of CUI in accordance with approved authorizations.",
+          "notes": "Data flow controls (firewalls, DLP) that keep CUI from moving somewhere it isn't authorized to go."
+        },
+        {
+          "id": "3.1.4",
+          "criteria": "Separate the duties of individuals to reduce the risk of malevolent activity without collusion.",
+          "notes": "Split conflicting duties (e.g. requesting vs. approving access) across different people."
+        },
+        {
+          "id": "3.1.5",
+          "criteria": "Employ the principle of least privilege, including for specific security functions and privileged accounts.",
+          "notes": "Least privilege by default, with extra scrutiny on admin/privileged accounts specifically."
+        },
+        {
+          "id": "3.1.6",
+          "criteria": "Use non-privileged accounts or roles when accessing nonsecurity functions",
+          "notes": "Admins use a separate non-privileged account for everyday work (email, browsing), not their admin login."
+        },
+        {
+          "id": "3.1.7",
+          "criteria": "Prevent non-privileged users from executing privileged functions and capture the execution of such functions in audit logs.",
+          "notes": "Technical controls that stop regular users from running admin commands, with logging when privileged functions are used."
+        },
+        {
+          "id": "3.1.8",
+          "criteria": "Limit unsuccessful logon attempts.",
+          "notes": "Account lockout after a defined number of failed login attempts."
+        },
+        {
+          "id": "3.1.9",
+          "criteria": "Provide privacy and security notices consistent with applicable CUI rules.",
+          "notes": "A login banner or notice reflecting your actual CUI handling policies."
+        },
+        {
+          "id": "3.1.10",
+          "criteria": "Use session lock with pattern-hiding displays to prevent access and viewing of data after a period of inactivity",
+          "notes": "Screen lock after inactivity, with the screen content hidden, not just password-protected."
+        },
+        {
+          "id": "3.1.11",
+          "criteria": "Terminate (automatically) a user session after a defined condition.",
+          "notes": "Automatic session timeout after a defined period or condition."
+        },
+        {
+          "id": "3.1.12",
+          "criteria": "Monitor and control remote access sessions.",
+          "notes": "Remote access sessions are logged and can be actively monitored, not just allowed and forgotten."
+        },
+        {
+          "id": "3.1.13",
+          "criteria": "Employ cryptographic mechanisms to protect the confidentiality of remote access sessions.",
+          "notes": "Remote access sessions are encrypted end to end."
+        },
+        {
+          "id": "3.1.14",
+          "criteria": "Route remote access via managed access control points.",
+          "notes": "Remote access routes through a small number of managed, monitored access points, not ad hoc VPN endpoints."
+        },
+        {
+          "id": "3.1.15",
+          "criteria": "Authorize remote execution of privileged commands and remote access to security-relevant information.",
+          "notes": "Running privileged commands remotely requires separate authorization, not just remote access itself."
+        },
+        {
+          "id": "3.1.16",
+          "criteria": "Authorize wireless access prior to allowing such connections",
+          "notes": "Wireless access requires explicit authorization before connections are allowed."
+        },
+        {
+          "id": "3.1.17",
+          "criteria": "Protect wireless access using authentication and encryption",
+          "notes": "Wireless networks use strong authentication and encryption (WPA2/WPA3-Enterprise, not open Wi-Fi)."
+        },
+        {
+          "id": "3.1.18",
+          "criteria": "Control connection of mobile devices.",
+          "notes": "A defined process for approving which mobile devices can connect to systems handling CUI."
+        },
+        {
+          "id": "3.1.19",
+          "criteria": "Encrypt CUI on mobile devices and mobile computing platforms.",
+          "notes": "CUI stored on phones/laptops is encrypted at rest."
+        },
+        {
+          "id": "3.1.20",
+          "criteria": "Verify and control/limit connections to and use of external systems.",
+          "notes": "External systems (contractor devices, cloud services) are verified and controlled before they can connect."
+        },
+        {
+          "id": "3.1.21",
+          "criteria": "Limit use of portable storage devices on external systems.",
+          "notes": "Restrict or disable USB/portable storage use on systems you don't fully control."
+        },
+        {
+          "id": "3.1.22",
+          "criteria": "Control CUI posted or processed on publicly accessible systems.",
+          "notes": "Review anything posted to a public-facing system to make sure it doesn't contain CUI."
+        }
+      ]
+    },
+    {
+      "id": "AT",
+      "title": "Awareness and Training",
+      "group": "core",
+      "summary": "Making sure people actually know the security risks and policies relevant to their role. (3 requirements.)",
+      "controls": [
+        {
+          "id": "3.2.1",
+          "criteria": "Ensure that managers, systems administrators, and users of organizational systems are made aware of the security risks associated with their activities and of the applicable policies, standards, and procedures related to the security of those systems.",
+          "notes": "Baseline security awareness training covering the actual risks and policies relevant to each role."
+        },
+        {
+          "id": "3.2.2",
+          "criteria": "Ensure that personnel are trained to carry out their assigned information security-related duties and responsibilities.",
+          "notes": "Role-specific training for anyone with security-relevant duties (admins, incident responders), beyond general awareness."
+        },
+        {
+          "id": "3.2.3",
+          "criteria": "Provide security awareness training on recognizing and reporting potential indicators of insider threat.",
+          "notes": "Training that specifically covers recognizing and reporting insider threat indicators."
+        }
+      ]
+    },
+    {
+      "id": "AU",
+      "title": "Audit and Accountability",
+      "group": "core",
+      "summary": "Logging system activity well enough to investigate incidents and hold individuals accountable for their actions. (9 requirements.)",
+      "controls": [
+        {
+          "id": "3.3.1",
+          "criteria": "Create and retain system audit logs and records to the extent needed to enable the monitoring, analysis, investigation, and reporting of unlawful or unauthorized system activity",
+          "notes": "Centralized logging sufficient to reconstruct what happened during an investigation, not just default OS logs sitting untouched."
+        },
+        {
+          "id": "3.3.2",
+          "criteria": "Ensure that the actions of individual system users can be uniquely traced to those users, so they can be held accountable for their actions.",
+          "notes": "Unique user IDs (no shared logins) so every logged action traces to one person."
+        },
+        {
+          "id": "3.3.3",
+          "criteria": "Review and update logged events.",
+          "notes": "A periodic review of what's being logged, so the logging scope keeps up with the environment."
+        },
+        {
+          "id": "3.3.4",
+          "criteria": "Alert in the event of an audit logging process failure.",
+          "notes": "Alerting when the logging pipeline itself fails, so gaps in evidence don't go unnoticed."
+        },
+        {
+          "id": "3.3.5",
+          "criteria": "Correlate audit record review, analysis, and reporting processes for investigation and response to indications of unlawful, unauthorized, suspicious, or unusual activity.",
+          "notes": "Correlating logs across systems (a SIEM or equivalent) rather than reviewing each system's logs in isolation."
+        },
+        {
+          "id": "3.3.6",
+          "criteria": "Provide audit record reduction and report generation to support on-demand analysis and reporting.",
+          "notes": "Tooling to filter/summarize logs on demand instead of manually scrolling raw log files during an investigation."
+        },
+        {
+          "id": "3.3.7",
+          "criteria": "Provide a system capability that compares and synchronizes internal system clocks with an authoritative source to generate time stamps for audit records",
+          "notes": "Synchronized system clocks (NTP) so timestamps across systems can be correlated."
+        },
+        {
+          "id": "3.3.8",
+          "criteria": "Protect audit information and audit logging tools from unauthorized access, modification, and deletion.",
+          "notes": "Logs themselves are access-controlled and tamper-evident."
+        },
+        {
+          "id": "3.3.9",
+          "criteria": "Limit management of audit logging functionality to a subset of privileged users.",
+          "notes": "Only a small, defined set of privileged users can manage logging configuration."
+        }
+      ]
+    },
+    {
+      "id": "CM",
+      "title": "Configuration Management",
+      "group": "core",
+      "summary": "Establishing and enforcing secure baseline configurations, and controlling changes to them. (9 requirements.)",
+      "controls": [
+        {
+          "id": "3.4.1",
+          "criteria": "Establish and maintain baseline configurations and inventories of organizational systems (including hardware, software, firmware, and documentation) throughout the respective system development life cycles.",
+          "notes": "A maintained baseline/inventory of hardware, software, and firmware, updated through the system lifecycle."
+        },
+        {
+          "id": "3.4.2",
+          "criteria": "Establish and enforce security configuration settings for information technology products employed in organizational systems.",
+          "notes": "Documented secure configuration standards (hardening baselines) enforced on deployed systems."
+        },
+        {
+          "id": "3.4.3",
+          "criteria": "Track, review, approve or disapprove, and log changes to organizational systems.",
+          "notes": "A change management process: changes are tracked, reviewed, and approved or rejected, with a log."
+        },
+        {
+          "id": "3.4.4",
+          "criteria": "Analyze the security impact of changes prior to implementation.",
+          "notes": "Security impact analysis before a change ships, not just functional testing."
+        },
+        {
+          "id": "3.4.5",
+          "criteria": "Define, document, approve, and enforce physical and logical access restrictions associated with changes to organizational systems.",
+          "notes": "Access to make changes is itself restricted to authorized people."
+        },
+        {
+          "id": "3.4.6",
+          "criteria": "Employ the principle of least functionality by configuring organizational systems to provide only essential capabilities.",
+          "notes": "Systems are configured to run only what's actually needed — no unnecessary services enabled by default."
+        },
+        {
+          "id": "3.4.7",
+          "criteria": "Restrict, disable, or prevent the use of nonessential programs, functions, ports, protocols, and services.",
+          "notes": "Disable unused ports, protocols, and services rather than leaving them open \"just in case.\""
+        },
+        {
+          "id": "3.4.8",
+          "criteria": "Apply deny-by-exception (blacklisting) policy to prevent the use of unauthorized software or deny-all, permit-by-exception (whitelisting) policy to allow the execution of authorized software.",
+          "notes": "Application allowlisting/denylisting to control what software can execute."
+        },
+        {
+          "id": "3.4.9",
+          "criteria": "Control and monitor user-installed software.",
+          "notes": "User-installed software is monitored and controlled, not a free-for-all."
+        }
+      ]
+    },
+    {
+      "id": "IA",
+      "title": "Identification and Authentication",
+      "group": "core",
+      "summary": "Verifying the identity of every user, process, and device before granting access. (11 requirements.)",
+      "controls": [
+        {
+          "id": "3.5.1",
+          "criteria": "Identify system users, processes acting on behalf of users, and devices.",
+          "notes": "Every user, process, and device has a distinct identity."
+        },
+        {
+          "id": "3.5.2",
+          "criteria": "Authenticate (or verify) the identities of users, processes, or devices, as a prerequisite to allowing access to organizational systems.",
+          "notes": "Identities are actually authenticated (verified) before access is granted — not just claimed."
+        },
+        {
+          "id": "3.5.3",
+          "criteria": "Use multifactor authentication for local and network access to privileged accounts and for network access to non-privileged accounts..",
+          "notes": "MFA for all privileged account access, and for network access to standard accounts too."
+        },
+        {
+          "id": "3.5.4",
+          "criteria": "Employ replay-resistant authentication mechanisms for network access to privileged and non-privileged accounts.",
+          "notes": "Authentication mechanisms that resist replay attacks (not static, reusable credentials over the network)."
+        },
+        {
+          "id": "3.5.5",
+          "criteria": "Prevent reuse of identifiers for a defined period.",
+          "notes": "Old identifiers/usernames aren't immediately reissued to someone new."
+        },
+        {
+          "id": "3.5.6",
+          "criteria": "Disable identifiers after a defined period of inactivity.",
+          "notes": "Inactive accounts are disabled automatically after a defined period."
+        },
+        {
+          "id": "3.5.7",
+          "criteria": "Enforce a minimum password complexity and change of characters when new passwords are created.",
+          "notes": "Enforced password complexity requirements, with real character changes on rotation (not just incrementing a digit)."
+        },
+        {
+          "id": "3.5.8",
+          "criteria": "Prohibit password reuse for a specified number of generations.",
+          "notes": "Password history enforcement to block reuse of recent passwords."
+        },
+        {
+          "id": "3.5.9",
+          "criteria": "Allow temporary password use for system logons with an immediate change to a permanent password.",
+          "notes": "Temporary passwords force an immediate change on first login."
+        },
+        {
+          "id": "3.5.10",
+          "criteria": "Store and transmit only cryptographically-protected passwords.",
+          "notes": "Passwords are hashed/encrypted in storage and transit — never stored or sent in plaintext."
+        },
+        {
+          "id": "3.5.11",
+          "criteria": "Obscure feedback of authentication information",
+          "notes": "Password entry fields mask input (no characters shown on screen)."
+        }
+      ]
+    },
+    {
+      "id": "IR",
+      "title": "Incident Response",
+      "group": "core",
+      "summary": "Detecting, responding to, and learning from security incidents. (3 requirements.)",
+      "controls": [
+        {
+          "id": "3.6.1",
+          "criteria": "Establish an operational incident-handling capability for organizational systems that includes preparation, detection, analysis, containment, recovery, and user response activities.",
+          "notes": "A documented incident response capability covering the full lifecycle: prep, detection, analysis, containment, recovery."
+        },
+        {
+          "id": "3.6.2",
+          "criteria": "Track, document, and report incidents to designated officials and/or authorities both internal and external to the organization.",
+          "notes": "Incidents are tracked and reported to the right internal and external parties (including required DoD reporting timelines)."
+        },
+        {
+          "id": "3.6.3",
+          "criteria": "Test the organizational incident response capability.",
+          "notes": "The incident response plan is actually tested (tabletop exercises), not just written and filed."
+        }
+      ]
+    },
+    {
+      "id": "MA",
+      "title": "Maintenance",
+      "group": "core",
+      "summary": "Keeping system maintenance itself — tools, personnel, remote sessions — from becoming a security gap. (6 requirements.)",
+      "controls": [
+        {
+          "id": "3.7.1",
+          "criteria": "Perform maintenance on organizational systems..",
+          "notes": "Routine system maintenance happens on a defined schedule, not reactively."
+        },
+        {
+          "id": "3.7.2",
+          "criteria": "Provide controls on the tools, techniques, mechanisms, and personnel used to conduct system maintenance.",
+          "notes": "Maintenance tools and the people using them are controlled and authorized."
+        },
+        {
+          "id": "3.7.3",
+          "criteria": "Ensure equipment removed for off-site maintenance is sanitized of any CUI.",
+          "notes": "Equipment leaving the premises for repair is sanitized of CUI first."
+        },
+        {
+          "id": "3.7.4",
+          "criteria": "Check media containing diagnostic and test programs for malicious code before the media are used in organizational systems.",
+          "notes": "Diagnostic/test media is scanned for malicious code before use."
+        },
+        {
+          "id": "3.7.5",
+          "criteria": "Require multifactor authentication to establish nonlocal maintenance sessions via external network connections and terminate such connections when nonlocal maintenance is complete.",
+          "notes": "Remote maintenance sessions require MFA and are terminated when the work is done."
+        },
+        {
+          "id": "3.7.6",
+          "criteria": "Supervise the maintenance activities of maintenance personnel without required access authorization.",
+          "notes": "Maintenance personnel without full clearance are supervised while they work."
+        }
+      ]
+    },
+    {
+      "id": "MP",
+      "title": "Media Protection",
+      "group": "core",
+      "summary": "Protecting CUI on physical and digital media through its full lifecycle, including disposal. (9 requirements.)",
+      "controls": [
+        {
+          "id": "3.8.1",
+          "criteria": "Protect (i.e., physically control and securely store) system media containing CUI, both paper and digital.",
+          "notes": "Physical and digital media containing CUI is stored securely and access-controlled."
+        },
+        {
+          "id": "3.8.2",
+          "criteria": "Limit access to CUI on system media to authorized users",
+          "notes": "Only authorized users can access CUI on any given piece of media."
+        },
+        {
+          "id": "3.8.3",
+          "criteria": "Sanitize or destroy system media containing CUI before disposal or release for reuse.",
+          "notes": "Media is sanitized or destroyed (not just deleted) before disposal or reuse."
+        },
+        {
+          "id": "3.8.4",
+          "criteria": "Mark media with necessary CUI markings and distribution limitations.",
+          "notes": "CUI media is labeled with the appropriate markings and distribution limits."
+        },
+        {
+          "id": "3.8.5",
+          "criteria": "Control access to media containing CUI and maintain accountability for media during transport outside of controlled areas.",
+          "notes": "Media is tracked and access-controlled while being transported outside a controlled area."
+        },
+        {
+          "id": "3.8.6",
+          "criteria": "Implement cryptographic mechanisms to protect the confidentiality of CUI stored on digital media during transport unless otherwise protected by alternative physical safeguards.",
+          "notes": "CUI on digital media is encrypted during transport unless equivalent physical safeguards are in place."
+        },
+        {
+          "id": "3.8.7",
+          "criteria": "Control the use of removable media on system components.",
+          "notes": "Removable media use is actively controlled, not open by default."
+        },
+        {
+          "id": "3.8.8",
+          "criteria": "Prohibit the use of portable storage devices when such devices have no identifiable owner.",
+          "notes": "Portable storage devices with no identifiable owner are prohibited outright."
+        },
+        {
+          "id": "3.8.9",
+          "criteria": "Protect the confidentiality of backup CUI at storage locations.",
+          "notes": "Backups containing CUI are protected with the same confidentiality controls as production data."
+        }
+      ]
+    },
+    {
+      "id": "PS",
+      "title": "Personnel Security",
+      "group": "core",
+      "summary": "Screening people before granting access, and adjusting access when their employment status changes. (2 requirements.)",
+      "controls": [
+        {
+          "id": "3.9.1",
+          "criteria": "Screen individuals prior to authorizing access to organizational systems containing CUI.",
+          "notes": "Background screening before granting access to systems containing CUI."
+        },
+        {
+          "id": "3.9.2",
+          "criteria": "Ensure that organizational systems containing CUI are protected during and after personnel actions such as terminations and transfers",
+          "notes": "Access is promptly adjusted or revoked during terminations, transfers, and role changes."
+        }
+      ]
+    },
+    {
+      "id": "PE",
+      "title": "Physical Protection",
+      "group": "core",
+      "summary": "Restricting and monitoring physical access to systems and the facilities housing them. (6 requirements.)",
+      "controls": [
+        {
+          "id": "3.10.1",
+          "criteria": "Limit physical access to organizational systems, equipment, and the respective operating environments to authorized individuals.",
+          "notes": "Physical access to systems/equipment is restricted to authorized individuals."
+        },
+        {
+          "id": "3.10.2",
+          "criteria": "Protect and monitor the physical facility and support infrastructure for organizational systems.",
+          "notes": "Facilities and supporting infrastructure (power, cooling) are protected and monitored."
+        },
+        {
+          "id": "3.10.3",
+          "criteria": "Escort visitors and monitor visitor activity.",
+          "notes": "Visitors are escorted and their activity is monitored while on-site."
+        },
+        {
+          "id": "3.10.4",
+          "criteria": "Maintain audit logs of physical access.",
+          "notes": "Physical access is logged (badge logs or equivalent)."
+        },
+        {
+          "id": "3.10.5",
+          "criteria": "Control and manage physical access devices.",
+          "notes": "Physical access devices (badges, keys, locks) are managed and tracked."
+        },
+        {
+          "id": "3.10.6",
+          "criteria": "Enforce safeguarding measures for CUI at alternate work sites.",
+          "notes": "Remote/alternate work sites still meet CUI safeguarding requirements, not just the main office."
+        }
+      ]
+    },
+    {
+      "id": "RA",
+      "title": "Risk Assessment",
+      "group": "core",
+      "summary": "Periodically assessing risk and scanning for and remediating vulnerabilities. (3 requirements.)",
+      "controls": [
+        {
+          "id": "3.11.1",
+          "criteria": "Periodically assess the risk to organizational operations (including mission, functions, image, or reputation), organizational assets, and individuals, resulting from the operation of organizational systems and the associated processing, storage, or transmission of CUI",
+          "notes": "A periodic, documented risk assessment covering operations, assets, and individuals."
+        },
+        {
+          "id": "3.11.2",
+          "criteria": "Scan for vulnerabilities in organizational systems and applications periodically and when new vulnerabilities affecting those systems and applications are identified.",
+          "notes": "Regular vulnerability scanning, plus ad hoc scans when new vulnerabilities are disclosed."
+        },
+        {
+          "id": "3.11.3",
+          "criteria": "Remediate vulnerabilities in accordance with risk assessments.",
+          "notes": "Vulnerabilities are actually remediated on a timeline tied to their assessed risk, not left open indefinitely."
+        }
+      ]
+    },
+    {
+      "id": "CA",
+      "title": "Security Assessment",
+      "group": "core",
+      "summary": "Assessing whether your controls are actually effective, tracking gaps, and documenting it all in a System Security Plan. (4 requirements.)",
+      "controls": [
+        {
+          "id": "3.12.1",
+          "criteria": "Periodically assess the security controls in organizational systems to determine if the controls are effective in their application.",
+          "notes": "Periodic assessment of whether your security controls are actually working, not just present."
+        },
+        {
+          "id": "3.12.2",
+          "criteria": "Develop and implement plans of action designed to correct deficiencies and reduce or eliminate vulnerabilities in organizational systems.",
+          "notes": "A Plan of Action & Milestones (POA&M) tracking how and when identified gaps get fixed."
+        },
+        {
+          "id": "3.12.3",
+          "criteria": "Monitor security controls on an ongoing basis to ensure the continued effectiveness of the controls.",
+          "notes": "Ongoing monitoring of control effectiveness, not just a point-in-time assessment."
+        },
+        {
+          "id": "3.12.4",
+          "criteria": "Develop, document, and periodically update system security plans that describe system boundaries, system environments of operation, how security requirements are implemented, and the relationships with or connections to other systems.",
+          "notes": "A maintained System Security Plan (SSP) documenting scope, environment, and how each requirement is actually implemented — this is the core artifact assessors review first."
+        }
+      ]
+    },
+    {
+      "id": "SC",
+      "title": "System and Communications Protection",
+      "group": "core",
+      "summary": "Securing the network boundary and the communications crossing it — the largest technical family after Access Control. (16 requirements.)",
+      "controls": [
+        {
+          "id": "3.13.1",
+          "criteria": "Monitor, control, and protect communications (i.e., information transmitted or received by organizational systems) at the external boundaries and key internal boundaries of organizational systems.",
+          "notes": "Boundary protection (firewalls) monitoring and controlling traffic at external and key internal boundaries."
+        },
+        {
+          "id": "3.13.2",
+          "criteria": "Employ architectural designs, software development techniques, and systems engineering principles that promote effective information security within organizational systems.",
+          "notes": "Secure-by-design architecture and development practices baked in, not bolted on after the fact."
+        },
+        {
+          "id": "3.13.3",
+          "criteria": "Separate user functionality from system management functionality.",
+          "notes": "User-facing functionality is separated from system administration functionality."
+        },
+        {
+          "id": "3.13.4",
+          "criteria": "Prevent unauthorized and unintended information transfer via shared system resources.",
+          "notes": "Shared resources (memory, storage) can't leak information between users/processes."
+        },
+        {
+          "id": "3.13.5",
+          "criteria": "Implement subnetworks for publicly accessible system components that are physically or logically separated from internal networks.",
+          "notes": "Publicly accessible components sit in a separated subnetwork (DMZ), not directly on the internal network."
+        },
+        {
+          "id": "3.13.6",
+          "criteria": "Deny network communications traffic by default and allow network communications traffic by exception (i.e., deny all, permit by exception).",
+          "notes": "Default-deny network policy: block everything, then explicitly allow what's needed."
+        },
+        {
+          "id": "3.13.7",
+          "criteria": "Prevent remote devices from simultaneously establishing non-remote connections with organizational systems and communicating via some other connection to resources in external networks (i.e., split tunneling).",
+          "notes": "Split tunneling is disabled so remote devices can't bridge external networks into your internal one."
+        },
+        {
+          "id": "3.13.8",
+          "criteria": "Implement cryptographic mechanisms to prevent unauthorized disclosure of CUI during transmission unless otherwise protected by alternative physical safeguards.",
+          "notes": "CUI in transit is encrypted, unless equivalent physical safeguards apply."
+        },
+        {
+          "id": "3.13.9",
+          "criteria": "Terminate network connections associated with communications sessions at the end of the sessions or after a defined period of inactivity.",
+          "notes": "Idle network sessions are terminated after a defined period."
+        },
+        {
+          "id": "3.13.10",
+          "criteria": "Establish and manage cryptographic keys for cryptography employed in organizational systems.",
+          "notes": "A defined process for managing cryptographic keys throughout their lifecycle."
+        },
+        {
+          "id": "3.13.11",
+          "criteria": "Employ FIPS-validated cryptography when used to protect the confidentiality of CUI.",
+          "notes": "Only FIPS-validated cryptographic modules are used to protect CUI confidentiality."
+        },
+        {
+          "id": "3.13.12",
+          "criteria": "Prohibit remote activation of collaborative computing devices and provide indication of devices in use to users present at the device..",
+          "notes": "Collaborative devices (webcams, mics) can't be remotely activated without an indicator showing they're in use."
+        },
+        {
+          "id": "3.13.13",
+          "criteria": "Control and monitor the use of mobile code.",
+          "notes": "Mobile code (scripts, applets) is controlled and monitored, not run unchecked."
+        },
+        {
+          "id": "3.13.14",
+          "criteria": "Control and monitor the use of Voice over Internet Protocol (VoIP) technologies.",
+          "notes": "VoIP traffic is controlled and monitored like any other network communication."
+        },
+        {
+          "id": "3.13.15",
+          "criteria": "Protect the authenticity of communications sessions.",
+          "notes": "Communication sessions are protected against impersonation/hijacking."
+        },
+        {
+          "id": "3.13.16",
+          "criteria": "Protect the confidentiality of CUI at rest.",
+          "notes": "CUI at rest is encrypted."
+        }
+      ]
+    },
+    {
+      "id": "SI",
+      "title": "System and Information Integrity",
+      "group": "core",
+      "summary": "Detecting and correcting flaws, malware, and attacks against systems in near-real-time. (7 requirements.)",
+      "controls": [
+        {
+          "id": "3.14.1",
+          "criteria": "Identify, report, and correct system flaws in a timely manner.",
+          "notes": "A defined process for identifying, reporting, and fixing system flaws on a timely basis (patch management)."
+        },
+        {
+          "id": "3.14.2",
+          "criteria": "Provide protection from malicious code at designated locations within organizational systems.",
+          "notes": "Malware protection deployed at the points where it's actually needed (endpoints, gateways, email)."
+        },
+        {
+          "id": "3.14.3",
+          "criteria": "Monitor system security alerts and advisories and take action in response.",
+          "notes": "Active monitoring of security alerts/advisories, with a defined response process, not just passive awareness."
+        },
+        {
+          "id": "3.14.4",
+          "criteria": "Update malicious code protection mechanisms when new releases are available.",
+          "notes": "Malware definitions/signatures are kept current as new releases become available."
+        },
+        {
+          "id": "3.14.5",
+          "criteria": "Perform periodic scans of organizational systems and real-time scans of files from external sources as files are downloaded, opened, or executed.",
+          "notes": "Scheduled full-system scans plus real-time scanning of files as they're downloaded or opened."
+        },
+        {
+          "id": "3.14.6",
+          "criteria": "Monitor organizational systems, including inbound and outbound communications traffic, to detect attacks and indicators of potential attacks.",
+          "notes": "Network monitoring (inbound and outbound) to detect attacks and indicators of compromise."
+        },
+        {
+          "id": "3.14.7",
+          "criteria": "Identify unauthorized use of organizational systems.",
+          "notes": "A way to detect unauthorized use of systems, not just unauthorized access attempts."
+        }
+      ]
+    }
+  ]
+}
