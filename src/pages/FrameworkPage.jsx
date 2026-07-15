@@ -43,7 +43,7 @@ export default function FrameworkPage() {
         <div className="ax-header-titles">
           <div className="framework-title-row">
             <h1 className="ax-title">{framework.name}</h1>
-            <span className="ax-chip framework-type-chip" title={FRAMEWORK_TYPES[framework.type]}>
+            <span className="label-micro framework-type-label" title={FRAMEWORK_TYPES[framework.type]}>
               {framework.type}
             </span>
           </div>
