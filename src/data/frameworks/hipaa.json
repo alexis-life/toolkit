@@ -562,5 +562,106 @@
         }
       ]
     }
+  ],
+  "resources": [
+    {
+      "icon": "🧭",
+      "title": "What This Page Is (and Isn't)",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The Overview and Controls tabs are a reference and orientation layer — an accurate map of what HIPAA requires and why, with prioritization guidance. They are not, on their own, enough to implement a compliance program or make a company HIPAA compliant."
+        },
+        {
+          "type": "callout",
+          "text": "What's missing from a reference page by nature: an org-specific risk analysis (the one artifact almost everything else depends on), actual policy/procedure documents, legal review of BAAs and any state law layered on top of HIPAA, technical implementation tied to your real infrastructure, and someone with authority actually running the program day to day."
+        },
+        {
+          "type": "paragraph",
+          "text": "This tab exists to close part of that gap — a lightweight methodology outline, links to HHS's own free tools, and a concrete list of what you'll actually need to produce."
+        }
+      ]
+    },
+    {
+      "icon": "🔎",
+      "title": "Risk Analysis Methodology",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "HIPAA doesn't mandate a specific risk analysis methodology, but OCR frequently points to NIST SP 800-30 as an acceptable approach. A minimally sufficient risk analysis walks through:"
+        },
+        {
+          "type": "ordered-list",
+          "items": [
+            "**Scope it** — identify every system, application, and location where ePHI is created, received, maintained, or transmitted. This is your asset inventory; nothing after this step is more important.",
+            "**Identify threats and vulnerabilities** — for each asset, what could go wrong (threat) and what weakness would let it happen (vulnerability)? Don't just copy a generic list — it needs to reflect your actual environment.",
+            "**Assess current controls** — what's already in place mitigating each threat/vulnerability pair?",
+            "**Determine likelihood and impact** — rate each risk, even on a simple High/Medium/Low scale, consistently applied.",
+            "**Determine overall risk level** — likelihood × impact, producing a prioritized risk list, not just a flat inventory.",
+            "**Document findings and a remediation plan** — this document is what OCR asks for first in almost every investigation. \"We did an analysis but didn't write it down\" is treated the same as not having done one."
+          ]
+        },
+        {
+          "type": "callout",
+          "text": "Re-run this whenever systems, vendors, or workflows change materially — and at minimum annually even without a specific trigger. A three-year-old risk analysis that's never been revisited is one of the most common OCR findings."
+        }
+      ]
+    },
+    {
+      "icon": "🛠️",
+      "title": "Official Free Tools & Templates",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "[HHS/ONC Security Risk Assessment (SRA) Tool](https://www.healthit.gov/topic/privacy-security-and-hipaa/security-risk-assessment-tool) — a free, downloadable tool (Windows app or Excel workbook) that walks through the risk analysis process step by step. Built specifically for small/medium practices, but the structure is useful at any size. Nothing entered into it is collected or transmitted to HHS.",
+            "[HHS Sample Business Associate Agreement Provisions](https://www.hhs.gov/hipaa/for-professionals/covered-entities/sample-business-associate-agreement-provisions/index.html) — official sample BAA language covering permitted uses, safeguards, breach reporting, and subcontractor flow-down. Explicitly not required verbatim, but a solid starting point before legal review.",
+            "[HHS Security Rule Guidance Material](https://www.hhs.gov/hipaa/for-professionals/security/guidance/index.html) — HHS's own implementation guidance for each Security Rule standard, one level more detailed than this site's summaries."
+          ]
+        }
+      ]
+    },
+    {
+      "icon": "📋",
+      "title": "Artifacts You'll Actually Need to Produce",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A checklist of the concrete documents a real program needs — this site tells you why each is required; you (or counsel, for the contract-language ones) still have to write them."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Risk analysis and risk management plan (the foundational documents — see the methodology above)",
+            "Written policies and procedures for every Administrative Safeguard standard, not just a single \"security policy\" document",
+            "Sanction policy for workforce members who violate policy",
+            "Notice of Privacy Practices, reviewed against what you actually do with PHI",
+            "Signed Business Associate Agreements with every vendor touching PHI",
+            "Incident response plan, tabletop-tested with a record that the test happened",
+            "Contingency plan: backup, disaster recovery, and emergency mode operation procedures",
+            "Workforce training materials and a completion log",
+            "Breach risk-assessment template and a notification runbook that can hit the 60-day clock"
+          ]
+        }
+      ]
+    },
+    {
+      "icon": "⚖️",
+      "title": "When to Bring in Outside Help",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "**Legal review** — before finalizing BAA language, and to check whether state law (e.g. California's CMIA, Texas HB 300) adds requirements beyond federal HIPAA in states where you operate.",
+            "**A HIPAA compliance consultant** — if this is your first program build, or you lack in-house security/compliance staff to own the risk analysis and ongoing monitoring.",
+            "**Outside counsel or a breach coach** — immediately upon discovering a suspected breach, given the tight 60-day notification clock and the legal judgment involved in the required risk assessment."
+          ]
+        },
+        {
+          "type": "callout",
+          "text": "None of this replaces professional advice specific to your organization — treat everything on this site as a map, not a substitute for the territory."
+        }
+      ]
+    }
   ]
 }

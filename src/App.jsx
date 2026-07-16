@@ -18,6 +18,7 @@ export default function App() {
         <Route path="/frameworks/mappings" element={<MappingsPage />} />
         <Route path="/frameworks/:slug" element={<FrameworkPage />} />
         <Route path="/frameworks/:slug/controls" element={<FrameworkPage />} />
+        <Route path="/frameworks/:slug/resources" element={<FrameworkPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>

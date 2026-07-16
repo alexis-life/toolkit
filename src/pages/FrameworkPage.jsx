@@ -10,6 +10,7 @@ export default function FrameworkPage() {
   const framework = getFramework(slug);
   const content = framework?.content;
   const hasOverview = Boolean(content?.overview?.length);
+  const hasResources = Boolean(content?.resources?.length);
 
   if (!framework) {
     return (
@@ -35,7 +36,8 @@ export default function FrameworkPage() {
   }
 
   const isControlsUrl = location.pathname.endsWith("/controls");
-  const activeTab = hasOverview && !isControlsUrl ? "overview" : "controls";
+  const isResourcesUrl = location.pathname.endsWith("/resources");
+  const activeTab = isResourcesUrl ? "resources" : isControlsUrl ? "controls" : hasOverview ? "overview" : "controls";
 
   return (
     <div>
@@ -78,6 +80,16 @@ export default function FrameworkPage() {
                 >
                   Controls
                 </Link>
+                {hasResources && (
+                  <Link
+                    to={`/frameworks/${slug}/resources`}
+                    role="tab"
+                    aria-selected={activeTab === "resources"}
+                    className={`ax-tab ${activeTab === "resources" ? "ax-tab--active" : ""}`}
+                  >
+                    Resources
+                  </Link>
+                )}
               </nav>
             </div>
           </div>
@@ -89,6 +101,8 @@ export default function FrameworkPage() {
           <div className="ax-card">
             <div className="ax-empty">{framework.name} isn't built out yet — check back soon.</div>
           </div>
+        ) : activeTab === "resources" ? (
+          <FrameworkOverview overview={content.resources} />
         ) : activeTab === "overview" ? (
           <FrameworkOverview overview={content.overview} />
         ) : (
