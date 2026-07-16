@@ -1,0 +1,740 @@
+{
+  "framework": "PCI DSS",
+  "section": "v4.0.1 — 12 Requirements",
+  "slug": "pci-dss",
+  "description": "The Payment Card Industry Data Security Standard (PCI DSS), currently v4.0.1, published by the PCI Security Standards Council. Applies to any organization that stores, processes, or transmits cardholder data — not a law, but a contractual requirement imposed by the payment card brands (Visa, Mastercard, Amex, Discover, JCB) through your acquiring bank/processor. Requirement wording below is paraphrased from PCI SSC's official Quick Reference Guide rather than quoted verbatim, since the standard itself is copyrighted.",
+  "source": {
+    "label": "PCI Security Standards Council — PCI DSS v4.0.1 Quick Reference Guide",
+    "url": "https://www.pcisecuritystandards.org/document_library/"
+  },
+  "overview": [
+    {
+      "icon": "💳",
+      "title": "Introduction to PCI DSS",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "PCI DSS — Payment Card Industry Data Security Standard, currently **v4.0.1** (a limited, no-new-requirements revision of v4.0 released June 2024).",
+            "Published by the **PCI Security Standards Council (PCI SSC)**, a body formed by the major card brands — not a government agency.",
+            "Applies to any entity that stores, processes, or transmits **cardholder data (CHD)** or could impact the security of the **cardholder data environment (CDE)** — merchants, processors, service providers, and more."
+          ]
+        }
+      ]
+    },
+    {
+      "icon": "🧭",
+      "title": "Key Differences from Other Compliance Frameworks",
+      "blocks": [
+        {
+          "type": "heading",
+          "text": "PCI DSS vs SOC 2 / ISO 27001"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**PCI DSS** — a contractual requirement imposed by the card brands through your acquiring bank, not a voluntary market-driven choice. If you accept card payments, some level of PCI DSS compliance is mandatory.",
+            "**SOC 2 / ISO 27001** — voluntary; you choose to pursue them for competitive/trust reasons, not because a specific contract requires it."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "PCI DSS vs HIPAA / CCPA"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**PCI DSS** — industry-mandated (by the card networks), enforced through contracts and financial penalties, not a government statute.",
+            "**HIPAA / CCPA** — actual laws, enforced by government regulators with statutory penalties."
+          ]
+        },
+        {
+          "type": "callout",
+          "text": "PCI DSS sits in an unusual middle ground: not voluntary like SOC 2/ISO, but not government law either. Non-compliance consequences come through your merchant agreement — fines from your acquirer, increased transaction fees, or in serious cases losing the ability to accept card payments at all."
+        }
+      ]
+    },
+    {
+      "icon": "🗂️",
+      "title": "The Six Goals and 12 Requirements",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "**Build and Maintain a Secure Network and Systems** — Requirements 1–2. Network security controls and secure configurations.",
+            "**Protect Account Data** — Requirements 3–4. Protecting stored data and data in transit.",
+            "**Maintain a Vulnerability Management Program** — Requirements 5–6. Anti-malware and secure development/patching.",
+            "**Implement Strong Access Control Measures** — Requirements 7–9. Logical access, authentication, and physical access.",
+            "**Regularly Monitor and Test Networks** — Requirements 10–11. Logging and ongoing security testing.",
+            "**Maintain an Information Security Policy** — Requirement 12. The organizational/governance layer tying everything together."
+          ]
+        },
+        {
+          "type": "callout",
+          "text": "PCI DSS has over 300 individual testing procedures at its most granular level. This site covers the 63 first-level sub-requirements (the \"X.Y\" level, e.g. 3.1 through 3.7) — the level most compliance teams actually organize their programs around — rather than every deepest-level testing procedure."
+        },
+        {
+          "type": "paragraph",
+          "text": "See the [Controls tab](/frameworks/pci-dss/controls) for the full breakdown."
+        }
+      ]
+    },
+    {
+      "icon": "💡",
+      "title": "Why Comply with PCI DSS",
+      "blocks": [
+        {
+          "type": "heading",
+          "text": "It's Effectively Mandatory"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Contractual requirement** — your merchant agreement with your acquiring bank requires it if you accept card payments, regardless of company size.",
+            "**Financial consequences** — non-compliance can mean fines from your acquirer, higher transaction fees, or (after a breach) liability for fraud losses and forensic investigation costs.",
+            "**Card brand mandates** — Visa, Mastercard, and the other networks can restrict or revoke your ability to process cards for serious or repeated non-compliance."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Beyond the Contractual Floor"
+        },
+        {
+          "type": "paragraph",
+          "text": "PCI DSS's technical controls (network segmentation, encryption, access control, logging) overlap heavily with SOC 2 and ISO 27001 — a solid PCI DSS program is rarely wasted effort even outside the card-payment context specifically."
+        }
+      ]
+    },
+    {
+      "icon": "📋",
+      "title": "Assessing PCI DSS Readiness",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Quick self-score across all six goals. If you're answering \"no\" to more than half the questions in any goal, prioritize it."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Goal",
+            "Control Area",
+            "Key Question",
+            "Typical Effort"
+          ],
+          "rows": [
+            [
+              "Secure Network",
+              "Network segmentation",
+              "Is the CDE segmented from the rest of your network with default-deny NSCs?",
+              "High"
+            ],
+            [
+              "Secure Network",
+              "Secure configuration",
+              "Are vendor default passwords/settings changed on every system before go-live?",
+              "Low"
+            ],
+            [
+              "Protect Account Data",
+              "Data minimization & encryption",
+              "Is stored PAN kept to a minimum and rendered unreadable (encrypted/tokenized)?",
+              "High"
+            ],
+            [
+              "Protect Account Data",
+              "Encryption in transit",
+              "Is PAN encrypted with strong, current cryptography during transmission?",
+              "Medium"
+            ],
+            [
+              "Vulnerability Management",
+              "Anti-malware",
+              "Is anti-malware deployed, active, and monitored across in-scope systems?",
+              "Low"
+            ],
+            [
+              "Vulnerability Management",
+              "Patch management",
+              "Are security patches applied on a defined, risk-based timeline?",
+              "Medium"
+            ],
+            [
+              "Access Control",
+              "MFA",
+              "Is MFA enforced for all access into the CDE, not just remote access?",
+              "Medium"
+            ],
+            [
+              "Access Control",
+              "Physical access",
+              "Is physical access to CDE facilities and media restricted and logged?",
+              "Medium"
+            ],
+            [
+              "Monitor & Test",
+              "Logging",
+              "Are audit logs centralized, protected, and actually reviewed on a defined cadence?",
+              "High"
+            ],
+            [
+              "Monitor & Test",
+              "Scanning & pentesting",
+              "Do you run quarterly ASV scans and annual penetration testing?",
+              "Medium"
+            ],
+            [
+              "Security Policy",
+              "Risk assessment & scope",
+              "Is your CDE scope documented, validated, and reassessed regularly?",
+              "Medium"
+            ],
+            [
+              "Security Policy",
+              "Vendor management",
+              "Do you track TPSPs touching the CDE with contracts defining PCI DSS responsibilities?",
+              "Medium"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Identifying Gaps"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Accurately defining CDE scope is the single most common source of both gaps and audit findings — start there before anything else.",
+            "[PCI SSC's Document Library](https://www.pcisecuritystandards.org/document_library/) has the official Quick Reference Guide and Self-Assessment Questionnaires (SAQs) matched to different merchant/service-provider types."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "What Takes Longest"
+        },
+        {
+          "type": "callout",
+          "text": "Network segmentation done properly, and building out real log monitoring/review (not just collection), consistently take the longest — both require genuine infrastructure investment and, for segmentation, often a redesign of how systems are networked, not just a configuration change."
+        },
+        {
+          "type": "heading",
+          "text": "What to Implement First"
+        },
+        {
+          "type": "ordered-list",
+          "items": [
+            "**Accurate CDE scope** — everything else is sized and prioritized based on this; getting it wrong wastes effort everywhere else.",
+            "**Change default configurations** — cheap, high-impact, and usually just a checklist exercise across existing systems.",
+            "**MFA for CDE access** — a configuration change in tools you likely already run.",
+            "**Basic anti-malware and patching cadence** — foundational, low-effort relative to the risk it addresses.",
+            "Once those are in place, invest in the harder infrastructure work — network segmentation, centralized logging with real review, and a mature vulnerability/penetration testing program."
+          ]
+        }
+      ]
+    },
+    {
+      "icon": "🗺️",
+      "title": "PCI DSS Compliance Roadmap",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Timeline varies heavily by merchant/service-provider level and starting maturity — a first-time Level 1 assessment can take 6–12 months; smaller merchants completing a Self-Assessment Questionnaire (SAQ) can move much faster."
+        },
+        {
+          "type": "heading",
+          "text": "Step-by-Step Process"
+        },
+        {
+          "type": "ordered-list",
+          "items": [
+            "**Determine your level** — merchant/service-provider level (set by transaction volume) determines whether you need a Report on Compliance (ROC) via a QSA or can self-assess with an SAQ.",
+            "**Define CDE scope** — identify every system, network segment, and process that touches cardholder data.",
+            "**Gap analysis** — assess current state against all 12 requirements.",
+            "**Remediation** — implement fixes for identified gaps.",
+            "**Vulnerability scanning** — quarterly external scans via a PCI-Approved Scanning Vendor (ASV).",
+            "**Assessment** — complete the SAQ or ROC, and submit the resulting Attestation of Compliance (AOC)."
+          ]
+        }
+      ]
+    },
+    {
+      "icon": "🔍",
+      "title": "Assessment Process",
+      "blocks": [
+        {
+          "type": "heading",
+          "text": "SAQ vs ROC"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Self-Assessment Questionnaire (SAQ)** — self-attestation against a subset of requirements matched to your specific processing scenario; used by smaller merchants.",
+            "**Report on Compliance (ROC)** — a full assessment conducted by a Qualified Security Assessor (QSA), required for the highest-volume merchants and most service providers."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Attestation of Compliance (AOC)"
+        },
+        {
+          "type": "paragraph",
+          "text": "The AOC is the document you actually submit to your acquirer/the card brands — a formal declaration of your compliance status, backed by either the SAQ or ROC."
+        },
+        {
+          "type": "heading",
+          "text": "Common Findings"
+        },
+        {
+          "type": "paragraph",
+          "text": "QSA assessments consistently flag the same issues: incomplete or inaccurate CDE scope, missing network segmentation validation, and logging that's collected but not actually reviewed."
+        }
+      ]
+    },
+    {
+      "icon": "♻️",
+      "title": "Maintaining Compliance",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "PCI DSS compliance is validated annually, but the underlying controls need to operate continuously in between."
+        },
+        {
+          "type": "heading",
+          "text": "Ongoing Requirements"
+        },
+        {
+          "type": "paragraph",
+          "text": "Quarterly ASV scans, ongoing internal vulnerability scanning, continuous log review, and annual penetration testing — not just an annual point-in-time assessment."
+        },
+        {
+          "type": "heading",
+          "text": "Annual Reassessment"
+        },
+        {
+          "type": "paragraph",
+          "text": "SAQ or ROC (as applicable) and the resulting AOC need to be renewed annually — compliance status doesn't carry over indefinitely."
+        },
+        {
+          "type": "heading",
+          "text": "Scaling Compliance"
+        },
+        {
+          "type": "paragraph",
+          "text": "New systems, payment channels, or processors that touch cardholder data need to be brought into CDE scope before they go live, not discovered during the next assessment."
+        }
+      ]
+    }
+  ],
+  "categories": [
+    {
+      "id": "Req 1",
+      "title": "Install and Maintain Network Security Controls",
+      "group": "Build and Maintain a Secure Network and Systems",
+      "summary": "Network security controls (firewalls and equivalent technologies) enforce policy at the boundaries between network segments.",
+      "controls": [
+        {
+          "id": "1.1",
+          "criteria": "Processes and mechanisms for installing and maintaining network security controls are defined and understood.",
+          "notes": "Documented, current NSC policies and procedures that staff actually follow, not just a policy binder."
+        },
+        {
+          "id": "1.2",
+          "criteria": "Network security controls are configured and maintained, including current network and data-flow diagrams.",
+          "notes": "Keep real, current network/data-flow diagrams showing every CDE connection — auditors ask for these first."
+        },
+        {
+          "id": "1.3",
+          "criteria": "Network access to and from the cardholder data environment is restricted to what's necessary.",
+          "notes": "Default-deny inbound and outbound CDE traffic, allowing only explicitly justified connections."
+        },
+        {
+          "id": "1.4",
+          "criteria": "Network connections between trusted and untrusted networks are controlled.",
+          "notes": "NSCs specifically between the CDE and any less-trusted network, including your own corporate network."
+        },
+        {
+          "id": "1.5",
+          "criteria": "Risks from devices that can connect to both untrusted networks and the CDE are mitigated.",
+          "notes": "Personal/remote devices bridging the internet and the CDE (e.g. a laptop on VPN) need their own risk controls."
+        }
+      ]
+    },
+    {
+      "id": "Req 2",
+      "title": "Apply Secure Configurations to All System Components",
+      "group": "Build and Maintain a Secure Network and Systems",
+      "summary": "Vendor default passwords and settings are public knowledge and a common attack vector — hardening removes that easy path in.",
+      "controls": [
+        {
+          "id": "2.1",
+          "criteria": "Processes and mechanisms for applying secure configurations to all system components are defined and understood.",
+          "notes": "A documented configuration-hardening standard, not tribal knowledge."
+        },
+        {
+          "id": "2.2",
+          "criteria": "System components are configured and managed securely, including changing all vendor defaults.",
+          "notes": "Change every default password/setting before a system touches the CDE, and remove unnecessary services/accounts."
+        },
+        {
+          "id": "2.3",
+          "criteria": "Wireless environments are configured and managed securely.",
+          "notes": "Default wireless settings (SSIDs, keys, passwords) get changed the same as any other default before go-live."
+        }
+      ]
+    },
+    {
+      "id": "Req 3",
+      "title": "Protect Stored Account Data",
+      "group": "Protect Account Data",
+      "summary": "Don't store account data you don't need — and render unreadable (encrypt, truncate, hash) whatever you do store.",
+      "controls": [
+        {
+          "id": "3.1",
+          "criteria": "Processes and mechanisms for protecting stored account data are defined and understood.",
+          "notes": "A documented data retention/disposal policy specific to account data, not a generic IT policy."
+        },
+        {
+          "id": "3.2",
+          "criteria": "Storage of account data is kept to a minimum, per documented retention and disposal policies.",
+          "notes": "If you don't need it, don't keep it — the safest stored PAN is the one that was never stored."
+        },
+        {
+          "id": "3.3",
+          "criteria": "Sensitive authentication data (SAD) is not stored after authorization.",
+          "notes": "Full track data, CVV, and PIN data must be purged the moment authorization completes — no exceptions for convenience."
+        },
+        {
+          "id": "3.4",
+          "criteria": "Access to displays of full PAN and the ability to copy cardholder data are restricted.",
+          "notes": "Mask PAN on display by default (show only first 6/last 4) and restrict who can export/copy full values."
+        },
+        {
+          "id": "3.5",
+          "criteria": "The primary account number (PAN) is secured wherever it is stored.",
+          "notes": "Render stored PAN unreadable via strong cryptography, truncation, tokenization, or an equivalent method."
+        },
+        {
+          "id": "3.6",
+          "criteria": "Cryptographic keys used to protect stored account data are secured.",
+          "notes": "Key storage needs its own protection — a strong cipher is worthless if the key sits next to the encrypted data."
+        },
+        {
+          "id": "3.7",
+          "criteria": "Key management processes covering the full key lifecycle are defined and implemented.",
+          "notes": "Generation, distribution, rotation, and retirement of keys all need documented, followed procedures."
+        }
+      ]
+    },
+    {
+      "id": "Req 4",
+      "title": "Protect Cardholder Data with Strong Cryptography During Transmission Over Open, Public Networks",
+      "group": "Protect Account Data",
+      "summary": "PAN in transit over untrusted networks is a prime interception target.",
+      "controls": [
+        {
+          "id": "4.1",
+          "criteria": "Processes and mechanisms for protecting cardholder data during transmission over open, public networks are defined and documented.",
+          "notes": "A documented policy naming which transmission channels require encryption and how it's enforced."
+        },
+        {
+          "id": "4.2",
+          "criteria": "PAN is protected with strong cryptography during transmission.",
+          "notes": "TLS (current, properly configured versions) for any PAN crossing a public network — no legacy SSL/early TLS."
+        }
+      ]
+    },
+    {
+      "id": "Req 5",
+      "title": "Protect All Systems and Networks from Malicious Software",
+      "group": "Maintain a Vulnerability Management Program",
+      "summary": "Malware is a common path from a single compromised endpoint to a full CDE breach.",
+      "controls": [
+        {
+          "id": "5.1",
+          "criteria": "Processes and mechanisms for protecting systems and networks from malicious software are defined and understood.",
+          "notes": "A documented anti-malware policy naming which systems are in scope and how coverage is verified."
+        },
+        {
+          "id": "5.2",
+          "criteria": "Malicious software is prevented, or detected and addressed.",
+          "notes": "Anti-malware deployed on all systems commonly affected by malware, kept current."
+        },
+        {
+          "id": "5.3",
+          "criteria": "Anti-malware mechanisms and processes are active, maintained, and monitored.",
+          "notes": "Don't just install anti-malware — verify it's actually running, updating, and generating logs someone reviews."
+        },
+        {
+          "id": "5.4",
+          "criteria": "Anti-phishing mechanisms protect users against phishing attacks.",
+          "notes": "Email/web filtering plus user training, since phishing is the most common initial-access vector into the CDE."
+        }
+      ]
+    },
+    {
+      "id": "Req 6",
+      "title": "Develop and Maintain Secure Systems and Software",
+      "group": "Maintain a Vulnerability Management Program",
+      "summary": "Unpatched systems and insecurely-developed applications are two of the most exploited weaknesses in the CDE.",
+      "controls": [
+        {
+          "id": "6.1",
+          "criteria": "Processes and mechanisms for developing and maintaining secure systems and software are defined and understood.",
+          "notes": "A documented secure-development and patch-management policy, not ad hoc practice."
+        },
+        {
+          "id": "6.2",
+          "criteria": "Bespoke and custom software is developed securely.",
+          "notes": "Secure coding standards and training for anyone writing code that touches the CDE."
+        },
+        {
+          "id": "6.3",
+          "criteria": "Security vulnerabilities are identified and addressed.",
+          "notes": "A patch management process with defined timelines based on severity, applied to all in-scope systems."
+        },
+        {
+          "id": "6.4",
+          "criteria": "Public-facing web applications are protected against attacks.",
+          "notes": "A WAF or equivalent, plus regular testing, for any web app exposed to the internet that touches the CDE."
+        },
+        {
+          "id": "6.5",
+          "criteria": "Changes to all system components are managed securely.",
+          "notes": "A formal change control process — testing, approval, rollback plan — before changes reach production CDE systems."
+        }
+      ]
+    },
+    {
+      "id": "Req 7",
+      "title": "Restrict Access to Cardholder Data by Business Need to Know",
+      "group": "Implement Strong Access Control Measures",
+      "summary": "Access should be the minimum necessary to do the job — nothing broader by default.",
+      "controls": [
+        {
+          "id": "7.1",
+          "criteria": "Processes and mechanisms for restricting access by business need to know are defined and understood.",
+          "notes": "A documented access control policy tying access levels to job roles, not ad hoc grants."
+        },
+        {
+          "id": "7.2",
+          "criteria": "Access to system components and data is appropriately defined and assigned.",
+          "notes": "Role-based access definitions reviewed and approved, with least privilege as the default."
+        },
+        {
+          "id": "7.3",
+          "criteria": "Access to system components and data is managed via an access control system.",
+          "notes": "A real access control system (not a spreadsheet) enforcing the defined roles technically."
+        }
+      ]
+    },
+    {
+      "id": "Req 8",
+      "title": "Identify Users and Authenticate Access to System Components",
+      "group": "Implement Strong Access Control Measures",
+      "summary": "Every action needs to trace back to one accountable person — shared accounts break that.",
+      "controls": [
+        {
+          "id": "8.1",
+          "criteria": "Processes and mechanisms for identifying users and authenticating access are defined and understood.",
+          "notes": "A documented identity/authentication policy covering every account type, including service accounts."
+        },
+        {
+          "id": "8.2",
+          "criteria": "User identification and accounts are strictly managed throughout their lifecycle.",
+          "notes": "Unique IDs for every user (no shared logins), with prompt deactivation on termination or role change."
+        },
+        {
+          "id": "8.3",
+          "criteria": "Strong authentication for users and administrators is established and managed.",
+          "notes": "Strong password/passphrase requirements, or equivalent strong authentication, enforced technically not just by policy."
+        },
+        {
+          "id": "8.4",
+          "criteria": "Multi-factor authentication (MFA) is implemented to secure access into the CDE.",
+          "notes": "MFA for all access into the CDE, not just remote access — this became a hard requirement, not just best practice, as of March 2025."
+        },
+        {
+          "id": "8.5",
+          "criteria": "MFA systems are configured to prevent misuse.",
+          "notes": "MFA implementations need to actually resist bypass (e.g. no fallback to single-factor without justification)."
+        },
+        {
+          "id": "8.6",
+          "criteria": "Use of application and system accounts is strictly managed.",
+          "notes": "Service/system accounts need the same lifecycle discipline as human accounts — inventory, rotation, and restriction."
+        }
+      ]
+    },
+    {
+      "id": "Req 9",
+      "title": "Restrict Physical Access to Cardholder Data",
+      "group": "Implement Strong Access Control Measures",
+      "summary": "Physical access to CDE systems or media bypasses every logical control you've built.",
+      "controls": [
+        {
+          "id": "9.1",
+          "criteria": "Processes and mechanisms for restricting physical access to cardholder data are defined and understood.",
+          "notes": "A documented physical security policy scoped specifically to CDE facilities and media."
+        },
+        {
+          "id": "9.2",
+          "criteria": "Physical access controls manage entry into facilities and systems containing cardholder data.",
+          "notes": "Badge access or equivalent, logged, for any space housing CDE systems."
+        },
+        {
+          "id": "9.3",
+          "criteria": "Physical access for personnel and visitors is authorized and managed.",
+          "notes": "Visitors escorted and logged; personnel access reviewed and tied to actual job need."
+        },
+        {
+          "id": "9.4",
+          "criteria": "Media containing cardholder data is securely stored, accessed, distributed, and destroyed.",
+          "notes": "Physical and digital media tracked through its full lifecycle, with secure destruction before disposal."
+        },
+        {
+          "id": "9.5",
+          "criteria": "Point-of-interaction (POI) devices are protected from tampering and unauthorized substitution.",
+          "notes": "A maintained inventory of POI devices with periodic physical inspection for skimming hardware."
+        }
+      ]
+    },
+    {
+      "id": "Req 10",
+      "title": "Log and Monitor All Access to System Components and Cardholder Data",
+      "group": "Regularly Monitor and Test Networks",
+      "summary": "Without logs, you can't detect an intrusion or reconstruct what happened during one.",
+      "controls": [
+        {
+          "id": "10.1",
+          "criteria": "Processes and mechanisms for logging and monitoring access are defined and documented.",
+          "notes": "A documented logging policy naming what's logged, where, and for how long."
+        },
+        {
+          "id": "10.2",
+          "criteria": "Audit logs support detection of anomalies, suspicious activity, and forensic analysis.",
+          "notes": "Logs need to capture who, what, when, and outcome for every security-relevant event, not just errors."
+        },
+        {
+          "id": "10.3",
+          "criteria": "Audit logs are protected from destruction and unauthorized modification.",
+          "notes": "Centralize logs somewhere the systems generating them can't tamper with their own history."
+        },
+        {
+          "id": "10.4",
+          "criteria": "Audit logs are reviewed to identify anomalies or suspicious activity.",
+          "notes": "Someone (or some tool) actually reviews the logs on a defined cadence — collection without review doesn't count."
+        },
+        {
+          "id": "10.5",
+          "criteria": "Audit log history is retained and available for analysis.",
+          "notes": "Retention periods long enough to support investigation of an incident discovered well after it happened."
+        },
+        {
+          "id": "10.6",
+          "criteria": "Time-synchronization mechanisms support consistent time settings across all systems.",
+          "notes": "NTP (or equivalent) across the environment, so logs from different systems can actually be correlated."
+        },
+        {
+          "id": "10.7",
+          "criteria": "Failures of critical security control systems are detected, reported, and responded to promptly.",
+          "notes": "Alerting when logging, NSC, anti-malware, or other critical controls themselves fail or go offline."
+        }
+      ]
+    },
+    {
+      "id": "Req 11",
+      "title": "Test Security of Systems and Networks Regularly",
+      "group": "Regularly Monitor and Test Networks",
+      "summary": "Vulnerabilities are discovered continuously — a control tested once at launch isn't verified to still work.",
+      "controls": [
+        {
+          "id": "11.1",
+          "criteria": "Processes and mechanisms for regularly testing security of systems and networks are defined and understood.",
+          "notes": "A documented testing policy naming scan/pentest cadence and scope."
+        },
+        {
+          "id": "11.2",
+          "criteria": "Wireless access points are identified and monitored; unauthorized ones are addressed.",
+          "notes": "Regular wireless scans to catch rogue access points bridging into the CDE."
+        },
+        {
+          "id": "11.3",
+          "criteria": "External and internal vulnerabilities are regularly identified, prioritized, and addressed.",
+          "notes": "External scans quarterly by a PCI-Approved Scanning Vendor at minimum, plus internal scanning."
+        },
+        {
+          "id": "11.4",
+          "criteria": "External and internal penetration testing is regularly performed and findings are corrected.",
+          "notes": "Annual (at minimum) penetration testing with a defined remediation and retest process for findings."
+        },
+        {
+          "id": "11.5",
+          "criteria": "Network intrusions and unexpected file changes are detected and responded to.",
+          "notes": "Intrusion detection/prevention and file integrity monitoring on critical CDE systems."
+        },
+        {
+          "id": "11.6",
+          "criteria": "Unauthorized changes on payment pages are detected and responded to.",
+          "notes": "Change-detection specifically for payment page scripts, given the rise in e-skimming/Magecart-style attacks."
+        }
+      ]
+    },
+    {
+      "id": "Req 12",
+      "title": "Support Information Security with Organizational Policies and Programs",
+      "group": "Maintain an Information Security Policy",
+      "summary": "Technical controls without organizational backing (policy, training, accountability) don't hold up over time.",
+      "controls": [
+        {
+          "id": "12.1",
+          "criteria": "A comprehensive information security policy is known and current.",
+          "notes": "One current, actually-read policy governing information security overall, not a stack of outdated documents."
+        },
+        {
+          "id": "12.2",
+          "criteria": "Acceptable use policies for end-user technologies are defined and implemented.",
+          "notes": "Clear rules for how employees can use devices/technologies that touch or could touch the CDE."
+        },
+        {
+          "id": "12.3",
+          "criteria": "Risks to the cardholder data environment are formally identified, evaluated, and managed.",
+          "notes": "A documented, recurring risk assessment specific to the CDE, not just a general IT risk register."
+        },
+        {
+          "id": "12.4",
+          "criteria": "PCI DSS compliance is managed as an ongoing program.",
+          "notes": "Assigned ownership and a recurring cadence for maintaining compliance, not a once-a-year scramble before assessment."
+        },
+        {
+          "id": "12.5",
+          "criteria": "PCI DSS scope is documented and validated.",
+          "notes": "A current, validated description of exactly what's in scope — scope creep is one of the most common assessment findings."
+        },
+        {
+          "id": "12.6",
+          "criteria": "Security awareness education is an ongoing activity.",
+          "notes": "Regular, tracked training for anyone with access to the CDE, not a one-time onboarding video."
+        },
+        {
+          "id": "12.7",
+          "criteria": "Personnel are screened to reduce risks from insider threats.",
+          "notes": "Background screening proportional to the access level a role provides into the CDE."
+        },
+        {
+          "id": "12.8",
+          "criteria": "Risk from third-party service provider (TPSP) relationships is managed.",
+          "notes": "An inventory of TPSPs touching the CDE, with contracts defining each party's PCI DSS responsibilities."
+        },
+        {
+          "id": "12.9",
+          "criteria": "Third-party service providers support their customers' PCI DSS compliance.",
+          "notes": "If you're a TPSP yourself, you need to acknowledge your responsibility and provide compliance evidence to customers."
+        },
+        {
+          "id": "12.10",
+          "criteria": "Suspected and confirmed security incidents affecting the CDE are responded to immediately.",
+          "notes": "A tested incident response plan with defined roles, ready before an incident happens, not drafted during one."
+        }
+      ]
+    }
+  ]
+}

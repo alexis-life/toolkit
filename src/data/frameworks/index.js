@@ -5,6 +5,7 @@ import gdpr from "./gdpr.json";
 import cmmc from "./cmmc.json";
 import nistCsf from "./nist-csf.json";
 import ccpa from "./ccpa.json";
+import pciDss from "./pci-dss.json";
 
 // How compliance is actually demonstrated — shown as a tag alongside each
 // framework, since it's easy to conflate "certification" and "attestation"
@@ -44,7 +45,7 @@ export const FRAMEWORKS = [
     name: "PCI DSS",
     blurb: "12 requirements, v4.0.1.",
     type: "attestation",
-    content: null,
+    content: pciDss,
   },
   {
     slug: "hipaa",
