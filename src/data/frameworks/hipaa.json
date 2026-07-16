@@ -68,7 +68,8 @@
             "**Privacy Rule** (§164.500–534) — governs use and disclosure of PHI in any form (not just electronic), and the specific rights individuals have over their own health information: access, amendment, accounting of disclosures, restrictions, and notice.",
             "**Security Rule** (§164.302–318) — the Administrative, Physical, and Technical Safeguards for *electronic* PHI (ePHI) specifically. This is the part most people mean when they say \"HIPAA compliance,\" but it's only one of the rules.",
             "**Breach Notification Rule** (§164.400–414) — added by HITECH; requires notifying individuals, HHS, and sometimes the media following a breach of unsecured PHI.",
-            "**Enforcement Rule** (Part 160, Subparts C–E) — how OCR actually investigates complaints and levies penalties across all of the above."
+            "**Enforcement Rule** (Part 160, Subparts C–E) — how OCR actually investigates complaints and levies penalties across all of the above.",
+            "**State law** — HIPAA sets a federal floor, not a ceiling. More protective state health-privacy laws (e.g. California's CMIA, Texas HB 300) still apply on top of it and aren't preempted — \"we're HIPAA compliant\" doesn't automatically mean state requirements are covered too."
           ]
         },
         {
@@ -642,6 +643,133 @@
             "Workforce training materials and a completion log",
             "Breach risk-assessment template and a notification runbook that can hit the 60-day clock"
           ]
+        }
+      ]
+    },
+    {
+      "icon": "📚",
+      "title": "Sample Policy Library",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A realistic starting list of the actual named policies/plans a HIPAA program needs — the common abbreviations are included since you'll see them used interchangeably in audits and vendor questionnaires."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Policy / Plan",
+            "Abbr.",
+            "Covers",
+            "Tied To"
+          ],
+          "rows": [
+            [
+              "Information Security Policy",
+              "ISP",
+              "The top-level policy governing the whole security program — everything else hangs off this.",
+              "§164.316"
+            ],
+            [
+              "Risk Analysis & Risk Management Policy",
+              "RA/RM",
+              "Methodology and cadence for identifying, scoring, and treating risk to ePHI.",
+              "AS-1"
+            ],
+            [
+              "Access Control Policy",
+              "ACP",
+              "How access to ePHI is requested, approved, reviewed, and revoked.",
+              "AS-4, TS-1"
+            ],
+            [
+              "Workforce Security & Sanction Policy",
+              "—",
+              "Screening, role-based access, and consequences for policy violations.",
+              "AS-3"
+            ],
+            [
+              "Security Awareness & Training Policy",
+              "SAT",
+              "Training content, cadence, and completion tracking for the workforce.",
+              "AS-5"
+            ],
+            [
+              "Incident Response Plan",
+              "IRP",
+              "Detection, containment, eradication, and recovery steps for a security incident, with defined roles.",
+              "AS-6"
+            ],
+            [
+              "Contingency Plan (Business Continuity & Disaster Recovery)",
+              "BCDR",
+              "Data backup, disaster recovery, and emergency-mode operation procedures, with a testing cadence.",
+              "AS-7"
+            ],
+            [
+              "Device & Media Control Policy",
+              "—",
+              "Handling, tracking, and sanitizing media/devices that touch ePHI, including disposal.",
+              "PS-4"
+            ],
+            [
+              "Facility Security Plan",
+              "—",
+              "Physical access controls for spaces housing ePHI systems.",
+              "PS-1"
+            ],
+            [
+              "Audit Controls & Log Review Policy",
+              "—",
+              "What gets logged, retention period, and who reviews logs on what cadence.",
+              "TS-2"
+            ],
+            [
+              "Encryption & Transmission Security Policy",
+              "—",
+              "When and how encryption is applied to ePHI at rest and in transit.",
+              "TS-1, TS-5"
+            ],
+            [
+              "Business Associate Management Policy",
+              "BAM",
+              "Vendor risk assessment, BAA execution, and ongoing oversight of business associates.",
+              "AS-9"
+            ],
+            [
+              "Breach Notification Policy",
+              "—",
+              "The risk-assessment methodology and notification runbook for a suspected breach.",
+              "BN-1–BN-5"
+            ],
+            [
+              "Notice of Privacy Practices",
+              "NPP",
+              "The patient-facing notice describing how PHI is used, disclosed, and how to exercise rights.",
+              "PR-3"
+            ],
+            [
+              "Minimum Necessary Policy",
+              "—",
+              "Rules limiting PHI access/disclosure to the minimum needed for the purpose.",
+              "PR-1"
+            ],
+            [
+              "Patient Rights Policy (Access, Amendment, Accounting)",
+              "—",
+              "Process and timelines for fulfilling access, amendment, and accounting-of-disclosures requests.",
+              "PR-5, PR-6, PR-7"
+            ],
+            [
+              "Data Retention & Disposal Policy",
+              "—",
+              "How long PHI/ePHI is kept and how it's destroyed when retention ends.",
+              "PS-4, AS-8"
+            ]
+          ]
+        },
+        {
+          "type": "callout",
+          "text": "This isn't an exhaustive list, and smaller orgs often combine several of these into fewer documents (e.g. one \"Security Policies and Procedures\" binder covering ISP/RA/ACP/SAT together). What matters to OCR is that each requirement is actually addressed in writing and followed — not that you have exactly this many separate files."
         }
       ]
     },
