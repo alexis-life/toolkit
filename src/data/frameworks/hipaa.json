@@ -4,8 +4,8 @@
   "slug": "hipaa",
   "description": "HIPAA is actually several rules, not one: the Privacy Rule (45 CFR Part 164, Subpart E), the Security Rule (Subpart C), and the Breach Notification Rule (Subpart D) — plus an Enforcement Rule covering how OCR investigates and penalizes violations. Unlike SOC 2, this is a federal legal requirement, not a voluntary attestation — it applies to covered entities and their business associates.",
   "source": {
-    "label": "HHS.gov — Summary of the HIPAA Security Rule",
-    "url": "https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html"
+    "label": "HHS.gov — HIPAA for Professionals (Privacy, Security & Breach Notification Rules)",
+    "url": "https://www.hhs.gov/hipaa/for-professionals/index.html"
   },
   "overview": [
     {
@@ -78,7 +78,7 @@
         },
         {
           "type": "paragraph",
-          "text": "See the [Controls tab](/frameworks/hipaa/controls) for the full breakdown — 18 Security Rule standards, 8 Privacy Rule provisions, and 5 Breach Notification Rule requirements."
+          "text": "See the [Controls tab](/frameworks/hipaa/controls) for the full breakdown — 42 Security Rule implementation specifications (across 18 standards), 22 Privacy Rule provisions, and 5 Breach Notification Rule requirements."
         }
       ]
     },
@@ -372,12 +372,27 @@
       "id": "AS",
       "title": "Administrative Safeguards",
       "group": "Security Rule",
-      "summary": "Policies, processes, and workforce management governing how ePHI is protected — the largest of the three safeguard categories (45 CFR §164.308).",
+      "summary": "Policies, processes, and workforce management governing how ePHI is protected — the largest of the three safeguard categories (45 CFR §164.308). 23 implementation specifications across 9 standards.",
       "controls": [
         {
-          "id": "AS-1",
-          "criteria": "Security Management Process (§164.308(a)(1)) — Required: Risk Analysis, Risk Management, Sanction Policy, Information System Activity Review.",
-          "notes": "The foundational control everything else traces back to. A documented, org-wide risk analysis is non-negotiable — OCR flags a missing or superficial one in nearly every enforcement action."
+          "id": "AS-1.1",
+          "criteria": "Security Management Process (§164.308(a)(1)) — Risk Analysis (Required).",
+          "notes": "A documented, org-wide risk analysis is non-negotiable — OCR flags a missing or superficial one in nearly every enforcement action."
+        },
+        {
+          "id": "AS-1.2",
+          "criteria": "Security Management Process (§164.308(a)(1)) — Risk Management (Required).",
+          "notes": "Implement security measures sufficient to reduce risks identified in the analysis to a reasonable level — the risk analysis without a remediation plan behind it doesn't satisfy this."
+        },
+        {
+          "id": "AS-1.3",
+          "criteria": "Security Management Process (§164.308(a)(1)) — Sanction Policy (Required).",
+          "notes": "A documented disciplinary process for policy violations, tied to actual performance management, not just written and shelved."
+        },
+        {
+          "id": "AS-1.4",
+          "criteria": "Security Management Process (§164.308(a)(1)) — Information System Activity Review (Required).",
+          "notes": "Regularly review audit logs, access reports, and security incident tracking — a defined cadence, not ad hoc spot checks."
         },
         {
           "id": "AS-2",
@@ -385,29 +400,84 @@
           "notes": "Name one person. It can be a part-time responsibility at a small org, but it needs to be someone specific, not \"the team.\""
         },
         {
-          "id": "AS-3",
-          "criteria": "Workforce Security (§164.308(a)(3)) — Addressable: Authorization/Supervision, Workforce Clearance Procedure, Termination Procedures.",
-          "notes": "Role-based access provisioning, background-check policy for roles touching ePHI, and a documented, prompt offboarding process tied to HR."
+          "id": "AS-3.1",
+          "criteria": "Workforce Security (§164.308(a)(3)) — Authorization and/or Supervision (Addressable).",
+          "notes": "Document who authorizes workforce access to ePHI and how supervision works for those who need it."
         },
         {
-          "id": "AS-4",
-          "criteria": "Information Access Management (§164.308(a)(4)) — Required (if applicable): Isolating Healthcare Clearinghouse Functions. Addressable: Access Authorization, Access Establishment and Modification.",
-          "notes": "A formal request/approval workflow for granting or changing access to ePHI, with an audit trail."
+          "id": "AS-3.2",
+          "criteria": "Workforce Security (§164.308(a)(3)) — Workforce Clearance Procedure (Addressable).",
+          "notes": "A background-check policy scaled to the access level a role provides — doesn't have to be uniform across every role."
         },
         {
-          "id": "AS-5",
-          "criteria": "Security Awareness and Training (§164.308(a)(5)) — Addressable: Security Reminders, Protection from Malicious Software, Log-in Monitoring, Password Management.",
-          "notes": "Annual, documented training for the whole workforce — not just IT. Track completion."
+          "id": "AS-3.3",
+          "criteria": "Workforce Security (§164.308(a)(3)) — Termination Procedures (Addressable).",
+          "notes": "A documented, prompt offboarding process tied to HR — access to ePHI needs to be revoked the day someone leaves, not whenever IT gets to it."
+        },
+        {
+          "id": "AS-4.1",
+          "criteria": "Information Access Management (§164.308(a)(4)) — Isolating Health Care Clearinghouse Functions (Required, if the entity is a clearinghouse within a larger organization).",
+          "notes": "Only applies if you're a health care clearinghouse component of a larger org — segregate clearinghouse systems from the rest of the organization's systems."
+        },
+        {
+          "id": "AS-4.2",
+          "criteria": "Information Access Management (§164.308(a)(4)) — Access Authorization (Addressable).",
+          "notes": "A formal process for granting access to ePHI, workstations, transactions, programs, or processes."
+        },
+        {
+          "id": "AS-4.3",
+          "criteria": "Information Access Management (§164.308(a)(4)) — Access Establishment and Modification (Addressable).",
+          "notes": "Policies for how access gets established, documented, reviewed, and modified over time — not just granted once and forgotten."
+        },
+        {
+          "id": "AS-5.1",
+          "criteria": "Security Awareness and Training (§164.308(a)(5)) — Security Reminders (Addressable).",
+          "notes": "Periodic updates and reminders, not just a once-a-year training event."
+        },
+        {
+          "id": "AS-5.2",
+          "criteria": "Security Awareness and Training (§164.308(a)(5)) — Protection from Malicious Software (Addressable).",
+          "notes": "Procedures for guarding against, detecting, and reporting malicious software — this is the spec that makes anti-malware/EDR a practical expectation even though no specific technology is named."
+        },
+        {
+          "id": "AS-5.3",
+          "criteria": "Security Awareness and Training (§164.308(a)(5)) — Log-in Monitoring (Addressable).",
+          "notes": "Procedures for monitoring login attempts and reporting discrepancies."
+        },
+        {
+          "id": "AS-5.4",
+          "criteria": "Security Awareness and Training (§164.308(a)(5)) — Password Management (Addressable).",
+          "notes": "Procedures for creating, changing, and safeguarding passwords."
         },
         {
           "id": "AS-6",
-          "criteria": "Security Incident Procedures (§164.308(a)(6)) — Required: Response and Reporting.",
+          "criteria": "Security Incident Procedures (§164.308(a)(6)) — Response and Reporting (Required).",
           "notes": "A written incident response plan with defined reporting steps, tied into the HITECH breach notification timeline."
         },
         {
-          "id": "AS-7",
-          "criteria": "Contingency Plan (§164.308(a)(7)) — Required: Data Backup Plan, Disaster Recovery Plan, Emergency Mode Operation Plan. Addressable: Testing and Revision Procedures, Applications and Data Criticality Analysis.",
-          "notes": "Automated backups, a tested DR plan, and a plan for operating (even in a degraded state) during an emergency. \"Addressable\" testing still needs to actually happen and be documented."
+          "id": "AS-7.1",
+          "criteria": "Contingency Plan (§164.308(a)(7)) — Data Backup Plan (Required).",
+          "notes": "Automated, tested backups of ePHI — not just \"we have backups somewhere.\""
+        },
+        {
+          "id": "AS-7.2",
+          "criteria": "Contingency Plan (§164.308(a)(7)) — Disaster Recovery Plan (Required).",
+          "notes": "A documented plan to restore lost data/systems after a disaster, distinct from the backup plan itself."
+        },
+        {
+          "id": "AS-7.3",
+          "criteria": "Contingency Plan (§164.308(a)(7)) — Emergency Mode Operation Plan (Required).",
+          "notes": "How the organization keeps critical processes running (even in a degraded state) while operating in emergency mode."
+        },
+        {
+          "id": "AS-7.4",
+          "criteria": "Contingency Plan (§164.308(a)(7)) — Testing and Revision Procedures (Addressable).",
+          "notes": "Actually test the backup/DR/emergency-mode plans periodically and update them based on what the test reveals."
+        },
+        {
+          "id": "AS-7.5",
+          "criteria": "Contingency Plan (§164.308(a)(7)) — Applications and Data Criticality Analysis (Addressable).",
+          "notes": "Assess which applications and data are most critical, to prioritize recovery order during an actual incident."
         },
         {
           "id": "AS-8",
@@ -416,7 +486,7 @@
         },
         {
           "id": "AS-9",
-          "criteria": "Business Associate Contracts and Other Arrangements (§164.308(b)(1)) — Required: written contract or arrangement with satisfactory assurances.",
+          "criteria": "Business Associate Contracts and Other Arrangements (§164.308(b)(1)) — Written Contract or Other Arrangement (Required).",
           "notes": "A signed Business Associate Agreement (BAA) with every vendor that creates, receives, maintains, or transmits ePHI on your behalf — before they go live, not after."
         }
       ]
@@ -425,12 +495,27 @@
       "id": "PS",
       "title": "Physical Safeguards",
       "group": "Security Rule",
-      "summary": "Controlling physical access to the facilities and devices where ePHI lives (45 CFR §164.310).",
+      "summary": "Controlling physical access to the facilities and devices where ePHI lives (45 CFR §164.310). 10 implementation specifications across 4 standards.",
       "controls": [
         {
-          "id": "PS-1",
-          "criteria": "Facility Access Controls (§164.310(a)(1)) — Addressable: Contingency Operations, Facility Security Plan, Access Control and Validation Procedures, Maintenance Records.",
-          "notes": "Badge access or equivalent for spaces housing ePHI systems, with a plan for facility access during emergencies."
+          "id": "PS-1.1",
+          "criteria": "Facility Access Controls (§164.310(a)(1)) — Contingency Operations (Addressable).",
+          "notes": "Procedures for allowing facility access to support data restoration under the disaster recovery/emergency mode plans."
+        },
+        {
+          "id": "PS-1.2",
+          "criteria": "Facility Access Controls (§164.310(a)(1)) — Facility Security Plan (Addressable).",
+          "notes": "Document how the facility and equipment inside it are protected from unauthorized physical access, tampering, and theft."
+        },
+        {
+          "id": "PS-1.3",
+          "criteria": "Facility Access Controls (§164.310(a)(1)) — Access Control and Validation Procedures (Addressable).",
+          "notes": "Control and validate a person's access to facilities based on their role — visitor escort, badge validation, etc."
+        },
+        {
+          "id": "PS-1.4",
+          "criteria": "Facility Access Controls (§164.310(a)(1)) — Maintenance Records (Addressable).",
+          "notes": "Document repairs and modifications to the physical components of a facility related to security (locks, walls, doors)."
         },
         {
           "id": "PS-2",
@@ -443,9 +528,24 @@
           "notes": "Screen locks, physical positioning away from public view, and restricted physical access to the devices themselves."
         },
         {
-          "id": "PS-4",
-          "criteria": "Device and Media Controls (§164.310(d)(1)) — Required: Disposal, Media Re-use. Addressable: Accountability, Data Backup and Storage.",
-          "notes": "A documented process for wiping or destroying media before disposal or reuse, and tracking hardware that stores ePHI."
+          "id": "PS-4.1",
+          "criteria": "Device and Media Controls (§164.310(d)(1)) — Disposal (Required).",
+          "notes": "Final disposition of ePHI and/or the hardware/media it's stored on — documented and secure, not just tossed in the trash."
+        },
+        {
+          "id": "PS-4.2",
+          "criteria": "Device and Media Controls (§164.310(d)(1)) — Media Re-use (Required).",
+          "notes": "Remove ePHI from media before it's made available for reuse — a defined wipe procedure, not an assumption that deletion is enough."
+        },
+        {
+          "id": "PS-4.3",
+          "criteria": "Device and Media Controls (§164.310(d)(1)) — Accountability (Addressable).",
+          "notes": "Maintain a record of hardware/media movements and the person responsible for them."
+        },
+        {
+          "id": "PS-4.4",
+          "criteria": "Device and Media Controls (§164.310(d)(1)) — Data Backup and Storage (Addressable).",
+          "notes": "Create a retrievable, exact copy of ePHI before equipment is moved, when needed."
         }
       ]
     },
@@ -453,12 +553,27 @@
       "id": "TS",
       "title": "Technical Safeguards",
       "group": "Security Rule",
-      "summary": "The technology controls enforcing access and protecting ePHI within the systems themselves (45 CFR §164.312).",
+      "summary": "The technology controls enforcing access and protecting ePHI within the systems themselves (45 CFR §164.312). 9 implementation specifications across 5 standards.",
       "controls": [
         {
-          "id": "TS-1",
-          "criteria": "Access Control (§164.312(a)(1)) — Required: Unique User Identification, Emergency Access Procedure. Addressable: Automatic Logoff, Encryption and Decryption.",
-          "notes": "Every user gets a unique login (no shared accounts), plus a documented way to get emergency access to ePHI if normal access breaks."
+          "id": "TS-1.1",
+          "criteria": "Access Control (§164.312(a)(1)) — Unique User Identification (Required).",
+          "notes": "Every user gets a unique login — no shared accounts, so every action traces to one person."
+        },
+        {
+          "id": "TS-1.2",
+          "criteria": "Access Control (§164.312(a)(1)) — Emergency Access Procedure (Required).",
+          "notes": "A documented way to get emergency access to ePHI if normal access mechanisms break during a crisis."
+        },
+        {
+          "id": "TS-1.3",
+          "criteria": "Access Control (§164.312(a)(1)) — Automatic Logoff (Addressable).",
+          "notes": "Sessions terminate automatically after a defined period of inactivity."
+        },
+        {
+          "id": "TS-1.4",
+          "criteria": "Access Control (§164.312(a)(1)) — Encryption and Decryption (Addressable).",
+          "notes": "A mechanism to encrypt and decrypt ePHI — the addressable version of what §164.312(e) requires for data in transit."
         },
         {
           "id": "TS-2",
@@ -467,8 +582,8 @@
         },
         {
           "id": "TS-3",
-          "criteria": "Integrity (§164.312(c)(1)) — Addressable: mechanisms to authenticate ePHI and confirm it hasn't been improperly altered or destroyed.",
-          "notes": "Checksums, versioning, or audit trails that let you detect unauthorized changes to patient data."
+          "criteria": "Integrity (§164.312(c)(1)) — Mechanism to Authenticate Electronic Protected Health Information (Addressable).",
+          "notes": "Checksums, versioning, or audit trails that let you detect unauthorized alteration or destruction of ePHI."
         },
         {
           "id": "TS-4",
@@ -476,9 +591,14 @@
           "notes": "MFA is the practical modern implementation of this requirement, even though the rule text predates it."
         },
         {
-          "id": "TS-5",
-          "criteria": "Transmission Security (§164.312(e)(1)) — Addressable: Integrity Controls, Encryption.",
-          "notes": "TLS (or equivalent) for any ePHI crossing a network — email, APIs, file transfers. \"Addressable\" here is close to \"required\" in practice; there's rarely a defensible reason not to encrypt ePHI in transit."
+          "id": "TS-5.1",
+          "criteria": "Transmission Security (§164.312(e)(1)) — Integrity Controls (Addressable).",
+          "notes": "Ensure ePHI isn't improperly modified while in transit, without necessarily encrypting it, if an equivalent safeguard is in place."
+        },
+        {
+          "id": "TS-5.2",
+          "criteria": "Transmission Security (§164.312(e)(1)) — Encryption (Addressable).",
+          "notes": "TLS (or equivalent) for any ePHI crossing a network. \"Addressable\" here is close to \"required\" in practice — there's rarely a defensible reason not to encrypt ePHI in transit."
         }
       ]
     },
@@ -527,6 +647,76 @@
           "id": "PR-8",
           "criteria": "Administrative requirements (§164.530) — designate a privacy official, train the workforce, apply appropriate safeguards, and provide a process for complaints.",
           "notes": "The Privacy Rule's own governance layer — distinct from (but overlapping with) the Security Rule's Administrative Safeguards. Needs its own named owner, not an assumption that the Security Officer covers it."
+        },
+        {
+          "id": "PR-9",
+          "criteria": "Uses and disclosures requiring an opportunity to agree or object (§164.510) — facility directories, and disclosures to family/friends/others involved in the individual's care, or for notification purposes.",
+          "notes": "Informal consent is enough here (not written authorization) — but the individual still needs a real opportunity to object, and you need to honor it if they do."
+        },
+        {
+          "id": "PR-10.1",
+          "criteria": "Uses/disclosures without authorization (§164.512(a)) — required by law.",
+          "notes": "Disclosure to comply with a legal mandate (court order, statute, regulation) — document the specific legal requirement you're relying on."
+        },
+        {
+          "id": "PR-10.2",
+          "criteria": "Uses/disclosures without authorization (§164.512(b)) — public health activities.",
+          "notes": "Disclosures to public health authorities for disease control, adverse event reporting, and similar public health purposes."
+        },
+        {
+          "id": "PR-10.3",
+          "criteria": "Uses/disclosures without authorization (§164.512(c)) — victims of abuse, neglect, or domestic violence.",
+          "notes": "Disclosure to a government authority authorized to receive such reports, generally with the individual's agreement or as otherwise permitted by law."
+        },
+        {
+          "id": "PR-10.4",
+          "criteria": "Uses/disclosures without authorization (§164.512(d)) — health oversight activities.",
+          "notes": "Disclosures to a health oversight agency for audits, licensure actions, and civil/criminal/administrative investigations of the health care system itself."
+        },
+        {
+          "id": "PR-10.5",
+          "criteria": "Uses/disclosures without authorization (§164.512(e)) — judicial and administrative proceedings.",
+          "notes": "In response to a court order, or a subpoena/discovery request with satisfactory assurances the individual was notified or a protective order was sought."
+        },
+        {
+          "id": "PR-10.6",
+          "criteria": "Uses/disclosures without authorization (§164.512(f)) — law enforcement purposes.",
+          "notes": "Narrow, specific circumstances (court order, identifying a suspect, reporting a crime on the premises) — this is not a blanket \"give police whatever they ask for\" provision."
+        },
+        {
+          "id": "PR-10.7",
+          "criteria": "Uses/disclosures without authorization (§164.512(g)) — decedents.",
+          "notes": "Disclosure to coroners, medical examiners, and funeral directors as necessary to carry out their duties."
+        },
+        {
+          "id": "PR-10.8",
+          "criteria": "Uses/disclosures without authorization (§164.512(h)) — cadaveric organ, eye, or tissue donation.",
+          "notes": "Disclosure to organ procurement organizations to facilitate donation and transplantation."
+        },
+        {
+          "id": "PR-10.9",
+          "criteria": "Uses/disclosures without authorization (§164.512(i)) — research purposes.",
+          "notes": "Requires IRB or privacy board approval (or a waiver of authorization) — don't treat \"it's for research\" alone as sufficient justification."
+        },
+        {
+          "id": "PR-10.10",
+          "criteria": "Uses/disclosures without authorization (§164.512(j)) — to avert a serious threat to health or safety.",
+          "notes": "A narrow good-faith exception for imminent threats to the individual or the public — document the basis for invoking it."
+        },
+        {
+          "id": "PR-10.11",
+          "criteria": "Uses/disclosures without authorization (§164.512(k)) — specialized government functions.",
+          "notes": "Military/veterans activities, national security and intelligence, and similar specialized government contexts."
+        },
+        {
+          "id": "PR-10.12",
+          "criteria": "Uses/disclosures without authorization (§164.512(l)) — workers' compensation.",
+          "notes": "Disclosures necessary to comply with workers' compensation or similar programs providing benefits for work-related injuries."
+        },
+        {
+          "id": "PR-11",
+          "criteria": "De-identification, minimum necessary details, and marketing/fundraising (§164.514) — standards for de-identifying PHI (Safe Harbor or Expert Determination), further detail on the minimum necessary standard, and rules restricting marketing and fundraising communications.",
+          "notes": "De-identified data (properly de-identified under one of the two recognized methods) falls outside HIPAA entirely — but the bar for \"properly de-identified\" is specific and higher than just removing a name. Marketing generally requires authorization; fundraising has its own narrower opt-out rules."
         }
       ]
     },
