@@ -1,8 +1,8 @@
 {
   "framework": "HIPAA",
-  "section": "Security Rule",
+  "section": "Privacy, Security & Breach Notification Rules",
   "slug": "hipaa",
-  "description": "The HIPAA Security Rule (45 CFR Parts 160 and 164, Subpart C) sets national standards for protecting electronic protected health information (ePHI). Unlike SOC 2, it's a federal legal requirement, not a voluntary attestation — it applies to covered entities and their business associates.",
+  "description": "HIPAA is actually several rules, not one: the Privacy Rule (45 CFR Part 164, Subpart E), the Security Rule (Subpart C), and the Breach Notification Rule (Subpart D) — plus an Enforcement Rule covering how OCR investigates and penalizes violations. Unlike SOC 2, this is a federal legal requirement, not a voluntary attestation — it applies to covered entities and their business associates.",
   "source": {
     "label": "HHS.gov — Summary of the HIPAA Security Rule",
     "url": "https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html"
@@ -59,24 +59,25 @@
       ]
     },
     {
-      "icon": "🛡️",
-      "title": "The Three Safeguards",
+      "icon": "🗂️",
+      "title": "How HIPAA Is Structured",
       "blocks": [
         {
           "type": "list",
           "items": [
-            "**Administrative Safeguards** (§164.308) — the policies, processes, and workforce management that govern how ePHI is protected. The largest category by far: risk analysis, workforce security, access management, training, incident procedures, contingency planning, and business associate agreements.",
-            "**Physical Safeguards** (§164.310) — controlling physical access to the facilities and devices where ePHI lives: facility access controls, workstation use/security, and device/media disposal.",
-            "**Technical Safeguards** (§164.312) — the technology controls enforcing access and protecting data in the systems themselves: access control, audit logs, integrity controls, authentication, and transmission security."
+            "**Privacy Rule** (§164.500–534) — governs use and disclosure of PHI in any form (not just electronic), and the specific rights individuals have over their own health information: access, amendment, accounting of disclosures, restrictions, and notice.",
+            "**Security Rule** (§164.302–318) — the Administrative, Physical, and Technical Safeguards for *electronic* PHI (ePHI) specifically. This is the part most people mean when they say \"HIPAA compliance,\" but it's only one of the rules.",
+            "**Breach Notification Rule** (§164.400–414) — added by HITECH; requires notifying individuals, HHS, and sometimes the media following a breach of unsecured PHI.",
+            "**Enforcement Rule** (Part 160, Subparts C–E) — how OCR actually investigates complaints and levies penalties across all of the above."
           ]
         },
         {
           "type": "callout",
-          "text": "Unlike SOC 2's optional Trust Services Categories, all three HIPAA safeguard categories are mandatory — there's no equivalent to \"Security is required, the rest is optional.\" What varies is which specific implementation specifications are required vs. addressable within each."
+          "text": "Unlike SOC 2's optional Trust Services Categories, none of these HIPAA rules are optional — there's no equivalent to \"Security is required, the rest is optional.\" What varies within the Security Rule specifically is which implementation specifications are required vs. addressable (see Key Differences above)."
         },
         {
           "type": "paragraph",
-          "text": "See the [Controls tab](/frameworks/hipaa/controls) for the full breakdown of all 18 standards across the three safeguard categories."
+          "text": "See the [Controls tab](/frameworks/hipaa/controls) for the full breakdown — 18 Security Rule standards, 8 Privacy Rule provisions, and 5 Breach Notification Rule requirements."
         }
       ]
     },
@@ -115,7 +116,7 @@
       "blocks": [
         {
           "type": "paragraph",
-          "text": "Quick self-score across all three safeguard categories. If you're answering \"no\" to more than half the questions in any category, prioritize that category first."
+          "text": "Quick self-score across the Security, Privacy, and Breach Notification Rules. If you're answering \"no\" to more than half the questions in any category, prioritize that category first."
         },
         {
           "type": "table",
@@ -215,6 +216,36 @@
               "Transmission security",
               "Is ePHI encrypted in transit whenever it crosses a network?",
               "Low"
+            ],
+            [
+              "Privacy",
+              "Patient access requests",
+              "Can you fulfill a right-of-access request within 30 days?",
+              "Medium"
+            ],
+            [
+              "Privacy",
+              "Notice of Privacy Practices",
+              "Is your NPP current and does it match your actual data practices?",
+              "Low"
+            ],
+            [
+              "Privacy",
+              "Minimum necessary",
+              "Do staff access only the PHI necessary for their specific role?",
+              "Medium"
+            ],
+            [
+              "Breach Notification",
+              "Breach risk assessment",
+              "Do you have a documented process to assess whether an incident is a reportable breach?",
+              "Medium"
+            ],
+            [
+              "Breach Notification",
+              "60-day notification readiness",
+              "Could you notify affected individuals and HHS within 60 days of discovery today?",
+              "High"
             ]
           ]
         },
@@ -304,7 +335,7 @@
         },
         {
           "type": "paragraph",
-          "text": "OCR's enforcement history consistently points to the same handful of gaps: no (or an inadequate) risk analysis, missing encryption on portable devices, insufficient access controls, and missing or incomplete Business Associate Agreements."
+          "text": "OCR's enforcement history consistently points to the same handful of gaps: no (or an inadequate) risk analysis, missing encryption on portable devices, insufficient access controls, missing or incomplete Business Associate Agreements — and, on the Privacy Rule side, delayed responses to patient right-of-access requests, which OCR made a specific, standalone enforcement priority."
         }
       ]
     },
@@ -339,7 +370,7 @@
     {
       "id": "AS",
       "title": "Administrative Safeguards",
-      "group": "core",
+      "group": "Security Rule",
       "summary": "Policies, processes, and workforce management governing how ePHI is protected — the largest of the three safeguard categories (45 CFR §164.308).",
       "controls": [
         {
@@ -392,7 +423,7 @@
     {
       "id": "PS",
       "title": "Physical Safeguards",
-      "group": "core",
+      "group": "Security Rule",
       "summary": "Controlling physical access to the facilities and devices where ePHI lives (45 CFR §164.310).",
       "controls": [
         {
@@ -420,7 +451,7 @@
     {
       "id": "TS",
       "title": "Technical Safeguards",
-      "group": "core",
+      "group": "Security Rule",
       "summary": "The technology controls enforcing access and protecting ePHI within the systems themselves (45 CFR §164.312).",
       "controls": [
         {
@@ -447,6 +478,87 @@
           "id": "TS-5",
           "criteria": "Transmission Security (§164.312(e)(1)) — Addressable: Integrity Controls, Encryption.",
           "notes": "TLS (or equivalent) for any ePHI crossing a network — email, APIs, file transfers. \"Addressable\" here is close to \"required\" in practice; there's rarely a defensible reason not to encrypt ePHI in transit."
+        }
+      ]
+    },
+    {
+      "id": "PR",
+      "title": "Privacy Rule",
+      "group": "Privacy Rule",
+      "summary": "Governs use and disclosure of PHI generally (not just electronic), and the specific rights individuals have over their own health information (45 CFR §164.500–534).",
+      "controls": [
+        {
+          "id": "PR-1",
+          "criteria": "Uses and disclosures of PHI (§164.502) — a covered entity may not use or disclose PHI except as the Privacy Rule permits or requires, and must apply the minimum necessary standard except for treatment, when disclosing to the individual, or when authorized.",
+          "notes": "The baseline rule everything else follows from: no PHI use/disclosure without a Privacy-Rule-recognized reason, and even then, only the minimum necessary for the purpose."
+        },
+        {
+          "id": "PR-2",
+          "criteria": "Authorization (§164.508) — uses/disclosures not otherwise permitted by the Privacy Rule (e.g. most marketing, sale of PHI) require a valid, specific written authorization from the individual.",
+          "notes": "A generic consent form signed at intake does not cover this — authorization has specific required elements and needs to name the actual use/disclosure."
+        },
+        {
+          "id": "PR-3",
+          "criteria": "Notice of Privacy Practices (§164.520) — covered entities must provide individuals a plain-language notice describing how PHI may be used/disclosed, the individual's rights, and the entity's legal duties.",
+          "notes": "Post it, hand it out at first service delivery, and make sure it actually reflects your real practices — a boilerplate NPP that doesn't match reality is a common audit finding."
+        },
+        {
+          "id": "PR-4",
+          "criteria": "Right to request restrictions and confidential communications (§164.522) — individuals can request limits on certain uses/disclosures, and covered entities must agree in specific cases (e.g. a self-pay item disclosed to a health plan).",
+          "notes": "Build a process to receive, evaluate, and honor (or document declining) restriction requests — the self-pay case is not discretionary."
+        },
+        {
+          "id": "PR-5",
+          "criteria": "Right of access (§164.524) — individuals can inspect and obtain a copy of their PHI in a designated record set, generally within 30 days.",
+          "notes": "One of the most frequently enforced rights — OCR has run entire initiatives specifically targeting access-request delays. Have a defined, fast turnaround process."
+        },
+        {
+          "id": "PR-6",
+          "criteria": "Right to amend (§164.526) — individuals can request correction of PHI they believe is inaccurate or incomplete, with the covered entity required to act within 60 days.",
+          "notes": "You can deny an amendment request in specific circumstances, but you need a documented process either way, including how accepted amendments get communicated to others who received the original data."
+        },
+        {
+          "id": "PR-7",
+          "criteria": "Right to an accounting of disclosures (§164.528) — individuals can request a list of certain disclosures of their PHI made in the prior six years.",
+          "notes": "Excludes routine treatment/payment/operations disclosures — but you need to actually track the disclosures that do count, which most systems don't log by default."
+        },
+        {
+          "id": "PR-8",
+          "criteria": "Administrative requirements (§164.530) — designate a privacy official, train the workforce, apply appropriate safeguards, and provide a process for complaints.",
+          "notes": "The Privacy Rule's own governance layer — distinct from (but overlapping with) the Security Rule's Administrative Safeguards. Needs its own named owner, not an assumption that the Security Officer covers it."
+        }
+      ]
+    },
+    {
+      "id": "BN",
+      "title": "Breach Notification Rule",
+      "group": "Breach Notification Rule",
+      "summary": "Requires notification following a breach of unsecured PHI — to individuals, HHS, and in some cases the media (45 CFR §164.400–414, added by HITECH).",
+      "controls": [
+        {
+          "id": "BN-1",
+          "criteria": "Breach definition and risk assessment (§164.400–402) — an impermissible use/disclosure of PHI is presumed to be a breach unless a documented risk assessment shows a low probability the data was compromised.",
+          "notes": "\"We don't think anyone actually looked at it\" isn't sufficient — the risk assessment needs to walk through specific factors (nature of the data, who accessed it, whether it was actually viewed/acquired, mitigation) and be documented."
+        },
+        {
+          "id": "BN-2",
+          "criteria": "Notification to individuals (§164.404) — without unreasonable delay, and no later than 60 calendar days after discovery of the breach.",
+          "notes": "The clock starts at discovery, not confirmation — a suspected breach under investigation still counts as \"discovered\" for timing purposes in most cases."
+        },
+        {
+          "id": "BN-3",
+          "criteria": "Notification to media (§164.406) — required in addition to individual notification when a breach affects more than 500 residents of a single state or jurisdiction, within the same 60-day window.",
+          "notes": "Only triggered at the 500-in-one-state threshold — most breaches don't reach this, but it needs to be checked, not assumed away."
+        },
+        {
+          "id": "BN-4",
+          "criteria": "Notification to the HHS Secretary (§164.408) — breaches affecting 500+ individuals require notification to HHS at the same time as individual notification; breaches affecting fewer than 500 can be logged and reported annually, within 60 days of year-end.",
+          "notes": "Track every breach regardless of size — even sub-500 incidents need to go into the annual log, not just the big ones."
+        },
+        {
+          "id": "BN-5",
+          "criteria": "Notification by business associates (§164.410) — a business associate that discovers a breach must notify the covered entity without unreasonable delay, no later than 60 calendar days after discovery.",
+          "notes": "Your BA agreements should specify a notification timeline tighter than the statutory 60 days — you still need enough runway to meet your own individual/HHS notification deadlines after they tell you."
         }
       ]
     }

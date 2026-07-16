@@ -50,7 +50,7 @@ export const FRAMEWORKS = [
   {
     slug: "hipaa",
     name: "HIPAA",
-    blurb: "Security Rule — Administrative, Physical, Technical safeguards.",
+    blurb: "Privacy, Security & Breach Notification Rules.",
     type: "law",
     content: hipaa,
   },
