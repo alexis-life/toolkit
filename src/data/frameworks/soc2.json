@@ -323,47 +323,97 @@
       "id": "P",
       "title": "Privacy",
       "group": "Optional",
-      "summary": "Whether personal information is collected, used, retained, disclosed, and disposed of in conformity with the entity's privacy notice and criteria. Optional — the category most SaaS companies skip unless they handle significant consumer PII, since GDPR/CCPA often cover this ground contractually instead.",
+      "summary": "Governs the proper collection, use, retention, disclosure, and disposal of personal information (PII), in line with privacy notices and principles. 18 criteria across 8 privacy categories — optional, selected based on your business model.",
       "controls": [
         {
-          "id": "P1.0",
-          "criteria": "Provides notice to data subjects about privacy practices, including what's collected, used, retained, disclosed, and for what purpose, at or before collection.",
-          "notes": "An actual, current privacy policy (not boilerplate) that matches what you really do with data, reviewed whenever data practices change."
+          "id": "P1.1",
+          "criteria": "Notice — the entity provides notice to data subjects about its privacy practices, updated and communicated in a timely manner whenever those practices change.",
+          "notes": "A living privacy notice, not a static document — it needs to actually get updated (and re-communicated) whenever what you do with personal information changes."
         },
         {
-          "id": "P2.0",
-          "criteria": "Describes the choices available and obtains implicit or explicit consent for the collection, use, and disclosure of personal information.",
-          "notes": "Consent capture mechanisms (checkboxes, preference centers) with records of what was consented to and when — not just a blanket ToS acceptance."
+          "id": "P2.1",
+          "criteria": "Choice and consent — the entity communicates the choices available regarding collection, use, retention, disclosure, and disposal of personal information, and obtains consent (implicit or explicit) as required.",
+          "notes": "Document your basis for implicit consent where you rely on it — auditors will ask how you determined consent wasn't required to be explicit."
         },
         {
-          "id": "P3.0",
-          "criteria": "Collects personal information only for the purposes identified in the notice.",
-          "notes": "Data minimization in practice — audit your intake forms/APIs for fields you collect but don't actually use or disclose in your notice."
+          "id": "P3.1",
+          "criteria": "Collection — personal information is collected consistent with the entity's privacy objectives (limited to what's necessary, obtained fairly and lawfully, from reliable sources).",
+          "notes": "Audit your intake forms/APIs for fields you collect but don't actually use — over-collection relative to your stated purpose is a common finding."
         },
         {
-          "id": "P4.0",
-          "criteria": "Limits use of personal information to the purposes identified, retains it only as long as needed, and disposes of it appropriately.",
-          "notes": "A data retention schedule with automated deletion/anonymization jobs, not a manual \"someone will get to it\" process."
+          "id": "P3.2",
+          "criteria": "Collection requiring explicit consent — for information requiring explicit consent, the entity communicates the need for consent and the consequences of not providing it, and obtains consent before collection.",
+          "notes": "Sensitive personal information needs its own explicit, informed opt-in flow — a general ToS acceptance doesn't satisfy this."
         },
         {
-          "id": "P5.0",
-          "criteria": "Provides data subjects with access to their personal information for review and update.",
-          "notes": "A documented data subject access request (DSAR) process with a defined SLA for fulfilling it."
+          "id": "P4.1",
+          "criteria": "Use — the entity limits use of personal information to the purposes identified in its privacy objectives.",
+          "notes": "Using data for a new purpose later (e.g. a new ML feature) requires going back through notice/consent again, not just proceeding because you already have the data."
         },
         {
-          "id": "P6.0",
-          "criteria": "Discloses personal information to third parties only with consent, and notifies data subjects of unauthorized disclosure.",
-          "notes": "Vendor/subprocessor list disclosed to users, data processing agreements with third parties, and a documented breach-notification procedure with legal timelines built in."
+          "id": "P4.2",
+          "criteria": "Retention — the entity retains personal information consistent with its privacy objectives, and protects it from erasure or destruction during the retention period.",
+          "notes": "A documented retention schedule with automated enforcement — \"we'll delete it eventually\" isn't a retention policy."
         },
         {
-          "id": "P7.0",
-          "criteria": "Maintains accurate, complete, and relevant personal information for the identified purposes.",
-          "notes": "Mechanisms for data subjects to correct inaccurate information, and periodic data-quality checks."
+          "id": "P4.3",
+          "criteria": "Disposal — the entity securely disposes of personal information to meet its privacy objectives.",
+          "notes": "Deletion requests need to be captured, flagged, and actually carried out — including in backups and with any third parties the data was shared with."
         },
         {
-          "id": "P8.0",
-          "criteria": "Monitors compliance with privacy policies and procedures and has procedures to address privacy-related complaints and disputes.",
-          "notes": "A designated privacy owner/DPO-equivalent, a complaint-intake process, and periodic privacy program audits — not just a policy nobody checks against."
+          "id": "P5.1",
+          "criteria": "Access — the entity grants identified and authenticated data subjects the ability to access their stored personal information, provides copies on request, and informs them if access is denied (and why).",
+          "notes": "Authenticate the requester before granting access — verifying identity is part of this criterion, not just fulfilling the request quickly."
+        },
+        {
+          "id": "P5.2",
+          "criteria": "Correction — the entity corrects, amends, or appends personal information based on data subject input, communicates corrections to third parties who received the original data, and explains any denial.",
+          "notes": "Track who you've shared data with so corrections can actually propagate downstream, not just update your own copy."
+        },
+        {
+          "id": "P6.1",
+          "criteria": "Disclosure with consent — the entity discloses personal information to third parties only with the data subject's explicit consent, obtained prior to disclosure.",
+          "notes": "Map every third-party data flow against what your notice/consent actually covers — undisclosed sharing arrangements are a common gap here."
+        },
+        {
+          "id": "P6.2",
+          "criteria": "Record of authorized disclosures — the entity creates and retains a complete, accurate, and timely record of authorized disclosures of personal information.",
+          "notes": "You need an actual log of who you've disclosed what to, not just a general awareness that disclosures happen."
+        },
+        {
+          "id": "P6.3",
+          "criteria": "Record of unauthorized disclosures — the entity creates and retains a complete, accurate, and timely record of detected or reported unauthorized disclosures (including breaches) of personal information.",
+          "notes": "This record needs to exist independent of whether a breach notification threshold was triggered — track incidents even the smaller ones."
+        },
+        {
+          "id": "P6.4",
+          "criteria": "Vendor privacy commitments — the entity obtains privacy commitments from vendors and third parties with access to personal information, and periodically assesses their compliance.",
+          "notes": "A signed DPA isn't the finish line — you need to periodically actually verify the vendor is holding up their end, not just file the contract."
+        },
+        {
+          "id": "P6.5",
+          "criteria": "Vendor breach notification commitments — the entity obtains commitments from vendors to notify it of actual or suspected unauthorized disclosures, and acts on those notifications per incident-response procedures.",
+          "notes": "Your vendor contracts should specify a notification timeline tight enough that you can still meet your own downstream obligations after they tell you."
+        },
+        {
+          "id": "P6.6",
+          "criteria": "Breach notification — the entity provides notification of breaches and incidents to affected data subjects, regulators, and others as required.",
+          "notes": "This overlaps directly with GDPR Art. 33/34 and CCPA's breach provisions — one notification process can usually serve multiple frameworks if built to the strictest applicable timeline."
+        },
+        {
+          "id": "P6.7",
+          "criteria": "Accounting of disclosures — the entity provides data subjects with an accounting of personal information held and disclosed, upon request.",
+          "notes": "Similar in spirit to HIPAA's accounting-of-disclosures right and GDPR's right to know who data was shared with — needs the P6.2/P6.3 disclosure records to actually be able to answer this."
+        },
+        {
+          "id": "P7.1",
+          "criteria": "Quality — the entity collects and maintains accurate, up-to-date, complete, and relevant personal information to meet its privacy objectives.",
+          "notes": "Periodic data-quality checks and a mechanism for data subjects to flag inaccuracies (ties back to P5.2)."
+        },
+        {
+          "id": "P8.1",
+          "criteria": "Monitoring and enforcement — the entity implements a process for receiving, addressing, resolving, and communicating resolution of privacy inquiries, complaints, and disputes, and periodically monitors compliance.",
+          "notes": "A designated privacy contact/intake channel and a documented complaint-handling process — not just \"email support and hope.\""
         }
       ]
     }
