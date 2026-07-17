@@ -372,7 +372,7 @@
       "id": "AS",
       "title": "Administrative Safeguards",
       "group": "Security Rule",
-      "summary": "Policies, processes, and workforce management governing how ePHI is protected — the largest of the three safeguard categories (45 CFR §164.308). 23 implementation specifications across 9 standards.",
+      "summary": "Policies, processes, and workforce management governing how ePHI is protected — the largest of the three safeguard categories (45 CFR §164.308). 23 implementation specifications across 9 standards. Every standard here is mandatory — \"Required\" specs must be implemented exactly as written; \"Addressable\" specs are NOT optional, they mean you must implement the spec, implement an equivalent alternative, or document why neither is reasonable and appropriate for your organization. Silently skipping an Addressable spec with no documented decision is a compliance gap.",
       "controls": [
         {
           "id": "AS-1.1",
@@ -495,7 +495,7 @@
       "id": "PS",
       "title": "Physical Safeguards",
       "group": "Security Rule",
-      "summary": "Controlling physical access to the facilities and devices where ePHI lives (45 CFR §164.310). 10 implementation specifications across 4 standards.",
+      "summary": "Controlling physical access to the facilities and devices where ePHI lives (45 CFR §164.310). 10 implementation specifications across 4 standards. Same rule as Administrative Safeguards: \"Addressable\" here means justify-or-implement, not skip.",
       "controls": [
         {
           "id": "PS-1.1",
@@ -553,7 +553,7 @@
       "id": "TS",
       "title": "Technical Safeguards",
       "group": "Security Rule",
-      "summary": "The technology controls enforcing access and protecting ePHI within the systems themselves (45 CFR §164.312). 9 implementation specifications across 5 standards.",
+      "summary": "The technology controls enforcing access and protecting ePHI within the systems themselves (45 CFR §164.312). 9 implementation specifications across 5 standards. Same rule as Administrative Safeguards: \"Addressable\" here means justify-or-implement, not skip.",
       "controls": [
         {
           "id": "TS-1.1",
