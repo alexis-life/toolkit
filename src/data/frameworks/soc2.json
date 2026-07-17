@@ -873,5 +873,186 @@
         }
       ]
     }
+  ],
+  "resources": [
+    {
+      "icon": "🧭",
+      "title": "What This Page Is (and Isn't)",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The Overview and Controls tabs are a reference and orientation layer — an accurate map of what SOC 2 requires and why, with prioritization guidance. They are not, on their own, enough to get a SOC 2 report issued."
+        },
+        {
+          "type": "callout",
+          "text": "What's missing from a reference page by nature: the scoping decision (which optional TSC categories actually apply to you), a CPA firm relationship, actual written policies and procedures, evidence-collection tooling, and someone with authority running the program day to day."
+        },
+        {
+          "type": "paragraph",
+          "text": "This tab exists to close part of that gap — scoping guidance, a realistic policy set, and a note on where to get outside help."
+        }
+      ]
+    },
+    {
+      "icon": "🎯",
+      "title": "Scoping: Which TSC Categories Apply to You",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Security (CC1–CC9) is mandatory for every SOC 2 report. The other four categories are a real decision you have to make, not an automatic add-on — each one adds real audit scope, cost, and time."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Availability** — include if you have contractual uptime/SLA commitments customers actually check against.",
+            "**Confidentiality** — include if you handle confidential information beyond personal data (source code, contracts, trade secrets) under NDA or similar obligations — this is the category most B2B SaaS companies add.",
+            "**Processing Integrity** — include if your product transforms, calculates, or transacts on data where accuracy is a core promise (billing, payments, financial reporting).",
+            "**Privacy** — include if you collect and process significant consumer PII directly as a controller, not just on behalf of B2B customers. Less commonly included than people expect — most B2B SaaS relies on Confidentiality plus a privacy policy instead, and covers the rest via GDPR/CCPA compliance directly."
+          ]
+        },
+        {
+          "type": "callout",
+          "text": "Over-scoping adds real audit cost and time without adding trust value if customers never ask for it. Under-scoping means you might need a second report later if a customer specifically requires a category you skipped. Base the decision on what your actual customers' security questionnaires ask for, not a guess."
+        }
+      ]
+    },
+    {
+      "icon": "🛠️",
+      "title": "Official Resources",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "[AICPA Trust Services Criteria](https://www.aicpa-cima.com/resources/download/2017-trust-services-criteria-with-revised-points-of-focus-2022) — the authoritative source document, with the full point-of-focus language this site paraphrases.",
+            "[AICPA SOC for Service Organizations](https://www.aicpa-cima.com/resources/landing/system-and-organization-controls-soc-suite-of-services) — AICPA's own hub explaining the different SOC report types and how they relate to each other."
+          ]
+        },
+        {
+          "type": "callout",
+          "text": "Unlike HIPAA, there's no free government-provided readiness assessment tool for SOC 2. In practice, most companies either work directly with a CPA firm on a readiness assessment, or use a paid GRC/compliance automation platform (Vanta, Drata, Secureframe, and similar) to track evidence and control status leading up to the audit — there isn't a standard free option to point to here."
+        }
+      ]
+    },
+    {
+      "icon": "📚",
+      "title": "Sample Policy Library",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A realistic, consolidated policy set — this is closer to what companies actually maintain for a SOC 2 audit than a 1:1 mapping to every criterion would suggest."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Policy / Plan",
+            "Abbr.",
+            "Covers",
+            "Tied To"
+          ],
+          "rows": [
+            [
+              "Information Security Policy",
+              "ISP",
+              "The top-level policy governing the whole security program — everything else hangs off this.",
+              "CC1, CC5"
+            ],
+            [
+              "Code of Conduct / Acceptable Use Policy",
+              "AUP",
+              "Ethical standards and rules for how the workforce uses systems, devices, and data.",
+              "CC1.1"
+            ],
+            [
+              "Access Control Policy",
+              "ACP",
+              "How access is requested, approved, reviewed, and revoked, including least privilege.",
+              "CC6.1–6.3"
+            ],
+            [
+              "Risk Assessment Policy",
+              "—",
+              "Risk assessment methodology, cadence, and how identified risks (including fraud risk) get tracked.",
+              "CC3.1–3.4"
+            ],
+            [
+              "Change Management Policy",
+              "—",
+              "Approval, testing, and rollback procedures for changes to production systems.",
+              "CC8.1"
+            ],
+            [
+              "Incident Response Plan",
+              "IRP",
+              "Detection, containment, eradication, and recovery steps for a security incident, with defined roles.",
+              "CC7.3–7.5"
+            ],
+            [
+              "Business Continuity & Disaster Recovery Plan",
+              "BCDR",
+              "Backup, recovery, and business continuity procedures, with a testing cadence.",
+              "CC9.1"
+            ],
+            [
+              "Vendor / Third-Party Risk Management Policy",
+              "—",
+              "Vendor risk assessment and ongoing oversight of critical vendors.",
+              "CC9.2"
+            ],
+            [
+              "Physical Security Policy",
+              "—",
+              "Facility access controls for spaces housing in-scope systems.",
+              "CC6.4"
+            ],
+            [
+              "Asset & Data Disposal Policy",
+              "—",
+              "Secure decommissioning and data wipe procedures for retired assets.",
+              "CC6.5"
+            ],
+            [
+              "Security Awareness & Training Policy",
+              "SAT",
+              "Training content, cadence, and completion tracking for the workforce.",
+              "CC1.4, CC2.2"
+            ],
+            [
+              "Data Classification & Retention Policy",
+              "—",
+              "How data is classified by sensitivity, and retained/disposed of accordingly — required if Confidentiality is in scope.",
+              "C1.1–1.2"
+            ],
+            [
+              "Privacy Policy",
+              "—",
+              "Customer/data-subject-facing description of data practices — required if Privacy is in scope.",
+              "P1.1–P8.1"
+            ]
+          ]
+        },
+        {
+          "type": "callout",
+          "text": "There's no SOC 2 requirement to have exactly this many documents. Smaller companies often run on 6–8 consolidated policies covering the same ground. What auditors actually test is whether the policy exists, is followed, and produces evidence — not the document count."
+        }
+      ]
+    },
+    {
+      "icon": "⚖️",
+      "title": "When to Bring in Outside Help",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "**A licensed CPA firm** — required by definition; SOC 2 reports can only be issued by a CPA firm licensed to perform attestation engagements, not just any security consultancy.",
+            "**A readiness assessment / gap analysis** — worth doing before the actual audit, especially for a first-time Type 2, so remediation happens before the clock starts on the observation period.",
+            "**A GRC/compliance automation platform** — most companies past a certain size use one to track evidence and control status continuously rather than scrambling before each audit cycle."
+          ]
+        },
+        {
+          "type": "callout",
+          "text": "None of this replaces professional advice specific to your organization — treat everything on this site as a map, not a substitute for the territory."
+        }
+      ]
+    }
   ]
 }
