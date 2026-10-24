@@ -40,8 +40,9 @@ function MarkO() {
 
 const SHIP_SIZE = 10;
 
-// Step 3 treats the left three columns as already searched. The highlighted
-// shot is the every-third cell closest to the middle of what remains.
+// Step 3 leaves one open rectangle in the middle (rows 1–7, columns 2–8).
+// Its center is an every-third square, so the "aim middle" shot stays on
+// the pattern.
 function battleshipKinds(step) {
   const kinds = [];
   for (let row = 0; row < SHIP_SIZE; row += 1) {
@@ -50,34 +51,15 @@ function battleshipKinds(step) {
         kinds.push((row + col) % 2 === 0 ? "hot" : "");
       } else if (step === 1) {
         kinds.push((row + col) % 3 === 0 ? "hot" : "");
-      } else if (col < 3) {
-        kinds.push("spent");
-      } else if ((row + col) % 3 === 0) {
-        kinds.push("hot");
       } else {
-        kinds.push("open");
+        const open = row >= 1 && row <= 7 && col >= 2 && col <= 8;
+        if (!open) kinds.push("spent");
+        else if (row === 4 && col === 5) kinds.push("aim");
+        else if ((row + col) % 3 === 0) kinds.push("hot");
+        else kinds.push("open");
       }
     }
   }
-
-  if (step === 2) {
-    const midRow = (SHIP_SIZE - 1) / 2;
-    const midCol = (3 + SHIP_SIZE - 1) / 2;
-    let bestIndex = -1;
-    let bestDistance = Infinity;
-    for (let row = 0; row < SHIP_SIZE; row += 1) {
-      for (let col = 3; col < SHIP_SIZE; col += 1) {
-        if ((row + col) % 3 !== 0) continue;
-        const distance = (row - midRow) ** 2 + (col - midCol) ** 2;
-        if (distance < bestDistance) {
-          bestDistance = distance;
-          bestIndex = row * SHIP_SIZE + col;
-        }
-      }
-    }
-    if (bestIndex >= 0) kinds[bestIndex] = "aim";
-  }
-
   return kinds;
 }
 
