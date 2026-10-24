@@ -5,77 +5,199 @@
     {
       "id": "guess-who",
       "name": "Guess Who",
+      "summary": "Halve the board",
+      "tags": ["two-player", "strategy"],
+      "watch": { "seconds": 60, "label": "1:00" },
       "tips": [
-        "Each question should knock out roughly half the characters still in play. Asking whether the name starts with A–M is one way to do that.",
-        "Keep halving the board and a win usually takes five or six questions."
+        {
+          "id": "halve",
+          "text": "Ask questions that remove about half the characters still standing, such as whether the name starts with A–M. That averages about 5.5 guesses and wins about 96% of best-of-five matches.",
+          "why": "Each cut throws away half of what is left, which is faster than chasing one trait at a time.",
+          "stats": ["5.5 guesses", "96% of best-of-five"]
+        }
       ]
     },
     {
       "id": "rock-paper-scissors",
       "name": "Rock Paper Scissors",
+      "summary": "Beat what just won",
+      "tags": ["two-player", "party"],
+      "watch": { "seconds": 300, "label": "5:00" },
       "tips": [
-        "Open a surprise round with rock. Someone answering in a rush most often throws scissors.",
-        "In a longer match, the person who just won tends to repeat, and the person who lost tends to step forward: rock, then paper, then scissors. Throw whatever beats the move that just won."
+        {
+          "id": "surprise",
+          "text": "If you spring a round on someone, throw rock. In his experience, about 90% of those rushed throws are scissors.",
+          "why": "That 90% is his own experience, not a measured study. A hurried hand still has a favorite.",
+          "stats": ["~90% scissors, his experience"]
+        },
+        {
+          "id": "pattern",
+          "text": "Over a longer match, the winner usually repeats and the loser usually steps forward: rock, then paper, then scissors. Throw whatever beats the throw that just won.",
+          "why": "You are answering the habit from the last point, not guessing from scratch.",
+          "stats": ["75% over a best of 20"]
+        }
       ]
     },
     {
       "id": "coin-toss",
       "name": "Coin toss",
+      "summary": "Called face down",
+      "tags": ["party", "dexterity"],
+      "watch": { "seconds": 540, "label": "9:00" },
       "tips": [
-        "Use a wobble flip. Tilt your wrist about 45° as you let go so the coin wobbles instead of tumbling, and the face that started up stays up."
+        {
+          "id": "wobble",
+          "text": "Treat this as a trick flip, not a fair toss. Start with the face they called facing down. Raise your arm, then tilt your wrist about 45° as you let go so the coin wobbles instead of tumbling. The face that starts up stays up, so their call lands down.",
+          "why": "A wobble hardly turns the coin over. Putting their call on the bottom is the part that makes the trick pay.",
+          "stats": ["Trick flip"]
+        }
       ]
     },
     {
       "id": "connect-four",
       "name": "Connect Four",
+      "summary": "Stack the center",
+      "tags": ["two-player", "strategy"],
       "diagram": "connect-four",
+      "watch": { "seconds": 683, "label": "11:23" },
       "tips": [
-        "Take the center column. Every winning line except a vertical one passes through it.",
-        "Build a beak: a two-way trap, so that when one four-in-a-row gets blocked the other is already there."
+        {
+          "id": "center",
+          "text": "Stack the center column, and keep adding to it. Every horizontal four and every diagonal four passes through that column. Only a vertical four can miss it, and a vertical four is easy to see coming.",
+          "why": "The board is seven columns wide, so any sideways or diagonal run of four has to use the middle one."
+        },
+        {
+          "id": "beak",
+          "text": "Build a beak. When the opponent blocks your first four, the piece they just played sets up your second threat. Aim that shape up, down, left, or right.",
+          "why": "The block stops one line, and the square they filled is what your next four uses."
+        }
       ]
     },
     {
       "id": "battleship",
       "name": "Battleship",
+      "summary": "Checkerboard, then middle",
+      "tags": ["two-player", "strategy"],
       "diagram": "battleship",
+      "watch": { "seconds": 760, "label": "12:40" },
       "tips": [
-        "Shoot in a checkerboard. Every ship covers at least one of those squares.",
-        "After a hit, check up, down, left, and right to find the ship's direction, then sink it.",
-        "Once the 2-length ship is gone, spread the remaining shots out to every third square.",
-        "Favor the middle of the largest area you still haven't searched. That's where ships are most likely to be."
+        {
+          "id": "checker",
+          "text": "Shoot a checkerboard. Every ship is at least 2 squares long, so it has to cover one of those squares. That searches the grid in about 50 shots instead of 100.",
+          "why": "A ship of length 2 always touches both colors. Hunting one color is enough to nick every ship.",
+          "stats": ["~50 shots, not 100"]
+        },
+        {
+          "id": "hunt",
+          "text": "After a hit, check up, down, left, and right until you know the ship's direction, then sink it. Once the 2-long ship is gone, switch to every third square, since everything left is 3 or longer.",
+          "why": "Shots spaced three apart still cross a ship that cannot fit between them."
+        },
+        {
+          "id": "middle",
+          "text": "Stay on the pattern, and aim at the middle of the largest area you have not searched. His simulation of about a million games: about 60 turns for random shots plus checking neighbors, about 50 with the checkerboard, and about 45 with this aim added.",
+          "why": "A ship is more likely to sit in a big empty stretch than in a pocket you have already cut up.",
+          "stats": ["60 → 50 → 45 turns"]
+        }
       ]
     },
     {
       "id": "tic-tac-toe",
       "name": "Tic-Tac-Toe",
+      "summary": "Three corners",
+      "tags": ["two-player", "strategy"],
       "diagram": "tic-tac-toe",
+      "watch": { "seconds": 1020, "label": "17:00" },
       "tips": [
-        "Go first and take a corner.",
-        "If your opponent leaves the center open, keep taking corners until you create two threats at once.",
-        "If they take the center, take the opposite corner."
+        {
+          "id": "except-center",
+          "text": "Go first and take a corner. If the opponent answers anywhere except the center, you win every time.",
+          "why": "Anything but the center lets your next two marks both be corners, and the third of those is a fork."
+        },
+        {
+          "id": "corners",
+          "text": "Take the second corner that shares a side with your first and threatens a win. After they block, take a third corner that threatens two wins at once. Your first three moves should all be corners.",
+          "why": "The second corner forces the block. The third corner is the one they cannot answer on both lines."
+        },
+        {
+          "id": "center-reply",
+          "text": "If they take the center, take the opposite corner. You only win from there if they then play a corner, about half the time. Otherwise it is a draw.",
+          "why": "The center reply stops the forced fork. A corner from them later reopens a win.",
+          "stats": ["~50% if they take center"]
+        }
       ]
     },
     {
       "id": "jenga",
       "name": "Jenga",
+      "summary": "Pull the loose ones",
+      "tags": ["party", "dexterity"],
+      "watch": { "seconds": 1110, "label": "18:30" },
       "tips": [
-        "Poke a block before you commit, and only pull the loose ones. Heights vary by about 1 mm, so some blocks are already free.",
-        "Test again every turn. As the tower leans, a different set of blocks loosens.",
-        "If a block sticks, give it one quick firm tap instead of dragging it out slowly.",
-        "In the endgame, count the safe moves left and leave your opponent an even number."
+        {
+          "id": "loose",
+          "text": "Poke a block before you pull it, and only take the loose ones. Heights vary by up to about 1 mm, so some blocks are not holding weight.",
+          "why": "A slightly shorter block has a gap. If it does not move when you poke it, it is carrying the tower.",
+          "stats": ["Up to ~1 mm"]
+        },
+        {
+          "id": "retest",
+          "text": "Test again every turn. As the tower leans, a different set of blocks comes loose."
+        },
+        {
+          "id": "tap",
+          "text": "If a block sticks, give it one quick firm tap instead of dragging it out slowly."
+        },
+        {
+          "id": "choice",
+          "text": "Choose which block you pull. Taking one can loosen some of the others and lock the rest.",
+          "why": "The weight shifts onto whatever you leave behind, so this pull decides the next loose block."
+        },
+        {
+          "id": "endgame",
+          "text": "In the endgame, count the safe moves left and leave your opponent facing an even number, so they are the one who ends up with zero.",
+          "why": "After an even count, the safe pulls pair off. They take one, you take one, and they run out."
+        }
       ]
     },
     {
       "id": "monopoly",
       "name": "Monopoly",
+      "summary": "Build on the oranges",
+      "tags": ["party", "strategy"],
       "diagram": "monopoly",
+      "watch": { "seconds": 1350, "label": "22:30" },
       "tips": [
-        "Play by the official rules: no Free Parking jackpot, and auction a property immediately when someone passes on it.",
-        "Buy nearly everything you land on. You can mortgage it later.",
-        "Get to three houses fast. That step is the biggest jump in rent.",
-        "Target the oranges. Jail is the most-landed-on square, and the oranges sit 6, 8, and 9 spaces past it.",
-        "Pay to get out of Jail early in the game, but stay in later.",
-        "Make fair trades."
+        {
+          "id": "rules",
+          "text": "Play by the official rules. Free Parking does not pay a jackpot, and a property someone passes on is auctioned right away."
+        },
+        {
+          "id": "buy",
+          "text": "Buy almost everything you land on. You need those deeds, and buying them also blocks other people's sets, but a pile of properties is not enough on its own. You can mortgage later.",
+          "why": "Deeds keep a color out of someone else's monopoly and give you something to build. Houses and trades are what finish the game."
+        },
+        {
+          "id": "houses",
+          "text": "Get to three houses fast. That is the biggest jump in rent, and houses come from a limited supply at the bank, so each one you buy is one your opponents cannot build with.",
+          "why": "Rent steepens at the third house, and the bank runs out of houses before the table is done building.",
+          "stats": ["Biggest rent jump"]
+        },
+        {
+          "id": "oranges",
+          "text": "Target the oranges. Jail is the most-landed-on square, the oranges are 6, 8, and 9 spaces past it, and they are cheap to build on.",
+          "why": "Players keep leaving Jail onto those three streets, and the houses there do not cost much.",
+          "stats": ["+6, +8, +9"]
+        },
+        {
+          "id": "jail",
+          "text": "Pay to get out of Jail early, while you still want to land on properties and buy them. Stay in later. You skip paying rent, and you can still collect it.",
+          "why": "Early on, moving is how you buy. Later, moving is how you land on someone else's houses."
+        },
+        {
+          "id": "trades",
+          "text": "Keep people willing to trade with you. Do not be the bully at the table. You cannot win without trades.",
+          "why": "The dice will not hand you a finished color group. Deals will, if the other players still want to make them."
+        }
       ]
     }
   ]

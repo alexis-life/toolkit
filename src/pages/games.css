@@ -23,11 +23,158 @@
   gap: 18px;
 }
 
+.games-jump {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  margin-bottom: 18px;
+  padding: 2px 2px 8px;
+}
+
+.games-jump-link {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 148px;
+  padding: 8px 12px;
+  text-decoration: none;
+  color: var(--c8);
+  background: var(--bg-surface);
+  border: 1px solid var(--c2);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow);
+}
+
+.games-jump-link span {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--c7);
+}
+
+.games-jump-link strong {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--c9);
+  line-height: 1.3;
+}
+
+.games-jump-link:hover {
+  border-color: var(--c6);
+  text-decoration: none;
+  color: var(--c8);
+}
+
 .game-card {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  scroll-margin-top: 20px;
+  scroll-margin-top: 16px;
+}
+
+.game-card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.game-summary {
+  margin-top: 2px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--c8);
+  line-height: 1.35;
+}
+
+.game-card-toggle {
+  display: none;
+  flex-shrink: 0;
+  background: var(--bg-surface);
+  color: var(--c6);
+  border: 1px solid var(--c2);
+  border-radius: var(--radius-pill);
+  font-family: "Poppins", sans-serif;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.game-card-toggle:hover {
+  border-color: var(--c6);
+}
+
+.game-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.game-tags .tag-chip.is-active {
+  background: var(--c1);
+  color: var(--c6);
+  border-color: var(--c4);
+}
+
+.games-watch {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--c7);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: var(--c2);
+  text-underline-offset: 2px;
+}
+
+.games-watch:hover {
+  color: var(--c6);
+  text-decoration-color: var(--c6);
+}
+
+.games-watch-time {
+  font-variant-numeric: tabular-nums;
+  color: var(--c6);
+}
+
+.game-tip-text {
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.game-why {
+  margin-top: 4px;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--c7);
+}
+
+.game-why-label {
+  display: block;
+  margin-bottom: 2px;
+}
+
+.game-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.game-diagrams {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .game-tips {
@@ -100,6 +247,68 @@
 .ship-cell--hot {
   background: var(--c3);
   box-shadow: inset 0 0 0 1px var(--c4);
+}
+
+.ship-cell--spent {
+  background: var(--bg-hover);
+  box-shadow: inset 0 0 0 1px var(--c1);
+}
+
+.ship-cell--open {
+  background: var(--bg-page);
+  box-shadow: inset 0 0 0 1px var(--c2);
+}
+
+.ship-cell--aim {
+  background: var(--c6);
+  box-shadow: inset 0 0 0 1px var(--c7);
+}
+
+.step-toggle {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.step-toggle-btn {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1px;
+  background: var(--bg-surface);
+  color: var(--c7);
+  border: 1px solid var(--c2);
+  border-radius: var(--radius-md);
+  font-family: "Poppins", sans-serif;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.step-toggle-btn:hover {
+  border-color: var(--c6);
+  color: var(--c6);
+}
+
+.step-toggle-btn.is-active {
+  background: var(--c6);
+  border-color: var(--c6);
+  color: var(--bg-surface);
+}
+
+.step-toggle-btn:focus-visible {
+  outline: 2px solid var(--c6);
+  outline-offset: 2px;
+}
+
+.step-toggle-title {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
 }
 
 .ship-legend {
@@ -229,9 +438,53 @@
   box-shadow: inset 0 0 0 1px var(--c2);
 }
 
-.c4-hole--filled {
+.c4-hole--you {
   background: var(--c6);
   box-shadow: inset 0 0 0 1px var(--c7);
+}
+
+.c4-hole--block {
+  background: var(--bg-surface);
+  box-shadow: inset 0 0 0 3px var(--c8);
+}
+
+.c4-hole--threat {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--c1);
+  box-shadow: inset 0 0 0 2px var(--c5);
+}
+
+.c4-threat-dot {
+  width: 28%;
+  height: 28%;
+  border-radius: var(--radius-pill);
+  background: var(--c6);
+}
+
+.c4-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.c4-legend li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--c7);
+}
+
+.c4-swatch {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
 }
 
 /* ── Monopoly snippet, counted out from Jail ── */
@@ -300,6 +553,14 @@
   .games-search {
     margin-left: 0;
     flex: 1 1 100%;
+  }
+
+  .game-card:not(.is-open) .game-card-body {
+    display: none;
+  }
+
+  .game-card-toggle {
+    display: inline-flex;
   }
 
   .ttt-board {
