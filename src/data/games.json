@@ -1,0 +1,82 @@
+{
+  "credit": "Tips summarized from Mark Rober's video 'I Solved Every Board Game'",
+  "creditUrl": "https://www.youtube.com/watch?v=26P1KyvrmjI",
+  "games": [
+    {
+      "id": "guess-who",
+      "name": "Guess Who",
+      "tips": [
+        "Each question should knock out roughly half the characters still in play. Asking whether the name starts with A–M is one way to do that.",
+        "Keep halving the board and a win usually takes five or six questions."
+      ]
+    },
+    {
+      "id": "rock-paper-scissors",
+      "name": "Rock Paper Scissors",
+      "tips": [
+        "Open a surprise round with rock. Someone answering in a rush most often throws scissors.",
+        "In a longer match, the person who just won tends to repeat, and the person who lost tends to step forward: rock, then paper, then scissors. Throw whatever beats the move that just won."
+      ]
+    },
+    {
+      "id": "coin-toss",
+      "name": "Coin toss",
+      "tips": [
+        "Use a wobble flip. Tilt your wrist about 45° as you let go so the coin wobbles instead of tumbling, and the face that started up stays up."
+      ]
+    },
+    {
+      "id": "connect-four",
+      "name": "Connect Four",
+      "diagram": "connect-four",
+      "tips": [
+        "Take the center column. Every winning line except a vertical one passes through it.",
+        "Build a beak: a two-way trap, so that when one four-in-a-row gets blocked the other is already there."
+      ]
+    },
+    {
+      "id": "battleship",
+      "name": "Battleship",
+      "diagram": "battleship",
+      "tips": [
+        "Shoot in a checkerboard. Every ship covers at least one of those squares.",
+        "After a hit, check up, down, left, and right to find the ship's direction, then sink it.",
+        "Once the 2-length ship is gone, spread the remaining shots out to every third square.",
+        "Favor the middle of the largest area you still haven't searched. That's where ships are most likely to be."
+      ]
+    },
+    {
+      "id": "tic-tac-toe",
+      "name": "Tic-Tac-Toe",
+      "diagram": "tic-tac-toe",
+      "tips": [
+        "Go first and take a corner.",
+        "If your opponent leaves the center open, keep taking corners until you create two threats at once.",
+        "If they take the center, take the opposite corner."
+      ]
+    },
+    {
+      "id": "jenga",
+      "name": "Jenga",
+      "tips": [
+        "Poke a block before you commit, and only pull the loose ones. Heights vary by about 1 mm, so some blocks are already free.",
+        "Test again every turn. As the tower leans, a different set of blocks loosens.",
+        "If a block sticks, give it one quick firm tap instead of dragging it out slowly.",
+        "In the endgame, count the safe moves left and leave your opponent an even number."
+      ]
+    },
+    {
+      "id": "monopoly",
+      "name": "Monopoly",
+      "diagram": "monopoly",
+      "tips": [
+        "Play by the official rules: no Free Parking jackpot, and auction a property immediately when someone passes on it.",
+        "Buy nearly everything you land on. You can mortgage it later.",
+        "Get to three houses fast. That step is the biggest jump in rent.",
+        "Target the oranges. Jail is the most-landed-on square, and the oranges sit 6, 8, and 9 spaces past it.",
+        "Pay to get out of Jail early in the game, but stay in later.",
+        "Make fair trades."
+      ]
+    }
+  ]
+}
