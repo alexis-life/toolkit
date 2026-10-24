@@ -3,6 +3,7 @@ import CommandsPage from "./pages/CommandsPage.jsx";
 import FrameworksIndex from "./pages/FrameworksIndex.jsx";
 import FrameworkPage from "./pages/FrameworkPage.jsx";
 import MappingsPage from "./pages/MappingsPage.jsx";
+import GamesPage from "./pages/GamesPage.jsx";
 import NotFoundPage from "./pages/NotFoundPage.jsx";
 import ScrollToTop from "./components/ScrollToTop.jsx";
 import "./App.css";
@@ -19,6 +20,7 @@ export default function App() {
         <Route path="/frameworks/:slug" element={<FrameworkPage />} />
         <Route path="/frameworks/:slug/controls" element={<FrameworkPage />} />
         <Route path="/frameworks/:slug/resources" element={<FrameworkPage />} />
+        <Route path="/games" element={<GamesPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>

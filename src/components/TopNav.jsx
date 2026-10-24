@@ -12,6 +12,12 @@ export default function TopNav() {
       >
         Frameworks
       </NavLink>
+      <NavLink
+        to="/games"
+        className={({ isActive }) => `ax-btn ${isActive ? "ax-btn--solid" : ""}`}
+      >
+        Games
+      </NavLink>
     </>
   );
 }
