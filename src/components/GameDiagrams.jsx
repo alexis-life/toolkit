@@ -1,5 +1,26 @@
-// Original schematics for the Games page. Geometry is drawn in JSX
-// from the tips themselves — not traced from the source video.
+import { useState } from "react";
+
+// Original schematics. Coordinates are worked out from the tips, not traced
+// from the video.
+
+function StepToggle({ label, steps, step, onChange }) {
+  return (
+    <div className="step-toggle" role="group" aria-label={label}>
+      {steps.map((item, index) => (
+        <button
+          key={item.id}
+          type="button"
+          className={index === step ? "step-toggle-btn is-active" : "step-toggle-btn"}
+          aria-pressed={index === step}
+          onClick={() => onChange(index)}
+        >
+          Step {index + 1}
+          <span className="step-toggle-title">{item.title}</span>
+        </button>
+      ))}
+    </div>
+  );
+}
 
 function MarkX() {
   return (
@@ -17,68 +38,156 @@ function MarkO() {
   );
 }
 
+const SHIP_SIZE = 10;
+
+// Step 3 leaves one open rectangle in the middle (rows 1–7, columns 2–8).
+// Its center is an every-third square, so the "aim middle" shot stays on
+// the pattern.
+function battleshipKinds(step) {
+  const kinds = [];
+  for (let row = 0; row < SHIP_SIZE; row += 1) {
+    for (let col = 0; col < SHIP_SIZE; col += 1) {
+      if (step === 0) {
+        kinds.push((row + col) % 2 === 0 ? "hot" : "");
+      } else if (step === 1) {
+        kinds.push((row + col) % 3 === 0 ? "hot" : "");
+      } else {
+        const open = row >= 1 && row <= 7 && col >= 2 && col <= 8;
+        if (!open) kinds.push("spent");
+        else if (row === 4 && col === 5) kinds.push("aim");
+        else if ((row + col) % 3 === 0) kinds.push("hot");
+        else kinds.push("open");
+      }
+    }
+  }
+  return kinds;
+}
+
+const SHIP_STEPS = [
+  {
+    id: "checker",
+    title: "Checkerboard",
+    caption:
+      "Every ship is at least 2 long, so one color of the grid touches them all. About 50 shots instead of 100.",
+    legend: [
+      { kind: "hot", label: "Shoot" },
+      { kind: "", label: "Skip" },
+    ],
+  },
+  {
+    id: "third",
+    title: "Every third",
+    caption: "After the 2-long ship is sunk, space the shots every third square. What remains is 3 or longer.",
+    legend: [
+      { kind: "hot", label: "Shoot" },
+      { kind: "", label: "Skip" },
+    ],
+  },
+  {
+    id: "middle",
+    title: "Aim middle",
+    caption:
+      "Stay on that pattern. The marked square is the one in the middle of the largest area you have not searched.",
+    legend: [
+      { kind: "spent", label: "Searched" },
+      { kind: "hot", label: "Pattern" },
+      { kind: "aim", label: "Next" },
+    ],
+  },
+];
+
 function BattleshipDiagram() {
-  const cells = Array.from({ length: 100 }, (_, i) => (Math.floor(i / 10) + (i % 10)) % 2 === 0);
+  const [step, setStep] = useState(0);
+  const current = SHIP_STEPS[step];
+  const kinds = battleshipKinds(step);
 
   return (
     <figure className="game-diagram">
+      <StepToggle label="Battleship search pattern" steps={SHIP_STEPS} step={step} onChange={setStep} />
       <div className="ship-diagram" aria-hidden="true">
         <div className="ship-grid">
-          {cells.map((shaded, i) => (
-            <span key={i} className={shaded ? "ship-cell ship-cell--hot" : "ship-cell"} />
+          {kinds.map((kind, index) => (
+            <span key={index} className={kind ? `ship-cell ship-cell--${kind}` : "ship-cell"} />
           ))}
         </div>
         <ul className="ship-legend">
-          <li>
-            <span className="ship-cell ship-cell--hot ship-swatch" />
-            Shoot
-          </li>
-          <li>
-            <span className="ship-cell ship-swatch" />
-            Skip
-          </li>
+          {current.legend.map((item) => (
+            <li key={item.label}>
+              <span className={item.kind ? `ship-cell ship-cell--${item.kind} ship-swatch` : "ship-cell ship-swatch"} />
+              {item.label}
+            </li>
+          ))}
         </ul>
       </div>
-      <figcaption className="game-diagram-caption">
-        Checkerboard shots. Every ship covers a shaded square.
+      <figcaption className="game-diagram-caption" aria-live="polite">
+        {current.caption}
       </figcaption>
     </figure>
   );
 }
 
-// Opening is the top-left corner. The fork keeps that corner, adds the
-// bottom two corners, and leaves the center plus the bottom middle empty —
-// each of those empties completes a line. O sits on the left edge, so the
-// center was never taken.
-const TTT_OPENING = [
-  { mark: "X" },
-  { mark: "" },
-  { mark: "" },
-  { mark: "" },
-  { mark: "" },
-  { mark: "" },
-  { mark: "" },
-  { mark: "" },
-  { mark: "" },
-];
-
-const TTT_FORK = [
-  { mark: "X" },
-  { mark: "" },
-  { mark: "" },
-  { mark: "O" },
-  { mark: "", threat: true },
-  { mark: "" },
-  { mark: "X" },
-  { mark: "", threat: true },
-  { mark: "X" },
+// Cells are row-major, top-left first.
+// Step 2: X top-left, O top-middle, X bottom-left. The empty left-middle
+// completes a column, so it is the block O has to play.
+// Step 3: O takes that block, X takes bottom-right. Center completes the
+// diagonal; bottom-middle completes the bottom row. Three X's, two O's.
+const TTT_STEPS = [
+  {
+    id: "corner",
+    title: "First corner",
+    caption: "Go first and take a corner. The rest of this sequence is what happens if they do not take the center.",
+    cells: [
+      { mark: "X" },
+      { mark: "" },
+      { mark: "" },
+      { mark: "" },
+      { mark: "" },
+      { mark: "" },
+      { mark: "" },
+      { mark: "" },
+      { mark: "" },
+    ],
+  },
+  {
+    id: "second",
+    title: "Second corner",
+    caption:
+      "They played the top edge. The second corner shares the left side with your first and threatens the tinted square.",
+    cells: [
+      { mark: "X" },
+      { mark: "O" },
+      { mark: "" },
+      { mark: "", threat: true },
+      { mark: "" },
+      { mark: "" },
+      { mark: "X" },
+      { mark: "" },
+      { mark: "" },
+    ],
+  },
+  {
+    id: "fork",
+    title: "Third corner",
+    caption: "They block. Your third corner threatens two wins at once: the center, and the bottom middle.",
+    cells: [
+      { mark: "X" },
+      { mark: "O" },
+      { mark: "" },
+      { mark: "O" },
+      { mark: "", threat: true },
+      { mark: "" },
+      { mark: "X" },
+      { mark: "", threat: true },
+      { mark: "X" },
+    ],
+  },
 ];
 
 function TicTacToeBoard({ cells }) {
   return (
     <div className="ttt-board" aria-hidden="true">
-      {cells.map((cell, i) => (
-        <div key={i} className={cell.threat ? "ttt-cell ttt-cell--threat" : "ttt-cell"}>
+      {cells.map((cell, index) => (
+        <div key={index} className={cell.threat ? "ttt-cell ttt-cell--threat" : "ttt-cell"}>
           {cell.mark === "X" ? <MarkX /> : cell.mark === "O" ? <MarkO /> : null}
         </div>
       ))}
@@ -87,52 +196,102 @@ function TicTacToeBoard({ cells }) {
 }
 
 function TicTacToeDiagram() {
+  const [step, setStep] = useState(0);
+  const current = TTT_STEPS[step];
+
   return (
     <figure className="game-diagram">
-      <div className="ttt-boards">
-        <div className="ttt-board-wrap">
-          <p className="label-micro">Opening</p>
-          <TicTacToeBoard cells={TTT_OPENING} />
-        </div>
-        <div className="ttt-board-wrap">
-          <p className="label-micro">Three-corner fork</p>
-          <TicTacToeBoard cells={TTT_FORK} />
-        </div>
-      </div>
-      <figcaption className="game-diagram-caption">
-        Start in a corner. Three corners, with the opponent on a side instead of the center, leave two
-        winning squares (tinted).
+      <StepToggle label="Tic-tac-toe corner sequence" steps={TTT_STEPS} step={step} onChange={setStep} />
+      <TicTacToeBoard cells={current.cells} />
+      <figcaption className="game-diagram-caption" aria-live="polite">
+        {current.caption}
       </figcaption>
     </figure>
   );
+}
+
+function ConnectFourBoard({ cells, highlightCenter }) {
+  return (
+    <div className="c4-board" aria-hidden="true">
+      {Array.from({ length: 7 }, (_, col) => (
+        <div key={col} className={highlightCenter && col === 3 ? "c4-col c4-col--center" : "c4-col"}>
+          {highlightCenter ? <span className="c4-col-label">{col === 3 ? "Center" : ""}</span> : null}
+          {Array.from({ length: 6 }, (_, row) => {
+            const kind = cells[`${row}-${col}`];
+            return (
+              <span key={row} className={kind ? `c4-hole c4-hole--${kind}` : "c4-hole"}>
+                {kind === "threat" ? <span className="c4-threat-dot" /> : null}
+              </span>
+            );
+          })}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function centerStackCells() {
+  const cells = {};
+  for (const row of [3, 4, 5]) cells[`${row}-3`] = "you";
+  return cells;
+}
+
+// Rows are numbered from the top, so row 5 is the bottom rank.
+// Bottom rank: three of yours, then their block (the four they just stopped).
+// Rank above: three of yours, then the empty square that now wins.
+// One extra disc pokes up in the middle so the cluster reads as a beak
+// pointing up. Same idea can be aimed down, left, or right.
+function beakCells() {
+  return {
+    "5-2": "you",
+    "5-3": "you",
+    "5-4": "you",
+    "5-5": "block",
+    "4-2": "you",
+    "4-3": "you",
+    "4-4": "you",
+    "4-5": "threat",
+    "3-3": "you",
+  };
 }
 
 function ConnectFourDiagram() {
   return (
-    <figure className="game-diagram">
-      <div className="c4-board" aria-hidden="true">
-        {Array.from({ length: 7 }, (_, col) => {
-          const center = col === 3;
-          return (
-            <div key={col} className={center ? "c4-col c4-col--center" : "c4-col"}>
-              <span className="c4-col-label">{center ? "Center" : ""}</span>
-              {Array.from({ length: 6 }, (_, row) => {
-                const filled = center && row === 5;
-                return <span key={row} className={filled ? "c4-hole c4-hole--filled" : "c4-hole"} />;
-              })}
-            </div>
-          );
-        })}
-      </div>
-      <figcaption className="game-diagram-caption">
-        The center column. Only a vertical four can miss it.
-      </figcaption>
-    </figure>
+    <div className="game-diagrams">
+      <figure className="game-diagram">
+        <ConnectFourBoard cells={centerStackCells()} highlightCenter />
+        <figcaption className="game-diagram-caption">
+          Stack the center. Horizontal and diagonal fours run through it. A vertical four can miss it, and you
+          can see that one coming.
+        </figcaption>
+      </figure>
+      <figure className="game-diagram">
+        <ConnectFourBoard cells={beakCells()} />
+        <ul className="c4-legend" aria-hidden="true">
+          <li>
+            <span className="c4-hole c4-hole--you c4-swatch" />
+            Your beak
+          </li>
+          <li>
+            <span className="c4-hole c4-hole--block c4-swatch" />
+            Their block
+          </li>
+          <li>
+            <span className="c4-hole c4-hole--threat c4-swatch">
+              <span className="c4-threat-dot" />
+            </span>
+            Second threat
+          </li>
+        </ul>
+        <figcaption className="game-diagram-caption">
+          Pointing up. They block the lower four, and that piece is what you play on for the second threat. The
+          same shape works down, left, or right.
+        </figcaption>
+      </figure>
+    </div>
   );
 }
 
-// Play order from Jail. Oranges are the 6th, 8th, and 9th squares after it
-// (a railroad and a community-chest square sit in the gaps).
 const MONOPOLY_SPACES = [
   { key: "jail", name: "Jail", kind: "jail" },
   { key: "1", name: "+1" },
@@ -167,7 +326,8 @@ function MonopolyDiagram() {
         ))}
       </ol>
       <figcaption className="game-diagram-caption">
-        Counted in play order from Jail. The orange set is 6, 8, and 9 spaces past it.
+        Counted in play order from Jail. The oranges are 6, 8, and 9 spaces past the busiest square, and they
+        are cheap to build on.
       </figcaption>
     </figure>
   );
